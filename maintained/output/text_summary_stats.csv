@@ -1,0 +1,12 @@
+claim,value
+list experiments in the meta-analysis data,264
+papers in the meta-analysis data,92
+studies predicted to show underreporting,196
+studies predicted to show overreporting,68
+"vote buying: most negative study estimate, points",-24
+"vote buying: most positive study estimate, points",5.114605644049003
+"vote buying: top row of Figure 4a (kiewiet2015lies), estimate in points",5.114605644049003
+"vote buying: top row of Figure 4a (kiewiet2015lies), 95% CI lower in points",-3.4034044306872833
+"vote buying: top row of Figure 4a (kiewiet2015lies), 95% CI upper in points",13.63261571878529
+"authoritarian: largest overreporting estimate (kalinin2015exploring), points",43.33359575907975
+"authoritarian: largest underreporting estimate (weghorst2015political), points",-44.690000000000005

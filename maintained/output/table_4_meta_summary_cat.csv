@@ -1,0 +1,9 @@
+final_category,polarity,mu_est_se,mu_ci,ppi_1,ppi_2,n
+Vote buying,Underreporting,-0.08 (0.02),"[-0.13, -0.04]","[-0.14, -0.03]","[-0.25, 0.08]",19
+Turnout,Overreporting,0.07 (0.04),"[-0.01, 0.14]","[0.00, 0.13]","[-0.12, 0.25]",10
+Racial prejudice,Underreporting,0.04 (0.03),"[-0.02, 0.09]","[0.01, 0.07]","[-0.05, 0.13]",9
+Religious prejudice,Underreporting,-0.01 (0.03),"[-0.07, 0.04]","[-0.05, 0.02]","[-0.12, 0.09]",12
+Sexual orientation prejudice,Underreporting,-0.01 (0.03),"[-0.08, 0.06]","[-0.08, 0.06]","[-0.22, 0.20]",16
+,Overreporting,-0.02 (0.08),"[-0.17, 0.14]","[-0.12, 0.08]","[-0.30, 0.26]",5
+Support for authoritarian regimes,Underreporting,-0.08 (0.04),"[-0.16, 0.00]","[-0.16, 0.00]","[-0.31, 0.16]",13
+,Overreporting,0.14 (0.03),"[0.07, 0.21]","[0.05, 0.24]","[-0.14, 0.42]",21

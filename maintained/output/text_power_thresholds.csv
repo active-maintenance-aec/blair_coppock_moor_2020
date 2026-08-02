@@ -1,0 +1,9 @@
+claim,value_points
+"Figure 2a: bias at which RMSE of list equals RMSE of direct, N = 1000",5.57
+"Figure 2a: bias at which RMSE of list equals RMSE of direct, N = 2000",3.94
+"Figure 2b: bias detectable with 80% power, N = 1000",16.75
+"Figure 2b: bias detectable with 80% power, N = 2000",11.87
+"Figure 3a: difference in prevalence detectable with 80% power, N = 2000",22.900000000000002
+"Figure 3a: difference in prevalence detectable with 80% power, N = 3000",18.7
+"Figure 3b: difference in sensitivity bias detectable with 80% power, N = 2000",23.7
+"Figure 3b: difference in sensitivity bias detectable with 80% power, N = 3000",19.400000000000002

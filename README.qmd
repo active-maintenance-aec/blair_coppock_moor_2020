@@ -1,0 +1,416 @@
+---
+title: "Reproducibility Report: Blair, Coppock and Moor (2020)"
+subtitle: "When to Worry about Sensitivity Bias: A Social Reference Theory and Evidence from 30 Years of List Experiments"
+format:
+  gfm:
+    output-file: README.md
+    toc: true
+  pdf:
+    output-file: blair_coppock_moor_2020_report.pdf
+    toc: true
+    toc-depth: 2
+    number-sections: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(here)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+here::i_am("README.qmd")
+
+# kableExtra styling and the vector figures are LaTeX-only; the GitHub README build takes
+# plain pipe tables and the PNG copies.
+latex_out <- knitr::is_latex_output()
+latex_only <- function(k, f) if (latex_out) f(k) else k
+
+out <- function(f) read_csv(here::here("maintained", "output", f), show_col_types = FALSE)
+gt <- read_csv(here::here("ground_truth", "blair_coppock_moor_2020_ground_truth.csv"),
+               show_col_types = FALSE)
+manifest <- read_csv(here::here("original_manifest.csv"), show_col_types = FALSE)
+
+# Relative to this file, not absolute: Quarto resolves figure paths against the input
+# document, and pandoc rewrites a leading slash into "./", which no LaTeX run can find.
+fig_img <- function(stem) {
+  file.path("maintained", "output", paste0(stem, if (latex_out) ".pdf" else ".png"))
+}
+
+n_claims <- nrow(gt)
+n_verifiable <- sum(!is.na(gt$match_rewrite))
+n_match <- sum(gt$match_rewrite == 1, na.rm = TRUE)
+n_miss <- sum(gt$match_rewrite == 0, na.rm = TRUE)
+n_unverifiable <- sum(is.na(gt$match_rewrite))
+
+t4 <- filter(gt, table_figure == "Table 4")
+n_t4 <- nrow(t4)
+n_t4_miss <- sum(t4$match_rewrite == 0)
+n_t4_archive_match <- sum(t4$match == 1, na.rm = TRUE)
+
+n_environment <- sum(gt$defect_locus == "environment", na.rm = TRUE)
+n_paper_internal <- sum(gt$defect_locus == "paper_internal", na.rm = TRUE)
+n_unresolved <- sum(gt$defect_locus == "unresolved", na.rm = TRUE)
+
+# Where the archive computes a quantity too, the two pipelines can be compared directly.
+both <- filter(gt, !is.na(value_script), !is.na(value_rewrite))
+n_both <- nrow(both)
+max_archive_gap <- max(abs(both$value_script - both$value_rewrite))
+
+regions <- out("figure_5_region_counts.csv")
+region_n <- function(r) regions$n[regions$region == r]
+
+dd <- out("declaredesign_simulation_summary.csv")
+dd_bias <- dd$bias[dd$estimator == "direct-list"]
+dd_power <- dd$power[dd$estimator == "direct-list"]
+```
+
+*Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
+
+This repository holds the actively maintained replication code for Blair, Coppock and Moor (2020), together with the reproducibility report that documents what the original archive did and did not do. It is part of a program applying the maintenance proposal in Peer, Orr and Coppock (2021, *PS: Political Science & Politics*, doi [10.1017/S1049096521000366](https://doi.org/10.1017/S1049096521000366)) to a set of published archives.
+
+| | |
+|---|---|
+| Article | [10.1017/S0003055420000374](https://doi.org/10.1017/S0003055420000374) |
+| Replication archive | [10.7910/DVN/YUXHZT](https://doi.org/10.7910/DVN/YUXHZT) |
+| Pre-analysis plans | none |
+
+**The data are not redistributed here.** The deposit is a single 1.2 MB zip at Harvard Dataverse, and that is the only copy this repository points at. `download_original.R` fetches it, verifies its checksum, and unpacks it into `original_extracted/`; `original_manifest.csv` records the Dataverse file identifier, the size in bytes, and two checksums: the MD5 of the bytes Dataverse serves for `?format=original`, which is what this code was written against, and the MD5 Dataverse publishes. Here the two agree. They do not always, so the script verifies against the served bytes and reports any disagreement. Either way the exact bytes this code ran on are pinned in version control even though the bytes themselves are not.
+
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it. `ground_truth/build_ground_truth.R` regenerates that table from the pipeline's own output as the last step of `run_all.R`, and `ground_truth/extract_archive_values.R`, which is run on its own and takes about a quarter of an hour, records what the deposited scripts produce so the two can be compared. `original/` and `original_extracted/` are created by the download script and are deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
+
+**License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains, so nothing in the chain is more restrictive than the archive itself. See `LICENSE`.
+
+**To reproduce.** Clone or download the repository, open `blair_coppock_moor_2020.Rproj`, and run:
+
+``` r
+source("run_all.R")
+```
+
+That fetches the deposit, verifies it, produces every table and figure into `maintained/output/`, and rebuilds the ground truth table from those outputs. Required packages: tidyverse, rstan, tidybayes, deming, janitor, patchwork, DeclareDesign, bindata, rsample, here, and for this report knitr and kableExtra. Paths resolve through `here`, so nothing depends on the working directory. The full run takes about two minutes: a minute to recompile the Stan model and fit the ten meta-analyses, another for the design simulation, and seconds for everything else. Individual scripts can be run on their own, subject to the three dependencies noted in `run_all.R`. A successful run overwrites `maintained/output/`, which is committed: **`git diff` on that folder is the reproduction check.** The CSV, PNG and RDS output comes back byte-identical; the 21 PDF figures always show as changed, because a PDF records the time it was written, so compare their PNG twins instead.
+
+# Summary
+
+Two questions, answered before the detail.
+
+## Does the deposited archive run?
+
+Not as deposited. The archive holds thirteen R files, two of which are helper files the others source. Of the eleven that are meant to be run, nine fail on a current R installation.
+
+Three of the nine fail before reaching any R problem at all: **the deposit does not contain the output directories its own scripts write to.** `mode_appendix_table.R` and `table_of_data.R` stop at `cannot open file 'tables/...'`, and `plot_direct_v_list.R` stops at `Cannot find directory 'figures'`. Nothing in the archive creates either folder, so a reader who unpacks the zip and runs the scripts in the order the archive's README implies gets three failures that have nothing to do with the analysis and no hint that the fix is `mkdir`.
+
+The core meta-analysis script, `meta_analysis.R`, loads `data/stan_model.RDS`, a Stan model compiled in 2020 under R 3.6 on another machine. rstan rejects it: "the compiled object from C++ code for this model is invalid." The archive ships `compile_stan_model.R` to rebuild it, but that script writes its output back to `data/stan_model.RDS`, so running the archive in place silently replaces a deposited file with a machine-specific binary. Running the archive from a scratch copy, as this report does, is the only way to leave the deposit intact. Once the model is recompiled, `meta_analysis.R` fails again inside `0_helpers.R`, where `fct_reorder()` is called on a character vector whose ordering variable is `NA` for the predictive-interval row; forcats 1.0.0 errors on that, where earlier versions did not.
+
+The four simulation scripts fail for two reasons that have nothing to do with the analysis either. `Figure2ab.R` and `Figure5.R` call `write_rds(path =)` and `read_rds(path =)`, and the `path` argument was removed in readr 2.0.0. `Figure3a.R` and `Figure3b.R` print the finished plot object to the console before saving it, which sends it to the default `pdf()` device, which cannot resolve the custom font `ETBembo-RomanLF` and raises "invalid font type." The font is missing on any machine but the authors', so the bare print is fatal everywhere. The DeclareDesign declaration fails on its first line of arithmetic, computing `delta` from `pi_star` one line before `pi_star` is defined, and then on the pre-1.0 DeclareDesign API throughout.
+
+All of it is resolvable, and none of the fixes touches an estimator, a specification or a sample definition. With them applied to a scratch copy, the archive's own `meta_analysis.R` reproduces the published Table 4 in `r n_t4_archive_match` of its `r n_t4` cells.
+
+## Does the maintained rewrite reproduce the paper?
+
+It agrees with the deposited archive wherever the two compute the same quantity, and with the paper in `r n_match` of `r n_verifiable` verifiable claims.
+
+The comparison against the archive is the sharper of the two. `ground_truth/extract_archive_values.R` runs the deposit from a scratch copy, with only the recompiled Stan model, the repaired `fct_reorder` call and the two `readr` argument names, and writes what its scripts produce into `ground_truth/`. The two pipelines compute the same quantity in `r n_both` places: all of Table 4, the in-text sentences that restate it, all of Table H.8, the study counts behind Tables G.1 to G.7, the two indifference curves behind Figure 2 and the three region counts behind Figure 5. The largest absolute difference across all of them is `r max_archive_gap`. Any distance to the published numbers is therefore a property of the software this runs on, not of the rewrite.
+
+The `r n_miss` claims that do not match the paper fall into three groups, and none of them is a defect in the rewrite.
+
+`r n_paper_internal` are places where the article's prose disagrees with the article's own tables, and in every one of them the pipeline agrees with the table. The clearest is the turnout predictive interval: the text says the 95% interval "is 45 points wide," while Table 4 prints [-0.12, 0.26] for that interval, which is 38 points wide, and the code returns 37.4. The same pattern recurs for the vote-buying 95% predictive interval (text -27 to +10, table -25 to +8), the racial-prejudice 95% predictive interval (text -16 to +16, table -5 to +12), the width of the religious-prejudice credible interval (text 13 points, table 11), and the sexual-orientation underreporting estimate (text +2 points, table -0.01). The last of the group is the RMSE indifference threshold at N = 1,000: the article says a bias above 5.5 points prefers the list experiment, and the curve its own Figure 2a plots crosses at 5.57, so a bias of 5.55 points would not in fact prefer it. None of these is a reproduction failure. The pipeline and the tables agree with each other, and the prose agrees with neither.
+
+`r n_environment` are cells of Table 4 where the archive and the rewrite return the same posterior summary and the article prints a different one: four predictive-interval bounds, one standard error and one credible-interval bound. All six are in the second decimal place, and five of them are in the two subsets with the fewest studies, where the posterior is least well determined. Stan and its compiler have both moved since 2020 and the deposit pins neither, so the article's draws cannot be recovered.
+
+`r n_unresolved` are the counts of studies in the second and third regions of Figure 5. The article reports `r region_n("small")`, 107 and 59 studies; the deposited `Figure5.R` and the rewrite both return `r region_n("small")`, `r region_n("medium")` and `r region_n("big")`. One study, Luks (2010), has an estimated bias of exactly 0.2000, which sits one grid step of 0.0001 above the power curve at its sample size and so falls above the curve rather than between the curves. Nothing in that computation draws at random, so the difference is not sampling noise, and what moved between 2020 and now has not been established. Recording it as unresolved is more honest than attributing it.
+
+`r n_unverifiable` recorded quantities cannot be checked. Four are the Deming regression coefficients behind Figure F.10, which the supplementary text characterizes only as "close to 1" without printing a number. Two are the thresholds Figure 3b plots, which the text describes without quoting. Two are the counts of list experiments that pass the Blair and Imai (2012) design effects test, which needs an item-count distribution the deposited study-level file does not carry. The remaining six are published floats that carry no computed quantity at all, or that the deposit contains no script and no data for: Figure 1 and Figure A.1 are drawn from respondent-level surveys the deposit does not include, and Figure D.2 comes from data the deposit does include but ships no script to plot.
+
+# Paper overview
+
+**Citation**: Blair, G., Coppock, A. and Moor, M. (2020). "When to Worry about Sensitivity Bias: A Social Reference Theory and Evidence from 30 Years of List Experiments." *American Political Science Review*, 114(4), 1297-1315.
+
+**Research question**: How much are survey responses on sensitive topics distorted by respondents' concern about how a social referent will judge them, and when is a list experiment worth its cost?
+
+**Design**: Three pieces. A social reference theory says sensitivity bias requires a referent, a perceived preference of that referent, a belief that the answer will reach the referent, and a cost. A bias-variance analysis shows the list experiment buys unbiasedness at a very high price in precision: at 2,000 subjects and a prevalence rate of 0.5, its variance is roughly fourteen times the direct question's, so a researcher would need about 28,000 subjects to match a 2,000 subject direct question. A meta-analysis of 264 list experiments from 92 papers, each paired with a direct question, then estimates the actual sensitivity bias by domain with a Bayesian random effects model fitted in Stan.
+
+**Main finding**: Biases are typically under 10 percentage points and in several domains indistinguishable from zero. The exception is support for authoritarian regimes, where overreporting averages +14 points, and the predictive intervals are wide enough everywhere that a domain-level average is a poor guide to any particular study.
+
+**Data**: the deposit contains no individual-level microdata. `estimates_df.RDS` is a curated frame of 264 study-level estimates, their standard errors, sample sizes, survey modes and predicted polarity, assembled by the authors from published and unpublished sources.
+
+# Original archive reproducibility
+
+```{r repro_table}
+tibble(
+  Script = c(
+    "1_meta_analysis/0_helpers.R",
+    "1_meta_analysis/compile_stan_model.R",
+    "1_meta_analysis/meta_analysis.R",
+    "1_meta_analysis/meta_analysis_rma.R",
+    "1_meta_analysis/mode_appendix_table.R",
+    "1_meta_analysis/plot_direct_v_list.R",
+    "1_meta_analysis/table_of_data.R",
+    "2_simulations/theory_list_power_function.R",
+    "2_simulations/Figure2ab.R",
+    "2_simulations/Figure3a.R",
+    "2_simulations/Figure3b.R",
+    "2_simulations/Figure5.R",
+    "3_declaredesign/list_experiment_declaration.R"
+  ),
+  Status = c(
+    "Sourced by the meta-analysis scripts; carries the fct_reorder failure",
+    "Runs, but writes its output over the deposited data/stan_model.RDS",
+    "Fails: unusable Stan binary, then fct_reorder on an NA, then no figures/ or tables/ directory",
+    "Runs clean; writes no file and corresponds to no published quantity",
+    "Fails: no tables/ directory in the deposit",
+    "Fails: no figures/ directory in the deposit; geom_errorbarh deprecation warning",
+    "Fails: no tables/ directory in the deposit",
+    "Sourced by the simulation scripts; runs clean",
+    "Fails: write_rds(path =) removed in readr 2.0.0; no figures/ directory",
+    "Fails: bare print of the plot to a device that cannot resolve the font",
+    "Fails: same bare print",
+    "Fails: read_rds(path =) removed; also needs Figure2ab.R to have run",
+    "Fails: delta computed before pi_star; pre-1.0 DeclareDesign API throughout"
+  )
+) |>
+  kable(booktabs = TRUE, caption = "Status of each script in the deposited archive under R 4.6.0.") |>
+  latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 8) |>
+               column_spec(1, width = "14em") |>
+               column_spec(2, width = "20em"))
+```
+
+Four further observations about the deposit itself.
+
+The archive's `README.txt` describes a script named `theory_group_differences_sensitivity_bias.R` that is not in the deposit; the file that produces the figure it describes is `Figure3a.R`. The README also lists the four simulation scripts by filename with no description at all.
+
+`compile_stan_model.R` writing to `data/stan_model.RDS` is the more serious problem, because the output and one of the deposited inputs are the same file. A reader who follows the archive's own instructions ends up with a working copy of the deposit that no longer matches the bytes Dataverse serves, and nothing warns them. The maintained rewrite recompiles the model in memory and never writes a compiled binary at all.
+
+`Figure2ab.R` walks a 3,410,341 row parameter grid one row at a time with `map2_df`, which takes about a quarter of an hour, and then writes the resulting 246 MB frame to a 253 MB file in the archive's root directory. The function it calls, `list_power`, is already fully vectorized, so a single call over the whole grid returns the identical frame in under a second: on a random sample of 4,000 grid points the two routes agree exactly, cell for cell. Vectorizing is a performance property and not an analytical one, and the rewrite takes the fast path.
+
+The zip carries a `__MACOSX` resource-fork tree, three `.DS_Store` files and an `.Rapp.history` alongside the 13 scripts and 2 data files. `download_original.R` discards the resource forks on unpacking and leaves everything else as deposited. Running the archive adds files as well: the two simulation scripts that print a plot before saving it leave an `Rplots.pdf` behind, and `compile_stan_model.R` overwrites `data/stan_model.RDS`, so a working copy of the deposit stops matching Dataverse the first time it is used. `download_original.R` refuses to proceed if `original/` holds anything the manifest does not list, which is why the deposit is kept as the downloaded zip and unpacked somewhere else.
+
+# Ground truth summary
+
+```{r gt_summary}
+gt |>
+  mutate(status = case_when(
+    is.na(match_rewrite) ~ "Not stated in the paper",
+    match_rewrite == 1 ~ "Matches",
+    TRUE ~ "Does not match"
+  )) |>
+  count(`Table or figure` = table_figure, Status = status) |>
+  rename(N = n) |>
+  kable(booktabs = TRUE, caption = "Ground truth claims by source and outcome.") |>
+  latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 8))
+```
+
+`value_paper` in `ground_truth/blair_coppock_moor_2020_ground_truth.csv` was filled only by reading the published article and its supplementary materials, and the three multi-column tables were read off rendered pages rather than a text extraction so that no cell could be mapped to the wrong column. Where the paper does not state a quantity the field is blank and `match` is `NA`. `value_rewrite` is read back out of `maintained/output/` by the build script and `value_script` out of the archive run, neither of them transcribed, and no published number is an input to any computation anywhere in `maintained/`. Nor is a published number used to select a row: the one study-level spot check is on Corstange (2017), which is the single vote-buying study with one row in Table G.1 and so can be located by name.
+
+Claims the article prints as values are matched to the last digit it prints. A handful are stated as one-sided bounds instead ("the bias must be greater than 5.5 points", "differences must exceed 20 percentage points"), and those are tested as bounds, in the direction the sentence asserts.
+
+```{r gt_fails}
+gt |>
+  filter(match_rewrite == 0) |>
+  transmute(
+    Source = table_figure,
+    Claim = claim,
+    Paper = value_paper,
+    Pipeline = round(value_rewrite, 3),
+    Locus = defect_locus
+  ) |>
+  kable(booktabs = TRUE, caption = "Every claim that does not match, and where the difference comes from.") |>
+  latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 7) |>
+               column_spec(2, width = "16em"))
+```
+
+# Maintained rewrite
+
+## Architecture
+
+```{r arch_table}
+tibble(
+  Script = c(
+    "helpers.R",
+    "figure_4_meta_analysis_coefplots.R",
+    "table_4_meta_summary.R",
+    "figure_2ab_theory_power_rmse.R",
+    "figure_3a_group_differences_power.R",
+    "figure_3b_diff_in_sensitivity_power.R",
+    "figure_5_bias_variance_overlay.R",
+    "figure_f10_direct_vs_list.R",
+    "table_g_study_estimates.R",
+    "table_h8_mode.R",
+    "text_theory_variance.R",
+    "text_power_thresholds.R",
+    "text_summary_stats.R",
+    "declaredesign_list_experiment.R"
+  ),
+  Output = c(
+    "Packages, the Stan helpers, the plotting helpers, the table formatters",
+    "32 figure files (Figure 4a-h and Figures E.3-E.9), figure_4_meta_estimates.csv, meta_analysis_summaries.rds",
+    "table_4_meta_summary_cat.csv, table_4_meta_summary_overall.csv",
+    "figure_2ab_theory_power_rmse.pdf/.png, figure_2ab_indifference_curves.csv",
+    "figure_3a_group_differences_power.pdf/.png, figure_3a_power_curve.csv",
+    "figure_3b_diff_in_sensitivity_power.pdf/.png, figure_3b_power_curve.csv",
+    "figure_5_bias_variance_overlay.pdf/.png, figure_5_region_counts.csv",
+    "figure_f10_direct_vs_list.pdf/.png, figure_f10_deming_coefficients.csv",
+    "table_g_study_estimates.csv (Tables G.1-G.7 in one tidy file)",
+    "table_h8_mode.csv",
+    "text_theory_variance.csv",
+    "text_power_thresholds.csv",
+    "text_summary_stats.csv",
+    "declaredesign_simulation_summary.csv"
+  )
+) |>
+  kable(booktabs = TRUE, caption = "The maintained rewrite, one script per output.") |>
+  latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 7) |>
+               column_spec(1, width = "16em") |>
+               column_spec(2, width = "20em"))
+```
+
+Three structural points are worth naming.
+
+Every figure script writes a CSV of the values it plots. A PDF differs on every run because it records the time it was written, so a figure file cannot be diffed; the CSV beside it can. For Figure 4 alone that means `r nrow(out("figure_4_meta_estimates.csv"))` rows of plotted estimates, standard errors, credible intervals and predictive intervals, and the same holds for the two indifference curves behind Figure 2, the two power curves behind Figure 3, the three region counts behind Figure 5 and the four Deming coefficients behind Figure F.10.
+
+The ten Stan fits run once, in `figure_4_meta_analysis_coefplots.R`, which saves their posterior summaries to `output/meta_analysis_summaries.rds`; `table_4_meta_summary.R` reads that file rather than refitting. One script per output means the figure and its table are written by different scripts, and passing the fits through a saved object is what stops the two from ever reporting different draws. The archive keeps both in one script and gets the same guarantee a different way.
+
+Three scripts exist only to make in-text numbers traceable. `text_theory_variance.R` computes the standard errors quoted in the theory section, which the archive works out only in a commented block at the foot of `theory_list_power_function.R`, and that block uses a sensitivity bias of 0.05 and a control item covariance of 0.05 rather than the 0.1 and 0.025 the published sentence states. `text_power_thresholds.R` reads the three simulation curves and prints the sample-size thresholds the design section quotes. `text_summary_stats.R` gives the study counts and the extreme study estimates named in the results. Where the archive prints a number to the console and saves nothing, as `Figure5.R` does with its region counts, the rewrite writes it to a CSV instead.
+
+## Deprecated patterns replaced
+
+```{r deprecation_table}
+tibble(
+  `Original pattern` = c(
+    "`%>%`",
+    "`readRDS()` / `saveRDS()`",
+    "`write_rds(path =)`, `read_rds(path =)`",
+    "`gather()`",
+    "`do(predict(...))`, `do(tidy(...))`",
+    "`geom_errorbarh(height = 0)`",
+    "`fct_reorder()` on a character vector with NA",
+    "`geom_smooth(stat = \"smooth\")`",
+    "`xtable` + `print.xtable(file =)`",
+    "`declare_population()`, `declare_step()`",
+    "`declare_potential_outcomes()`",
+    "`declare_estimand()`",
+    "`declare_assignment(prob = 0.5)`",
+    "`declare_estimator(model =)`",
+    "`tidy_estimator()`",
+    "`text = element_text(family = \"ETBembo-RomanLF\")`",
+    "`map2_df()` over a 3.4 million row grid",
+    "pre-compiled `stan_model.RDS`"
+  ),
+  Replacement = c(
+    "`|>`",
+    "`read_rds()` / `write_rds()`",
+    "positional first argument, `file =` on write",
+    "`pivot_longer()`",
+    "`reframe()`",
+    "`geom_linerange()`",
+    "sort the NA row to `-Inf` before reordering",
+    "`geom_smooth(method = \"loess\")`",
+    "`write_csv()` to `maintained/output/`",
+    "`declare_model()` with the step folded in",
+    "`potential_outcomes()` plus `declare_measurement()`",
+    "`declare_inquiry()`",
+    "`declare_assignment(Z = complete_ra(N, prob = 0.5))`",
+    "`declare_estimator(.method =)`",
+    "`label_estimator()`",
+    "removed; the font is not distributable and the figures do not need it",
+    "one vectorized call to the same function",
+    "recompiled in memory from the deposited `.stan` source"
+  )
+) |>
+  kable(booktabs = TRUE, caption = "Deprecated and removed patterns, and what replaced them.") |>
+  latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 8) |>
+               column_spec(1, width = "16em") |>
+               column_spec(2, width = "16em"))
+```
+
+Two of these deserve more than a table row.
+
+**`tidy_estimator()`.** The archive's DeclareDesign declaration has three estimators: the direct question, the list experiment, and the difference between them with a bootstrapped standard error. The third is wired in with `tidy_estimator()`, which DeclareDesign removed at version 1.0. Its direct successor is `label_estimator()`, the estimator declares in one line, and the whole simulation with 500 designs and 250 bootstrap resamples each runs in about ninety seconds. Across those 500 simulated designs the direct-minus-list estimator recovers the true sensitivity bias of 0.1 with a simulation bias of `r sprintf("%.3f", dd_bias)` and power of `r sprintf("%.2f", dd_power)`. No number from this script appears in the published paper; the declaration is a worked example of the design the paper analyses.
+
+**The custom font.** Every figure in the archive sets `family = "ETBembo-RomanLF"`, a commercial typeface that is not in the deposit. On the authors' machine this is invisible; anywhere else it is either a silent fallback or, when the plot reaches the base `pdf()` device, a hard error reading "invalid font type". The rewrite removes the font calls entirely, and the figures render on any machine. They are otherwise the published figures, with one cosmetic omission: the archive draws the two labels inside Figure 5 with a leading arrow glyph taken from the Adobe Symbol font, and the rewrite prints the labels without it.
+
+## What the rewrite does not carry
+
+`meta_analysis_rma.R` refits all ten subsets with `metafor::rma.uni(method = "EB")` and then stops: it writes no file, and no quantity it computes appears in the article or the supplementary materials. It runs clean, and it was run for this report to confirm that. It is not reproduced in `maintained/` because there is nothing published for it to reproduce.
+
+The two bug fixes the rewrite makes, the `fct_reorder` repair and the `pi_star` ordering in the design declaration, are both fixes to code that crashes rather than to code that computes the wrong answer, and neither moves a published value. There is no erratum to report.
+
+# Figure verification
+
+```{r figure_files}
+tibble(
+  Figure = c("Figure 2a, 2b", "Figure 3a", "Figure 3b", "Figure 4a-h", "Figure 5", "Figure F.10"),
+  `Rewrite output` = c(
+    "figure_2ab_theory_power_rmse",
+    "figure_3a_group_differences_power",
+    "figure_3b_diff_in_sensitivity_power",
+    "figure_4a_* through figure_4h_*, plus _sm small multiples",
+    "figure_5_bias_variance_overlay",
+    "figure_f10_direct_vs_list"
+  ),
+  `Numbers checked against the paper` = c(
+    "RMSE and power thresholds at N = 1,000 and N = 2,000",
+    "Detectable prevalence difference at N = 2,000 and N = 3,000",
+    "None stated in the text",
+    "Study-level range and the walked-through Kiewiet de Jonge estimate",
+    "Counts of studies in the three regions",
+    "None printed; slopes described only as close to 1"
+  )
+) |>
+  kable(booktabs = TRUE, caption = "Published figures and the maintained scripts that produce them.") |>
+  latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 8) |>
+               column_spec(2, width = "14em") |>
+               column_spec(3, width = "16em"))
+```
+
+Figure 4 is the paper's central display, eight panels of study-level sensitivity bias estimates with the meta-analytic posterior and its predictive intervals underneath. The rewrite reproduces all eight, and the same code path produces Figures E.3 through E.9 in the supplementary materials.
+
+![Figure 4a as reproduced: vote buying, underreporting predicted.](`r fig_img("figure_4a_vote_buying_underreporting")`)
+
+![Figure 5 as reproduced: where the 264 list experiments fall relative to the two indifference curves.](`r fig_img("figure_5_bias_variance_overlay")`)
+
+# Rewrite verification
+
+```{r table4_compare}
+t4 |>
+  mutate(domain = str_remove(
+    claim,
+    " (mu estimate|mu SE|95% CI lower|95% CI upper|50% PPI lower|50% PPI upper|95% PPI lower|95% PPI upper|N studies)$"
+  )) |>
+  summarize(
+    Matching = sum(match_rewrite == 1),
+    `Not matching` = sum(match_rewrite == 0),
+    .by = domain
+  ) |>
+  rename(Domain = domain) |>
+  kable(booktabs = TRUE, caption = "Table 4, by subset: how many of the nine printed quantities the rewrite reproduces.") |>
+  latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 9))
+```
+
+The rewrite and the archive agree on every one of these cells, including the six that disagree with the paper. That is the useful comparison: a rewrite defect would show up as the rewrite disagreeing with the archive, while software drift shows up as both disagreeing with the paper in the same direction by the same amount. All six sit in the second decimal place of a posterior summary, and five of them are in the two subsets with the fewest studies.
+
+The Stan model draws 10,000 iterations on four chains at a fixed seed of 500, set once before the first fit. Running the pipeline twice returns byte-identical CSV, PNG and RDS output, including the saved posterior summaries, so the remaining distance to the published values is attributable to the versions of rstan and R rather than to sampling noise within a version.
+
+# R environment
+
+```{r session}
+tibble(
+  Component = c("R", "rstan", "tidyverse", "tidybayes", "DeclareDesign", "deming", "janitor", "patchwork"),
+  Version = c(
+    paste(R.version$major, R.version$minor, sep = "."),
+    as.character(packageVersion("rstan")),
+    as.character(packageVersion("tidyverse")),
+    as.character(packageVersion("tidybayes")),
+    as.character(packageVersion("DeclareDesign")),
+    as.character(packageVersion("deming")),
+    as.character(packageVersion("janitor")),
+    as.character(packageVersion("patchwork"))
+  )
+) |>
+  kable(booktabs = TRUE, caption = "Versions this report was produced under.") |>
+  latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 9))
+```
+
+The archive was built under R 3.6.3 and run on 8 May 2020.

@@ -1,0 +1,6 @@
+claim,value
+"SE of direct question, N = 2000, prevalence 0.5, sensitivity bias 0.1",0.010957190790298738
+"SE of list experiment, N = 2000, prevalence 0.5, control item variance 0.75",0.040936999388810603
+"Ratio of variances, list to direct, at N = 2000",13.958333333333336
+SE of list experiment at N = 28000,0.01093833306562988
+N at which list experiment SE first reaches the N = 2000 direct question SE,27904

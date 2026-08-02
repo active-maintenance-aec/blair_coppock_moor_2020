@@ -1,0 +1,760 @@
+subset,figure,row,polarity,estimate,std_error,ci_lower,ci_upper,ppi_50_lower,ppi_50_upper,ppi_95_lower,ppi_95_upper,point_weight
+g1,figure_4a_vote_buying_underreporting,"Bøttkjær (2017) Augmented list experiment
+""They offered me something, like food,...""",Prediction: Underreporting,-0.24,0.06046817344686376,-0.35851761995585296,-0.12148238004414702,NA,NA,NA,NA,0.051563071305585476
+g1,figure_4a_vote_buying_underreporting,"Bøttkjær (2017) Classic list experiment
+""They offered me something, like food,...""",Prediction: Underreporting,-0.020000000000000004,0.07040170452481957,-0.15798734086864635,0.11798734086864636,NA,NA,NA,NA,0.04511655836294383
+g1,figure_4a_vote_buying_underreporting,"Corstange (2017) Augmented list experiment
+""Someone offered you or a relative...""",Prediction: Underreporting,0,0.07469700690045925,-0.14640613352490012,0.14640613352490012,NA,NA,NA,NA,0.04260123229783182
+g1,figure_4a_vote_buying_underreporting,"Gonzalez-Ocantos et al. (2012) Nicaragua
+""They gave you a gift or did you a favor""",Prediction: Underreporting,-0.2194535353535346,0.07212737524399591,-0.3608231908317666,-0.0780838798753026,NA,NA,NA,NA,0.04408672103889032
+g1,figure_4a_vote_buying_underreporting,"González-Ocantos et al. (2015) Honduras
+""They gave you a gift or did you a favor""",Prediction: Underreporting,-0.18137107764977015,0.0641697103082205,-0.3071437098538823,-0.05559844544565798,NA,NA,NA,NA,0.049056553078512595
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Argentina, 2011
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.10222664000000053,0.08107769633397947,-0.2611389248146003,0.05668564481459923,NA,NA,NA,NA,0.03915288514305555
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Bolivia, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.023740768621710942,0.04574901376261714,-0.11340883559644054,0.06592729835301865,NA,NA,NA,NA,0.06271507329149514
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Bolivia, 2010
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,0.05114605644049003,0.043459235075185135,-0.03403404430687283,0.1363261571878529,NA,NA,NA,NA,0.06459993116957753
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Chile, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,0.027369841631990806,0.056365098198428804,-0.08310575083692964,0.13784543410091127,NA,NA,NA,NA,0.05448630302898416
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Guatemala, 2011
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.045796158340797644,0.04712288805117014,-0.1381570189210911,0.046564702239495825,NA,NA,NA,NA,0.061600790139614586
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Honduras, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.18137107764977015,0.0641697103082205,-0.3071437098538823,-0.05559844544565798,NA,NA,NA,NA,0.049056553078512595
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Mexico, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.0899922636603482,0.050689250921485775,-0.1893431954664603,0.009358668145763915,NA,NA,NA,NA,0.05877309132952311
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Nicaragua, 2008
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.2194253153535402,0.07205556232843645,-0.36065421751727567,-0.07819641318980478,NA,NA,NA,NA,0.044129056956955764
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Nicaragua, 2011
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.03571367123881463,0.03809536087756536,-0.11038057855884273,0.038953236081213476,NA,NA,NA,NA,0.06912531503815826
+g1,figure_4a_vote_buying_underreporting,"Kiewiet de Jonge (2015) Uruguay, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,0.02452418929807639,0.054158900646817706,-0.08162725596968631,0.13067563456583908,NA,NA,NA,NA,0.05611989158485632
+g1,figure_4a_vote_buying_underreporting,"Kramon (2016)
+""You received money from a party or...""",Prediction: Underreporting,0.026230660407809386,0.049811094427196924,-0.07139908466949658,0.12386040548511536,NA,NA,NA,NA,0.059460261350534685
+g1,figure_4a_vote_buying_underreporting,"Kramon (2016)
+""You voted for a party or politician...""",Prediction: Underreporting,-0.15902516813674034,0.05206793963713299,-0.261078329825521,-0.056972006447959675,NA,NA,NA,NA,0.0577068116261509
+g1,figure_4a_vote_buying_underreporting,"Mizuno (2012) Mexico
+""Somebody from the party I voted for...""",Prediction: Underreporting,-0.129,0.07047611187670763,-0.26713317927834695,0.009133179278346948,NA,NA,NA,NA,0.04507161359476199
+g1,figure_4a_vote_buying_underreporting,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,-0.1403056068490976,-0.026740073785252578,-0.2485248693513607,0.08147918871701047,NA
+g1,figure_4a_vote_buying_underreporting,Random effects meta-analysis,,-0.08352284031717509,0.0242725277913483,-0.13344909566937668,-0.0369034764392628,NA,NA,NA,NA,0.061632207564382584
+g1,figure_4a_vote_buying_underreporting,"Çarkoğlu and Aytaç (2015) Augmented list experiment
+""Someone offered you or your family...""",Prediction: Underreporting,-0.19099999999999998,0.0696419413859206,-0.3274982051164044,-0.054501794883595606,NA,NA,NA,NA,0.045578286584055466
+g10,NA,"Ahart and Sackett (2004)
+""I have seen a fellow employee steal $5...""",Prediction: Underreporting,0.03999999999999998,0.09734728647019963,-0.1508006814815913,0.23080068148159125,NA,NA,NA,NA,0.004288211044292213
+g10,NA,"Ahart and Sackett (2004)
+""I have seen a fellow employee steal $5...""",Prediction: Underreporting,0.34,0.09812716967547805,0.14767074743606307,0.5323292525639369,NA,NA,NA,NA,0.004259831826245188
+g10,NA,"Ahart and Sackett (2004)
+""I have stolen more than $5 from a past...""",Prediction: Underreporting,0.04000000000000001,0.09328399658664227,-0.14283663330981883,0.22283663330981884,NA,NA,NA,NA,0.0044385008918256
+g10,NA,"Ahart and Sackett (2004)
+""I have stolen more than $5 from a past...""",Prediction: Underreporting,-0.18999999999999997,0.09409756247951183,-0.37443122245984317,-0.005568777540156805,NA,NA,NA,NA,0.004408088975182408
+g10,NA,"Ahart and Sackett (2004)
+""I have taken merchandise or supplies...""",Prediction: Underreporting,0.02999999999999997,0.09761215870665604,-0.16131983106504588,0.22131983106504582,NA,NA,NA,NA,0.004278555423395811
+g10,NA,"Ahart and Sackett (2004)
+""I have taken merchandise or supplies...""",Prediction: Underreporting,-0.09000000000000002,0.09838994243713305,-0.2828442871767808,0.10284428717678074,NA,NA,NA,NA,0.004250304360075029
+g10,NA,"Ahart and Sackett (2004)
+""In the past, I have called in sick when...""",Prediction: Underreporting,-0.08000000000000007,0.09608876916768314,-0.268333987568659,0.10833398756865886,NA,NA,NA,NA,0.004334328171154996
+g10,NA,"Ahart and Sackett (2004)
+""In the past, I have called in sick when...""",Prediction: Underreporting,0.12,0.09687878408387071,-0.06988241680438659,0.30988241680438655,NA,NA,NA,NA,0.004305332800673917
+g10,NA,"Ahart and Sackett (2004)
+""I’ve done slow, sloppy work on purpose""",Prediction: Underreporting,0.41000000000000003,0.09872261414323548,0.21650367627925848,0.6034963237207416,NA,NA,NA,NA,0.004238267675702434
+g10,NA,"Ahart and Sackett (2004)
+""I’ve done slow, sloppy work on purpose.""",Prediction: Underreporting,0.16000000000000003,0.097947472136167,-0.03197704538688728,0.35197704538688734,NA,NA,NA,NA,0.004266357258950419
+g10,NA,"Ahlquist et al. (2014)
+""I read or wrote a text (SMS) message...""",Prediction: Underreporting,0.03498138540619175,0.06665669744704322,-0.09566574159001295,0.16562851240239646,NA,NA,NA,NA,0.0055007410136787595
+g10,NA,"Arentoft et al. (2016)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.14999999999999994,0.09119761605568637,-0.02874732746914535,0.32874732746914526,NA,NA,NA,NA,0.004517200740352223
+g10,NA,"Arentoft et al. (2016)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,-0.1500000000000001,0.09133398055452695,-0.3290146018868729,0.029014601886872715,NA,NA,NA,NA,0.004512026344933669
+g10,NA,"Arentoft et al. (2016)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.11000000000000004,0.09224739342363207,-0.07080489111031882,0.29080489111031893,NA,NA,NA,NA,0.00447747628679011
+g10,NA,"Arentoft et al. (2016)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.16999999999999982,0.09266067562579153,-0.011614924226551582,0.3516149242265512,NA,NA,NA,NA,0.0044619071131072295
+g10,NA,"Arentoft et al. (2016)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.19,0.09310495990289594,0.0075142785903239695,0.37248572140967606,NA,NA,NA,NA,0.004445214521473068
+g10,NA,"Arentoft et al. (2016)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.07000000000000034,0.09315185013178218,-0.11257762625829273,0.2525776262582934,NA,NA,NA,NA,0.004443455472079604
+g10,NA,"Arentoft et al. (2016)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.20999999999999996,0.09194155597837737,0.029794550282380317,0.3902054497176196,NA,NA,NA,NA,0.004489023299092446
+g10,NA,"Aronow et al. (2015) Original
+""A Spanish-speaking family moving in...""",Prediction: Underreporting,0.02326984812867365,0.05799432699601072,-0.09039903278350735,0.13693872904085463,NA,NA,NA,NA,0.0058572614166130105
+g10,NA,"Aronow et al. (2015) Original
+""Muslims""",Prediction: Underreporting,-0.03956987948979336,0.05861110078320367,-0.15444763702487255,0.07530787804528583,NA,NA,NA,NA,0.005832065174252693
+g10,NA,"Aronow et al. (2015) Replication
+""A Spanish-speaking family moving in...""",Prediction: Underreporting,0.006944177597474496,0.055943607060741786,-0.1027052922415794,0.11659364743652839,NA,NA,NA,NA,0.005940665917888525
+g10,NA,"Aronow et al. (2015) Replication
+""Muslims""",Prediction: Underreporting,-0.02063771343893596,0.05736993295962585,-0.13308278203980262,0.0918073551619307,NA,NA,NA,NA,0.005882719672898791
+g10,NA,"Berinsky (2017)
+""I believe Barack Obama is a Muslim""",Prediction: Underreporting,0.09138312555518063,0.0358649174481497,0.021087887356807222,0.16167836375355404,NA,NA,NA,NA,0.006694206556524166
+g10,NA,"Brooke (2017)
+""A Shi’a Muslim family moving in next...""",Prediction: Underreporting,0.40748321536905885,0.10936094415043843,0.19313576483419953,0.6218306659039181,NA,NA,NA,NA,0.003868654844563694
+g10,NA,"Brownback and Novotny (2017)
+""I often find myself agreeing with...""",Prediction: Underreporting,-0.086751,0.0748409382531486,-0.23343923897617125,0.05993723897617126,NA,NA,NA,NA,0.005164137109703386
+g10,NA,"Brownback and Novotny (2017)
+""I often find myself agreeing with...""",Prediction: Underreporting,-0.030000000000000027,0.08544003745317531,-0.19746247340822365,0.1374624734082236,NA,NA,NA,NA,0.004739362817210598
+g10,NA,"Brueckner et al. (2005)
+""Genetic differences contribute to...""",Prediction: Underreporting,0.025446462365395717,0.08011593112819002,-0.13158076264585672,0.18247368737664815,NA,NA,NA,NA,0.0049505557296768195
+g10,NA,"Bulte (2018)
+""I am regularly hit by my spouse""",Prediction: Underreporting,-0.057441585396413794,0.025834602691720797,-0.10807740667218656,-0.006805764120641031,NA,NA,NA,NA,0.006992840838837158
+g10,NA,"Bøttkjær (2017) Augmented list experiment
+""They offered me something, like food,...""",Prediction: Underreporting,-0.24,0.06046817344686376,-0.35851761995585296,-0.12148238004414702,NA,NA,NA,NA,0.005755949249635891
+g10,NA,"Bøttkjær (2017) Classic list experiment
+""They offered me something, like food,...""",Prediction: Underreporting,-0.020000000000000004,0.07040170452481957,-0.15798734086864635,0.11798734086864636,NA,NA,NA,NA,0.005346225001098336
+g10,NA,"Cappelen and Midtbø (2016)
+""That migrant workers automatically...""",Prediction: Underreporting,-0.124,0.07514727719019376,-0.2712886632927798,0.02328866329277976,NA,NA,NA,NA,0.005151638497112441
+g10,NA,"Coffman et al. (2016)
+""I am sexually attracted to members of...""",Prediction: Underreporting,-0.12382461175438939,0.03476982845928508,-0.19197347553458816,-0.05567574797419063,NA,NA,NA,NA,0.006730104508204294
+g10,NA,"Coffman et al. (2016)
+""I have had a sexual experience with...""",Prediction: Underreporting,-0.35521600022610317,0.03778209495949085,-0.4292689063467052,-0.2811630941055011,NA,NA,NA,NA,0.006629675083157562
+g10,NA,"Coffman et al. (2016)
+""I think someone who is homosexual can...""",Prediction: Underreporting,0.017959765517238657,0.034914553039416915,-0.0504727584400185,0.08639228947449581,NA,NA,NA,NA,0.006725401933809125
+g10,NA,"Coppock (2017)
+""If the 2016 presidential election were...""",Prediction: Underreporting,0.02922204626233721,0.03545037262619954,-0.04026068408501389,0.09870477660968831,NA,NA,NA,NA,0.006707880486913334
+g10,NA,"Corstange (2017) Augmented list experiment
+""Someone offered you or a relative...""",Prediction: Underreporting,0,0.07469700690045925,-0.14640613352490012,0.14640613352490012,NA,NA,NA,NA,0.005170012977563604
+g10,NA,"Coutts and Jann (2011)
+""I have at least once deliberately taken...""",Prediction: Underreporting,0.059000000000000025,0.1043934863868431,-0.14561123331821246,0.2636112333182125,NA,NA,NA,NA,0.004037494246505496
+g10,NA,"Coutts and Jann (2011)
+""I have cheated on my partner at least...""",Prediction: Underreporting,-0.09699999999999998,0.09159148432032313,-0.2765193092678333,0.08251930926783335,NA,NA,NA,NA,0.004502266832105659
+g10,NA,"Coutts and Jann (2011)
+""I have driven a car although my blood...""",Prediction: Underreporting,0.09999999999999998,0.09374433316206372,-0.08373889299764492,0.2837388929976449,NA,NA,NA,NA,0.004421273707791969
+g10,NA,"Coutts and Jann (2011)
+""I have knowingly used public...""",Prediction: Underreporting,-0.14700000000000002,0.10375451797391765,-0.3503588552288786,0.05635885522887857,NA,NA,NA,NA,0.004059693756499851
+g10,NA,"Coutts and Jann (2011)
+""I have received too much change and...""",Prediction: Underreporting,0.12600000000000006,0.11278741064498289,-0.09506332486416641,0.3470633248641665,NA,NA,NA,NA,0.003756103521426728
+g10,NA,"Coutts and Jann (2011)
+""I have used marijuana in the past month""",Prediction: Underreporting,-0.278,0.11328283188550682,-0.5000343504955934,-0.05596564950440666,NA,NA,NA,NA,0.0037400962278702037
+g10,NA,"Creighton and Jamal (2015) Christian
+""Granting citizenship to a legal...""",Prediction: Underreporting,-0.10702708392136702,0.05521646536384013,-0.2152513560344937,0.0011971881917596378,NA,NA,NA,NA,0.0059700820310301245
+g10,NA,"Creighton and Jamal (2015) Muslim
+""Granting citizenship to a legal...""",Prediction: Underreporting,0.06790372632759056,0.05702799449302589,-0.04387114287874018,0.1796785955339213,NA,NA,NA,NA,0.005896638898193567
+g10,NA,"Creighton et al. (2015)
+""Cutting off all immigration to the U.S""",Prediction: Underreporting,0.08391246546272207,0.05441172726941365,-0.022734519985328674,0.1905594509107728,NA,NA,NA,NA,0.006002527774893018
+g10,NA,"Dalton et al. (1994)
+""I have ""misrepresented experience"" in...""",Prediction: Underreporting,-0.343,0.09863336305124275,-0.5363213915804358,-0.14967860841956424,NA,NA,NA,NA,0.00424149418486753
+g10,NA,"Dalton et al. (1994)
+""I have ""misused the absolute"" in the...""",Prediction: Underreporting,-0.23399999999999999,0.09324880860792946,-0.4167676648715417,-0.05123233512845826,NA,NA,NA,NA,0.004439819795820959
+g10,NA,"Dalton et al. (1994)
+""I have engaged in ""conspiracy...""",Prediction: Underreporting,-0.07600000000000001,0.090182261597269,-0.2527572327306472,0.10075723273064721,NA,NA,NA,NA,0.004555860592153008
+g10,NA,"Dalton et al. (1994)
+""I have engaged in ""self-dealing"" in the...""",Prediction: Underreporting,-0.32699999999999996,0.09759663317347714,-0.5182894010200152,-0.13571059897998478,NA,NA,NA,NA,0.004279120903124018
+g10,NA,"Dalton et al. (1994)
+""I have failed to ""disclose a material...""",Prediction: Underreporting,-0.252,0.09397527763618609,-0.43619154416692474,-0.06780845583307527,NA,NA,NA,NA,0.004412650040837717
+g10,NA,"Dalton et al. (1994)
+""I have used a ""phantom bid"" in the...""",Prediction: Underreporting,-0.261,0.09651478025047903,-0.4501689692909389,-0.0718310307090611,NA,NA,NA,NA,0.004318673356526494
+g10,NA,"De Cao and Lutz (2014)
+""A girl should be circumcised""",Prediction: Underreporting,-0.09180365296803583,0.04925508986420731,-0.18834362910188215,0.004736323165810491,NA,NA,NA,NA,0.006207050062704359
+g10,NA,"Droitcour et al. (1991)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.037,0.02161290748684321,-0.005361298674212693,0.07936129867421268,NA,NA,NA,NA,0.007095410000356554
+g10,NA,"Droitcour et al. (1991)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.032,0.050602423873907273,-0.06718075079285825,0.13118075079285824,NA,NA,NA,NA,0.00615425465125729
+g10,NA,"Droitcour et al. (1991)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.020000000000000018,0.03886125654522731,-0.05616806282864552,0.09616806282864555,NA,NA,NA,NA,0.006592457786757763
+g10,NA,"Druckman et al. (2015)
+""In the typical week during the past...""",Prediction: Underreporting,0.026395491657322523,0.06646986975847849,-0.10388545306929531,0.15667643638394035,NA,NA,NA,NA,0.0055084582040371265
+g10,NA,"Druckman et al. (2015)
+""Knowingly took a drug banned by the...""",Prediction: Underreporting,-0.3371949159022935,0.061336104218517845,-0.4574136801705885,-0.21697615163399853,NA,NA,NA,NA,0.005720268008721318
+g10,NA,"Enikolopov et al. (2017)
+""I wanted to post about it on social...""",Prediction: Underreporting,0.030000000000000013,0.0625443152245388,-0.09258685784009602,0.15258685784009604,NA,NA,NA,NA,0.00567051058914937
+g10,NA,"Enikolopov et al. (2017)
+""I wanted to tell my friends and...""",Prediction: Underreporting,0.016999999999999987,0.07201978894720533,-0.12415878633652244,0.15815878633652242,NA,NA,NA,NA,0.005279671317352009
+g10,NA,"Enikolopov et al. (2017)
+""Many of my friends and acquaintances...""",Prediction: Underreporting,-0.026000000000000023,0.07328154737166229,-0.1696318328484581,0.11763183284845805,NA,NA,NA,NA,0.005227909033421124
+g10,NA,"Eriksen et al. (2017)
+""The FMO is a weak organisation as...""",Prediction: Underreporting,-0.10550005158362141,0.07395909895171324,-0.25045988552897935,0.03945978236173653,NA,NA,NA,NA,0.005200170965827497
+g10,NA,"Fairbrass (2012)
+""Caught a wild bird for consumption in...""",Prediction: Underreporting,-0.3093401237237231,0.18511775227718708,-0.6721709181870097,0.05349067073956354,NA,NA,NA,NA,0.0020622898905336175
+g10,NA,"Fairbrass (2012)
+""Collected wild birds eggs in the last...""",Prediction: Underreporting,-0.11167674537537496,0.18233908434979637,-0.4690613507009759,0.24570785995022593,NA,NA,NA,NA,0.0021072569139189783
+g10,NA,"Fairbrass (2012)
+""Shot a bird of prey in the last 12...""",Prediction: Underreporting,-0.12096856651651612,0.15176696114903906,-0.4184318103686327,0.17649467733560048,NA,NA,NA,NA,0.0026955496407232724
+g10,NA,"Fairbrass (2012)
+""Use of poison to control populations of...""",Prediction: Underreporting,0.13540696144144182,0.16393975661593413,-0.18591496152578907,0.4567288844086727,NA,NA,NA,NA,0.0024392469290978325
+g10,NA,"Fergusson et al. (2017)
+""The benefits, gifts, or jobs the...""",Prediction: Underreporting,0.02617515961143474,0.02643073250027632,-0.025629076089106848,0.07797939531197633,NA,NA,NA,NA,0.006977157947654422
+g10,NA,"Fergusson et al. (2017)
+""You accept buying without a receipt, to...""",Prediction: Underreporting,0.056007987182293245,0.025181947249662908,0.006651370572953945,0.10536460379163254,NA,NA,NA,NA,0.00700968023032247
+g10,NA,"Gervais and Najle (2018)
+""I do not believe in god""",Prediction: Underreporting,0.026671498335107457,0.10765102530039983,-0.1843245112536762,0.2376675079238911,NA,NA,NA,NA,0.003926020160749937
+g10,NA,"Gonzalez-Ocantos et al. (2012) Nicaragua
+""They gave you a gift or did you a favor""",Prediction: Underreporting,-0.2194535353535346,0.07212737524399591,-0.3608231908317666,-0.0780838798753026,NA,NA,NA,NA,0.005275252669879154
+g10,NA,"González-Ocantos et al. (2015) Honduras
+""They gave you a gift or did you a favor""",Prediction: Underreporting,-0.18137107764977015,0.0641697103082205,-0.3071437098538823,-0.05559844544565798,NA,NA,NA,NA,0.005603457257400774
+g10,NA,"Gosen (2014) Study 1
+""That Jews have too much influence in...""",Prediction: Underreporting,-0.36920000000000003,0.14484492808341395,-0.6530960590434913,-0.08530394095650867,NA,NA,NA,NA,0.0028559451320609103
+g10,NA,"Gosen (2014) Study 2
+""That Jews have too much influence in...""",Prediction: Underreporting,0.1462,0.10362936916649718,-0.05691356356633445,0.3493135635663345,NA,NA,NA,NA,0.00406405449257347
+g10,NA,"Gosen (2014) Study 3
+""That Jews have too much influence in...""",Prediction: Underreporting,0.053000000000000005,0.07449859225299507,-0.09301724081587033,0.19901724081587036,NA,NA,NA,NA,0.005178116644223369
+g10,NA,"Gosen (2014) Study 3
+""That Muslims have too much influence in...""",Prediction: Underreporting,-0.06889999999999996,0.07450200032179037,-0.2149239206307091,0.07712392063070916,NA,NA,NA,NA,0.005177977417097617
+g10,NA,"Gosen (2014) Study 4
+""That Jews have too much influence in...""",Prediction: Underreporting,0.04890000000000001,0.20190849473877523,-0.34684064968799944,0.44464064968799943,NA,NA,NA,NA,0.001815746668428859
+g10,NA,"Gosen (2014) Study 4
+""That Muslims have too much influence in...""",Prediction: Underreporting,-0.1365,0.19471288619900853,-0.5181372569500567,0.24513725695005673,NA,NA,NA,NA,0.0019163481206502372
+g10,NA,"Greene (2017)
+""Receive a gift, favor, or access to a...""",Prediction: Underreporting,-0.035350447442761175,0.05864168607312691,-0.15028815214608993,0.07958725726056756,NA,NA,NA,NA,0.005830814527654564
+g10,NA,"Greene (2017)
+""Receive a gift, favor, or access to a...""",Prediction: Underreporting,-0.15939771762708985,0.060121692099718176,-0.27723623414253745,-0.04155920111164223,NA,NA,NA,NA,0.0057701760006179294
+g10,NA,"Gunarathne et al. (2016)
+""If I suspect FMD in my animal, I will...""",Prediction: Underreporting,-0.060599999999999994,0.09077608632771376,-0.23852112920231897,0.11732112920231899,NA,NA,NA,NA,0.0045332224589569375
+g10,NA,"Gunarathne et al. (2016)
+""If I suspect foot and mouth disease in...""",Prediction: Underreporting,-0.1706,0.09148335298333203,-0.3499073718473308,0.00870737184733078,NA,NA,NA,NA,0.004506363217028588
+g10,NA,"Hinsley et al. (2017)
+""I have an orchid in my collection that...""",Prediction: Underreporting,0.0368,0.07641705514326887,-0.11297742808080696,0.18657742808080696,NA,NA,NA,NA,0.005099944807809213
+g10,NA,"Hinsley et al. (2017)
+""I have bought an orchid online that was...""",Prediction: Underreporting,0.01876,0.07683952039667973,-0.13184545997749225,0.16936545997749225,NA,NA,NA,NA,0.005082788709058882
+g10,NA,"Hinsley et al. (2017)
+""I have personally sent or carried an...""",Prediction: Underreporting,0.005400000000000002,0.07643363521762167,-0.1444099250265385,0.15520992502653846,NA,NA,NA,NA,0.005099271082369642
+g10,NA,"Hinsley et al. (2017)
+""I have personally sent or carried an...""",Prediction: Underreporting,0.033530000000000004,0.07678244644138363,-0.11696359502511192,0.18402359502511192,NA,NA,NA,NA,0.005085105149180366
+g10,NA,"Holman (2017)
+""Most men are better suited emotionally...""",Prediction: Underreporting,-0.2567936507936508,0.09649176576042559,-0.44591751168408494,-0.06766978990321665,NA,NA,NA,NA,0.004319517932127793
+g10,NA,"Holman (2017)
+""Most men in elected office are better...""",Prediction: Underreporting,-0.1250551181102367,0.09425737153522577,-0.3097995663192792,0.05968933009880581,NA,NA,NA,NA,0.004402133701918353
+g10,NA,"Imai et al. (2014)
+""Exchange your vote for a gift, favor,...""",Prediction: Underreporting,-0.13910138425186264,0.05341525050037177,-0.2437952752325913,-0.034407493271133974,NA,NA,NA,NA,0.006042530539319792
+g10,NA,"Janus (2005)
+""Oppose same-sex marriage""",Prediction: Underreporting,-0.2771252173862191,0.06112454240468395,-0.39692932049939966,-0.15732111427303855,NA,NA,NA,NA,0.005728970807056268
+g10,NA,"Jayasuriya and Gibson (2013)
+""I do not feel safe from abduction,...""",Prediction: Underreporting,-0.13999999999999999,0.05793908601568311,-0.25356060859073887,-0.02643939140926109,NA,NA,NA,NA,0.005859515803749312
+g10,NA,"Jayasuriya and Gibson (2013)
+""I felt safer from abduction, death and...""",Prediction: Underreporting,-0.09,0.05793908601568311,-0.20356060859073888,0.0235606085907389,NA,NA,NA,NA,0.005859515803749312
+g10,NA,"Kalinin and de Vogel (2016)
+""Attend a rally against falling living...""",Prediction: Underreporting,0.10346468513487539,0.06733865296441034,-0.028519074675368877,0.23544844494511966,NA,NA,NA,NA,0.005472574938492117
+g10,NA,"Kiewiet de Jonge (2015) Argentina, 2011
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.10222664000000053,0.08107769633397947,-0.2611389248146003,0.05668564481459923,NA,NA,NA,NA,0.0049120437908298726
+g10,NA,"Kiewiet de Jonge (2015) Bolivia, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.023740768621710942,0.04574901376261714,-0.11340883559644054,0.06592729835301865,NA,NA,NA,NA,0.00634180507325965
+g10,NA,"Kiewiet de Jonge (2015) Bolivia, 2010
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,0.05114605644049003,0.043459235075185135,-0.03403404430687283,0.1363261571878529,NA,NA,NA,NA,0.006427425272179433
+g10,NA,"Kiewiet de Jonge (2015) Chile, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,0.027369841631990806,0.056365098198428804,-0.08310575083692964,0.13784543410091127,NA,NA,NA,NA,0.005923574635770063
+g10,NA,"Kiewiet de Jonge (2015) Guatemala, 2011
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.045796158340797644,0.04712288805117014,-0.1381570189210911,0.046564702239495825,NA,NA,NA,NA,0.006289489115741069
+g10,NA,"Kiewiet de Jonge (2015) Honduras, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.18137107764977015,0.0641697103082205,-0.3071437098538823,-0.05559844544565798,NA,NA,NA,NA,0.005603457257400774
+g10,NA,"Kiewiet de Jonge (2015) Mexico, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.0899922636603482,0.050689250921485775,-0.1893431954664603,0.009358668145763915,NA,NA,NA,NA,0.006150835193016865
+g10,NA,"Kiewiet de Jonge (2015) Nicaragua, 2008
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.2194253153535402,0.07205556232843645,-0.36065421751727567,-0.07819641318980478,NA,NA,NA,NA,0.005278201980349155
+g10,NA,"Kiewiet de Jonge (2015) Nicaragua, 2011
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,-0.03571367123881463,0.03809536087756536,-0.11038057855884273,0.038953236081213476,NA,NA,NA,NA,0.006618935649032779
+g10,NA,"Kiewiet de Jonge (2015) Uruguay, 2009
+""They gave you a gift or did you a favor.""",Prediction: Underreporting,0.02452418929807639,0.054158900646817706,-0.08162725596968631,0.13067563456583908,NA,NA,NA,NA,0.006012696106023317
+g10,NA,"Kirchner (2013)
+""Have you engaged in any undeclared work...""",Prediction: Underreporting,-0.052000000000000005,0.07096589069176279,-0.19109314575585507,0.08709314575585507,NA,NA,NA,NA,0.005322999904537327
+g10,NA,"Kirchner (2013)
+""Have you engaged in any undeclared work...""",Prediction: Underreporting,0.0288,0.07126398803969089,-0.11087741655779415,0.16847741655779414,NA,NA,NA,NA,0.005310736561822666
+g10,NA,"Knoll (2013)
+""Our American culture and way of life...""",Prediction: Underreporting,0.16549677051353323,0.08659034152606039,-0.004220298877545131,0.3352138399046116,NA,NA,NA,NA,0.004694423833673106
+g10,NA,"Kramon (2016)
+""You received money from a party or...""",Prediction: Underreporting,0.026230660407809386,0.049811094427196924,-0.07139908466949658,0.12386040548511536,NA,NA,NA,NA,0.0061853248159488075
+g10,NA,"Kramon (2016)
+""You voted for a party or politician...""",Prediction: Underreporting,-0.15902516813674034,0.05206793963713299,-0.261078329825521,-0.056972006447959675,NA,NA,NA,NA,0.006096280250676114
+g10,NA,"LaBrie and Earleywine (2000)
+""I've consumed alcohol until I was...""",Prediction: Underreporting,0.07000000000000006,0.096323710157454,-0.11879447190860978,0.25879447190860994,NA,NA,NA,NA,0.004325689140764822
+g10,NA,"LaBrie and Earleywine (2000)
+""I've had sex after drinking""",Prediction: Underreporting,-0.010000000000000009,0.09994519224166162,-0.2058925767936568,0.18589257679365678,NA,NA,NA,NA,0.004194275390983408
+g10,NA,"LaBrie and Earleywine (2000)
+""I've had sex without a condom after...""",Prediction: Underreporting,-0.29000000000000004,0.0989990209956899,-0.4840380811515522,-0.09596191884844785,NA,NA,NA,NA,0.0042282881921010245
+g10,NA,"LaBrie and Earleywine (2000)
+""I've had sex without a condom""",Prediction: Underreporting,-0.10999999999999999,0.09956681804770236,-0.30515096337349656,0.08515096337349662,NA,NA,NA,NA,0.004207849540801889
+g10,NA,"LaBrie and Earleywine (2000)
+""I've had sexual intercourse.""",Prediction: Underreporting,-0.09999999999999998,0.09709921286239764,-0.29031445721029936,0.0903144572102994,NA,NA,NA,NA,0.004297270239355785
+g10,NA,"Lax et al. (2016)
+""A law protecting gays and lesbian...""",Prediction: Underreporting,-0.022963888258002108,0.06263651330182277,-0.14573145432957474,0.09980367781357051,NA,NA,NA,NA,0.005666710149769851
+g10,NA,"Lax et al. (2016)
+""Allowing gays and lesbians to marry...""",Prediction: Underreporting,-0.03189905706148222,0.04298622303093377,-0.11615205420211241,0.05235394007914798,NA,NA,NA,NA,0.006444847669526865
+g10,NA,"Li et al. (2017)
+""Bribe government officials""",Prediction: Underreporting,-0.13,0.07449226236174641,-0.276004834229023,0.016004834229022963,NA,NA,NA,NA,0.005178375237418417
+g10,NA,"Li et al. (2017)
+""Central government leaders""",Prediction: Underreporting,-0.27,0.072881383554987,-0.41284751176777457,-0.1271524882322255,NA,NA,NA,NA,0.005244310855065752
+g10,NA,"Li et al. (2017)
+""Local cadres' corruption""",Prediction: Underreporting,-0.09999999999999998,0.07449226236174641,-0.24600483422902295,0.04600483422902299,NA,NA,NA,NA,0.005178375237418417
+g10,NA,"Li et al. (2017)
+""Openly criticize central government...""",Prediction: Underreporting,-0.12,0.072881383554987,-0.26284751176777454,0.022847511767774525,NA,NA,NA,NA,0.005244310855065752
+g10,NA,"Lippitt et al. (2014)
+""I think breastfeeding in some public...""",Prediction: Underreporting,-0.05299999999999999,0.07816157607162973,-0.20619668910039426,0.10019668910039428,NA,NA,NA,NA,0.0050292499525528426
+g10,NA,"Lippitt et al. (2014)
+""I think children who are old enough to...""",Prediction: Underreporting,-0.02400000000000002,0.07957206991751366,-0.1799612570383268,0.13196125703832676,NA,NA,NA,NA,0.004972397826798439
+g10,NA,"Lippitt et al. (2014)
+""I think that seeing a woman...""",Prediction: Underreporting,0.018000000000000002,0.07842316349030588,-0.13570940044099955,0.17170940044099953,NA,NA,NA,NA,0.0050186846504897764
+g10,NA,"Lippitt et al. (2014)
+""I think that women who breastfeed in...""",Prediction: Underreporting,0.04600000000000004,0.07931043448046052,-0.10944845158170258,0.20144845158170266,NA,NA,NA,NA,0.004982921434135943
+g10,NA,"Lippitt et al. (2014)
+""I think women who breastfeed in public...""",Prediction: Underreporting,0.005999999999999998,0.07794171746778003,-0.14676576623684887,0.15876576623684888,NA,NA,NA,NA,0.005038137219716203
+g10,NA,"Luks and Monson (2010) Angry, innocuous, J = 4
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,-0.08999999999999997,0.08742416853855367,-0.26135137033556516,0.08135137033556522,NA,NA,NA,NA,0.004662015432886313
+g10,NA,"Luks and Monson (2010) Angry, innocuous, J = 5
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.14,0.08742416853855367,-0.031351370335565176,0.3113513703355652,NA,NA,NA,NA,0.004662015432886313
+g10,NA,"Luks and Monson (2010) Angry, standard, J = 4
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,-0.19999999999999996,0.08742416853855367,-0.37135137033556515,-0.028648629664434766,NA,NA,NA,NA,0.004662015432886313
+g10,NA,"Luks and Monson (2010) Angry, standard, J = 5
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.09999999999999998,0.08742416853855367,-0.07135137033556521,0.27135137033556517,NA,NA,NA,NA,0.004662015432886313
+g10,NA,"Luks and Monson (2010) Irritated, innocuous, J = 4
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.13999999999999996,0.08781240783904172,-0.0321123193645218,0.3121123193645217,NA,NA,NA,NA,0.004646974663501407
+g10,NA,"Luks and Monson (2010) Irritated, innocuous, J = 5
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.03999999999999998,0.08781240783904172,-0.13211231936452178,0.21211231936452174,NA,NA,NA,NA,0.004646974663501407
+g10,NA,"Luks and Monson (2010) Irritated, standard, J = 4
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.21999999999999997,0.08781240783904172,0.047887680635478214,0.39211231936452173,NA,NA,NA,NA,0.004646974663501407
+g10,NA,"Luks and Monson (2010) Irritated, standard, J = 5
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,-0.07,0.08781240783904172,-0.24211231936452177,0.10211231936452175,NA,NA,NA,NA,0.004646974663501407
+g10,NA,"Marques et al. (2016)
+""In the past 12 months, I’ve looked...""",Prediction: Underreporting,-0.16054456493170494,0.05919002339551646,-0.2765570107869172,-0.04453211907649267,NA,NA,NA,NA,0.005808374829996111
+g10,NA,"Marques et al. (2016)
+""In the past 12 months, I’ve looked...""",Prediction: Underreporting,-0.13208342785637728,0.07727938147263994,-0.28355101554275153,0.019384159829997,NA,NA,NA,NA,0.005064950195012448
+g10,NA,"McKenzie and Siegel (2013)
+""This household has at least a member...""",Prediction: Underreporting,-0.059,0.06946004090753186,-0.19514168017876243,0.07714168017876244,NA,NA,NA,NA,0.005385028344368034
+g10,NA,"McKenzie and Siegel (2013)
+""This household has at least a member...""",Prediction: Underreporting,-0.021999999999999964,0.06525302189724345,-0.14989592291859713,0.1058959229185972,NA,NA,NA,NA,0.005558722563337464
+g10,NA,"Meng et al. (2017)
+""Suggestions from residents expressed...""",Prediction: Underreporting,0.38837039121868744,0.05991872299627553,0.2709296941459874,0.5058110882913874,NA,NA,NA,NA,0.005778505016696414
+g10,NA,"Meng et al. (2017)
+""Suggestions from residents expressed...""",Prediction: Underreporting,0.4477148230251138,0.059441875541707656,0.3312087469633668,0.5642208990868608,NA,NA,NA,NA,0.005798057335012312
+g10,NA,"Miller (1984)
+""Tried heroin""",Prediction: Underreporting,-0.003000000000000001,0.038959703623421084,-0.07936101910190532,0.07336101910190532,NA,NA,NA,NA,0.006589031958498883
+g10,NA,"Mizuno (2012) Mexico
+""Somebody from the party I voted for...""",Prediction: Underreporting,-0.129,0.07047611187670763,-0.26713317927834695,0.009133179278346948,NA,NA,NA,NA,0.005343160892065542
+g10,NA,"Monson (2010)
+""A Baptist serving as President""",Prediction: Underreporting,0,0.05087300598630222,-0.09971109173315235,0.09971109173315235,NA,NA,NA,NA,0.00614359190735141
+g10,NA,"Monson (2010)
+""A Mormon serving as President""",Prediction: Underreporting,0.03999999999999998,0.051240563213602965,-0.06043150389866182,0.14043150389866177,NA,NA,NA,NA,0.006129077142342479
+g10,NA,"Monson (2010)
+""A black person serving as President""",Prediction: Underreporting,0.05000000000000002,0.05084268348089493,-0.04965165962255404,0.14965165962255406,NA,NA,NA,NA,0.0061447877754625575
+g10,NA,"Monson (2010)
+""A woman serving as President""",Prediction: Underreporting,-0.09,0.05090245702962824,-0.18976881577807136,0.009768815778071357,NA,NA,NA,NA,0.00614243017833706
+g10,NA,"Moseson et al. (2015)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.15094088275159018,0.04154859649967188,0.06950563361223329,0.23237613189094708,NA,NA,NA,NA,0.006497200883047471
+g10,NA,"Moseson et al. (2015)
+""Sensitive item not reported verbatim by...""",Prediction: Underreporting,0.07763911407225005,0.04239211393384676,-0.005449429238089595,0.1607276573825897,NA,NA,NA,NA,0.006466594213928413
+g10,NA,"N. et al. (2017)
+""I have had anal sex within the last 12...""",Prediction: Underreporting,-0.11,0.08701445178169441,-0.28054832549212105,0.06054832549212104,NA,NA,NA,NA,0.004677922125443828
+g10,NA,"N. et al. (2017)
+""I refused the AHRIPHS HIV test this...""",Prediction: Underreporting,-0.42000000000000004,0.0894056556816762,-0.5952350851360854,-0.2447649148639147,NA,NA,NA,NA,0.004585584822100403
+g10,NA,"NA
+""Cutting off immigration to the United...""",Prediction: Underreporting,0.018080498829999236,0.059831716054640265,-0.09918966463709568,0.13535066229709414,NA,NA,NA,NA,0.005782074241329094
+g10,NA,"Neuner and Wratil (2017)
+""I would rather be represented by a...""",Prediction: Underreporting,0.11970691958676266,0.0496663075311226,0.022360956825762376,0.21705288234776293,NA,NA,NA,NA,0.006190990758370114
+g10,NA,"Neuner and Wratil (2017)
+""The particular interests of the...""",Prediction: Underreporting,0.16368703784541527,0.0461569717866146,0.07321937314365067,0.25415470254717987,NA,NA,NA,NA,0.006326340418680559
+g10,NA,"Neuner and Wratil (2017)
+""What people call compromise in politics...""",Prediction: Underreporting,0.046502956466538126,0.048321710087855435,-0.04820759530565853,0.1412135082387348,NA,NA,NA,NA,0.006243314549894617
+g10,NA,"Pavao (2015)
+""Despite being undesirable, it is...""",Prediction: Underreporting,-0.053999999999998216,0.03894975113400798,-0.13034151222265386,0.022341512222657428,NA,NA,NA,NA,0.006589378521021573
+g10,NA,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,-0.1140511625780753,0.04370353955354896,-0.26437932166267064,0.19403169863814426,NA
+g10,NA,Random effects meta-analysis,,-0.03517381151226317,0.009925335578416745,-0.05464275485058188,-0.015850663242961156,NA,NA,NA,NA,0.005775494167374631
+g10,NA,"Randrianantoandro et al. (2015)
+""Sell the meat or the live pig if...""",Prediction: Underreporting,-0.05700000000000005,0.09769216959408773,-0.248476652404412,0.1344766524044119,NA,NA,NA,NA,0.004275642183080927
+g10,NA,"Rayburn et al. (2003)
+""I have damaged someone's property...""",Prediction: Underreporting,-0.0368421052631579,0.08594042455069113,-0.2052853373825125,0.1316011268561967,NA,NA,NA,NA,0.004719781885937622
+g10,NA,"Rayburn et al. (2003)
+""I have gotten into a physical fight...""",Prediction: Underreporting,-0.0368421052631579,0.08594042455069113,-0.2052853373825125,0.1316011268561967,NA,NA,NA,NA,0.004719781885937622
+g10,NA,"Rayburn et al. (2003)
+""I have verbally threatened a gay person""",Prediction: Underreporting,0.039473684210526314,0.08690202275035155,-0.13085428038016272,0.20980164880121538,NA,NA,NA,NA,0.004682293057509807
+g10,NA,"Rayburn et al. (2003)
+""I have written graffiti about gay people""",Prediction: Underreporting,-0.003421052631578948,0.08568992107476676,-0.17137329793812178,0.1645311926749639,NA,NA,NA,NA,0.004729578324404543
+g10,NA,"Rosenfeld et al. (2016)
+""Voted ‘YES’ on the ‘Personhood’...""",Prediction: Underreporting,-0.25693871317729783,0.0626179858410478,-0.3796699654257515,-0.13420746092884414,NA,NA,NA,NA,0.00566747389362052
+g10,NA,"Seljan et al. (2016)
+""A legislator in your state purposefully...""",Prediction: Underreporting,0.06624269190377241,0.1262166615543932,-0.18114196474283828,0.3136273485503831,NA,NA,NA,NA,0.0033459586809973735
+g10,NA,"Sheppard and Earleywine (2013)
+""I have carried a gun with me in the car...""",Prediction: Underreporting,-0.189,0.07955284633241963,-0.34492357881154245,-0.03307642118845752,NA,NA,NA,NA,0.004973170695059156
+g10,NA,"Sheppard and Earleywine (2013)
+""I have driven a car after drinking...""",Prediction: Underreporting,-0.238,0.07986736104060015,-0.3945400276395763,-0.08145997236042371,NA,NA,NA,NA,0.004960532953901065
+g10,NA,"Sheppard and Earleywine (2013)
+""I have followed another car to its...""",Prediction: Underreporting,0.0030000000000000027,0.07813693338997617,-0.1501483894443533,0.1561483894443533,NA,NA,NA,NA,0.005030245742701578
+g10,NA,"Sheppard and Earleywine (2013)
+""I have screamed at other drivers on the...""",Prediction: Underreporting,0.049000000000000044,0.07985900299646605,-0.10752364587307339,0.20552364587307348,NA,NA,NA,NA,0.004960868598880201
+g10,NA,"Sheppard and Earleywine (2013)
+""I often honk my horn in anger at other...""",Prediction: Underreporting,-0.08499999999999999,0.07848971499240887,-0.23883984138512138,0.06883984138512139,NA,NA,NA,NA,0.005015998225687686
+g10,NA,"Sheppard and Earleywine (2013)
+""I sometimes drive right on the rear...""",Prediction: Underreporting,0.01100000000000001,0.07895851458998097,-0.1437586885963627,0.16575868859636272,NA,NA,NA,NA,0.004997092561962349
+g10,NA,"Simpser (2017)
+""Reported more ‘heads’ than I actually...""",Prediction: Underreporting,0.10200000000000001,0.09177111061974778,-0.07787137681470566,0.28187137681470564,NA,NA,NA,NA,0.004495467889221734
+g10,NA,"Sniderman et al. (1994)
+""A black family moving next door to you""",Prediction: Underreporting,0.11973541970273532,0.1037172806933688,-0.08355045045626752,0.32302128986173817,NA,NA,NA,NA,0.004060990832526144
+g10,NA,"Sniderman et al. (1994)
+""Awarding college scholarships on the...""",Prediction: Underreporting,-0.09508749676890182,0.10846656150618936,-0.307681957321033,0.1175069637832293,NA,NA,NA,NA,0.003898560934282641
+g10,NA,"Sniderman et al. (1994)
+""Black leaders asking the government for...""",Prediction: Underreporting,-0.12255862872449358,0.10542835534689428,-0.32919820520440635,0.08408094775541922,NA,NA,NA,NA,0.004001771388748691
+g10,NA,"Sniderman et al. (1994)
+""Interracial dating with black teenagers...""",Prediction: Underreporting,0.12365273755338618,0.11801025294359659,-0.10764735821606311,0.35495283332283545,NA,NA,NA,NA,0.0035907392218872125
+g10,NA,"Starosta and Earleywine (2014)
+""I’ve had sex without a condom""",Prediction: Underreporting,0.09999999999999998,0.0807075561852403,-0.058186810123071,0.258186810123071,NA,NA,NA,NA,0.004926847772982523
+g10,NA,"Tang (2016)
+""Bribing government officials""",Prediction: Underreporting,-0.12,0.05341052980824612,-0.2246846384241624,-0.0153153615758376,NA,NA,NA,NA,0.006042719563695394
+g10,NA,"Tang (2016)
+""Central government leaders""",Prediction: Underreporting,-0.04999999999999999,0.05312170751918859,-0.1541185467376096,0.054118546737609644,NA,NA,NA,NA,0.006054275457199522
+g10,NA,"Tang (2016)
+""Local cadres' corruption""",Prediction: Underreporting,-0.15000000000000002,0.05342693055647582,-0.25471678389069263,-0.04528321610930741,NA,NA,NA,NA,0.00604206283019884
+g10,NA,"Tang (2016)
+""Openly criticizing the central...""",Prediction: Underreporting,-0.010000000000000009,0.05349247828775425,-0.11484525744399833,0.09484525744399831,NA,NA,NA,NA,0.0060394375433935835
+g10,NA,"Thomas et al. (2015)
+""Go fishing in the Long Island Marine...""",Prediction: Underreporting,-0.0368944099378882,0.08543421994243776,-0.2043454810250662,0.1305566611492898,NA,NA,NA,NA,0.004739590754286339
+g10,NA,"Thomas et al. (2015)
+""Kept a blue cod less than 30 cm or more...""",Prediction: Underreporting,0.14999999999999997,0.08906609123501398,-0.02456953882062743,0.32456953882062733,NA,NA,NA,NA,0.00459862296981138
+g10,NA,"Thomas et al. (2015)
+""Kept more than two blue cod per person...""",Prediction: Underreporting,0.009999999999999995,0.08728877996560518,-0.16108600873258616,0.18108600873258612,NA,NA,NA,NA,0.004667267880652389
+g10,NA,"Thomas et al. (2017) Study C
+""Voted for the FPO in the national...""",Prediction: Underreporting,0.16100000000000003,0.04687216658103186,0.06913055350117758,0.2528694464988225,NA,NA,NA,NA,0.006299085706345668
+g10,NA,"Traunmüller et al. (2017)
+""I was personally sexually assaulted.""",Prediction: Underreporting,-0.120399504444445,0.03095135899331152,-0.18106416807133557,-0.05973484081755442,NA,NA,NA,NA,0.006849318859811048
+g10,NA,"Tsuchiya et al. (2007)
+""Have shoplifted""",Prediction: Underreporting,-0.086,0.056612719418872644,-0.19696093006099036,0.024960930060990386,NA,NA,NA,NA,0.005913520685024107
+g10,NA,"Tsuchiya et al. (2007)
+""Have shoplifted""",Prediction: Underreporting,-0.099,0.03584689665786984,-0.16925991744942487,-0.028740082550575127,NA,NA,NA,NA,0.006694803098294751
+g10,NA,"Tsuchiya et al. (2007)
+""Have shoplifted""",Prediction: Underreporting,-0.04400000000000001,0.06360031446463138,-0.16865661635067752,0.08065661635067749,NA,NA,NA,NA,0.005626958404119546
+g10,NA,"Tsuchiya et al. (2007)
+""Have shoplifted""",Prediction: Underreporting,-0.09200000000000003,0.04661544808322665,-0.18336627824312426,-6.33721756875788e-4,NA,NA,NA,NA,0.006308889419942358
+g10,NA,"Usmani et al. (2017)
+""I have used a device of someone I know...""",Prediction: Underreporting,-0.15437717601547363,0.1009506514837844,-0.35224045292369105,0.043486100892743795,NA,NA,NA,NA,0.0041583843612202935
+g10,NA,"Usmani et al. (2017)
+""Somebody I know has used my device to...""",Prediction: Underreporting,-0.1199765066394293,0.10084359331445789,-0.31762994953576673,0.07767693625690816,NA,NA,NA,NA,0.004162193451324915
+g10,NA,"Weghorst (2015)
+""The military and police primarily carry...""",Prediction: Underreporting,-5.999999999999339e-4,0.09735111535498843,-0.19140818609577726,0.1902081860957774,NA,NA,NA,NA,0.0042880713411756
+g10,NA,"Weghorst (2015)
+""The reason opposition parties are...""",Prediction: Underreporting,-0.07269999999999999,0.09606276442340182,-0.2609830182698676,0.11558301826986758,NA,NA,NA,NA,0.004335285230796657
+g10,NA,"Weghorst (2015)
+""Under some circumstances, the political...""",Prediction: Underreporting,-0.4469,0.10129677848902101,-0.6454416858384812,-0.24835831416151885,NA,NA,NA,NA,0.004146089717088617
+g10,NA,"Wimbush and Dalton (1997)
+""I am/was involved in the theft from my...""",Prediction: Underreporting,-0.043000000000000003,0.08539918540169988,-0.21038240338733177,0.12438240338733175,NA,NA,NA,NA,0.004740963589293598
+g10,NA,"Wimbush and Dalton (1997)
+""I am/was involved in the theft from my...""",Prediction: Underreporting,-0.08900000000000001,0.08589199702526537,-0.25734831416952014,0.07934831416952011,NA,NA,NA,NA,0.0047216747740499295
+g10,NA,"Wimbush and Dalton (1997)
+""I am/was involved in the theft from my...""",Prediction: Underreporting,-0.07600000000000001,0.08692400572934852,-0.24637105122952313,0.0943710512295231,NA,NA,NA,NA,0.004681438216433197
+g10,NA,"Wimbush and Dalton (1997)
+""I am/was involved in the theft from my...""",Prediction: Underreporting,-0.08099999999999999,0.08784372981194452,-0.25317371043141124,0.09117371043141126,NA,NA,NA,NA,0.004645762591456668
+g10,NA,"Wolter and Laier (2014)
+""Have you ever dodged a fare, that is,...""",Prediction: Underreporting,-0.13654525167368792,0.06235516747117879,-0.25876137991719833,-0.01432912343017749,NA,NA,NA,NA,0.005678305931442115
+g10,NA,"Wolter and Laier (2014)
+""Have you ever driven a car, a...""",Prediction: Underreporting,-0.14955318621373348,0.08483128860789567,-0.315822511885209,0.01671613945774203,NA,NA,NA,NA,0.0047632498820943045
+g10,NA,"Wolter and Laier (2014)
+""Have you ever driven a car, a...""",Prediction: Underreporting,-0.21977510538060646,0.07079539320116413,-0.3585340760548882,-0.08101613470632477,NA,NA,NA,NA,0.005330016511942715
+g10,NA,"Çarkoğlu and Aytaç (2015) Augmented list experiment
+""Someone offered you or your family...""",Prediction: Underreporting,-0.19099999999999998,0.0696419413859206,-0.3274982051164044,-0.054501794883595606,NA,NA,NA,NA,0.005377529291199462
+g11,NA,"Brownback and Novotny (2017)
+""I often find myself agreeing with...""",Prediction: Overreporting,0.0958486,0.07677415044923976,-0.0546287348805099,0.2463259348805099,NA,NA,NA,NA,0.013338649754440046
+g11,NA,"Brueckner et al. (2004)
+""If someone in your family married a...""",Prediction: Overreporting,0.07505081129291666,0.09177666750869608,-0.10483145702412766,0.254933079609961,NA,NA,NA,NA,0.01190990004839028
+g11,NA,"Chen and Yang (2018)
+""I completely trust the central...""",Prediction: Overreporting,0.008000000000000007,0.08040848737461809,-0.14960063525425144,0.16560063525425145,NA,NA,NA,NA,0.012986046248683934
+g11,NA,"Coffman et al. (2016)
+""I believe it should be illegal to...""",Prediction: Overreporting,0.060481148566685516,0.031758694438059974,-0.0017658925319120333,0.12272818966528307,NA,NA,NA,NA,0.017414494011350184
+g11,NA,"Coffman et al. (2016)
+""I believe lesbians and gay men should...""",Prediction: Overreporting,0.0037203176964694107,0.03301793153802609,-0.06099482811806173,0.06843546351100055,NA,NA,NA,NA,0.017325281993406515
+g11,NA,"Coffman et al. (2016)
+""I consider myself to be heterosexual""",Prediction: Overreporting,-0.0033822926052078373,0.03621736310139816,-0.07436832428394824,0.06760373907353256,NA,NA,NA,NA,0.017087739897138653
+g11,NA,"Coffman et al. (2016)
+""I think marriages between gay and...""",Prediction: Overreporting,-0.1620071815900992,0.03295109998631132,-0.22659133756326938,-0.097423025616929,NA,NA,NA,NA,0.01733007958526679
+g11,NA,"Coffman et al. (2016)
+""I would be happy to have an openly...""",Prediction: Overreporting,-0.05672279545309644,0.03716428733045714,-0.12956479862079243,0.016119207714599543,NA,NA,NA,NA,0.017014613428898956
+g11,NA,"Comça and Postelnicu (2012)
+""I have voted in the elections of June...""",Prediction: Overreporting,0.10456484247039244,0.05477572717398346,-0.0027955827906151476,0.21192526773140002,NA,NA,NA,NA,0.015476899237289987
+g11,NA,"Dai (2014)
+""My house should belong to me forever...""",Prediction: Overreporting,0.36687250379427516,0.08533477898845483,0.1996163369769037,0.5341286706116466,NA,NA,NA,NA,0.012513899380934257
+g11,NA,"Dai (2014)
+""Reports about President Xi’s and Prime...""",Prediction: Overreporting,0.14559778047714977,0.09199464687338803,-0.03471172739469075,0.3259072883489903,NA,NA,NA,NA,0.0118897710473298
+g11,NA,"Dai (2014)
+""The government can adjust its policies...""",Prediction: Overreporting,0.10557204523871411,0.09667363349542049,-0.08390827641231005,0.29505236688973824,NA,NA,NA,NA,0.01146312448430253
+g11,NA,"Dai (2014)
+""The government has the legal power to...""",Prediction: Overreporting,-0.03523122764421993,0.1007535332620026,-0.23270815283774504,0.16224569754930518,NA,NA,NA,NA,0.011100125203055094
+g11,NA,"Dai (2014)
+""Though there are a lot of problems in...""",Prediction: Overreporting,0.1671546781813147,0.07957812736740576,0.011181548541199404,0.32312780782142997,NA,NA,NA,NA,0.013066333258043572
+g11,NA,"Dai (2014)
+""Whether Diaoyu Island belongs to China...""",Prediction: Overreporting,-0.057639518180459245,0.07327533245168551,-0.20125916978576286,0.08598013342484435,NA,NA,NA,NA,0.013680447512995672
+g11,NA,"Dion and Díez (2016)
+""Same-sex couples should have the right...""",Prediction: Overreporting,0.08399999999999996,0.07112119535136043,-0.05539754288866647,0.2233975428886664,NA,NA,NA,NA,0.013891562032920227
+g11,NA,"Frye et al. (2017) Contemporary, Jan. 2015
+""Vladimir Putin""",Prediction: Overreporting,0.05714810976729823,0.054827392382351556,-0.05031357930211082,0.1646097988367073,NA,NA,NA,NA,0.01547202463810001
+g11,NA,"Frye et al. (2017) Contemporary, Mar. 2015
+""Vladimir Putin""",Prediction: Overreporting,0.08426006975622158,0.05547300006607633,-0.024467010373288037,0.19298714988573118,NA,NA,NA,NA,0.015410993526527491
+g11,NA,"Frye et al. (2017) Historical, Jan. 2015
+""Vladimir Putin""",Prediction: Overreporting,0.0711250083772208,0.0506748585470117,-0.028197714374922134,0.17044773112936373,NA,NA,NA,NA,0.015858765399429372
+g11,NA,"Frye et al. (2017) Historical, Mar. 2015
+""Vladimir Putin""",Prediction: Overreporting,0.09219427826835458,0.04725982979437631,-4.349881286229845e-4,0.18482354466533213,NA,NA,NA,NA,0.01616773598573867
+g11,NA,"Gervais and Najle (2018)
+""I believe in god""",Prediction: Overreporting,-0.23117404834985378,0.15603342365482337,-0.5369995587133076,0.07465146201360001,NA,NA,NA,NA,0.007140702174479371
+g11,NA,"Heerwig and McCabe (2009)
+""I am willing to support a black...""",Prediction: Overreporting,0.14177953155159484,0.08270737040432177,-0.020326914440875837,0.30388597754406554,NA,NA,NA,NA,0.012764766348249107
+g11,NA,"Holbrook and Krosnick (2009) Study 1
+""Voted in the Presidential election held...""",Prediction: Overreporting,0.19630545360891183,0.12271845023937693,-0.04422270886026694,0.43683361607809057,NA,NA,NA,NA,0.009309379642524327
+g11,NA,"Holbrook and Krosnick (2009) Study 2
+""Voted in the Presidential election held...""",Prediction: Overreporting,-0.0027173565217388784,0.10852793776994114,-0.2154321145508235,0.20999740150734575,NA,NA,NA,NA,0.01043374293500155
+g11,NA,"Holbrook and Krosnick (2009) Study 3
+""Voted in the elections held on November...""",Prediction: Overreporting,0.04987392837309168,0.05072193028184793,-0.04954105497933027,0.14928891172551362,NA,NA,NA,NA,0.015854444397157885
+g11,NA,"Holbrook and Krosnick (2009) Study 4
+""Voted in the Presidential election held...""",Prediction: Overreporting,0.0310010495135572,0.03995581041282996,-0.047312338895589515,0.10931443792270391,NA,NA,NA,NA,0.016792124568641018
+g11,NA,"Jayasuriya and Gibson (2013)
+""I feel safe from abduction, death and...""",Prediction: Overreporting,0.14000000000000007,0.058175309466646154,0.025976393445373613,0.2540236065546265,NA,NA,NA,NA,0.015153372159646692
+g11,NA,"Jayasuriya and Gibson (2013)
+""I feel safer from abduction, death and...""",Prediction: Overreporting,0.26999999999999996,0.05815332043746908,0.15601949194256057,0.38398050805743933,NA,NA,NA,NA,0.015155481234146811
+g11,NA,"Kalinin (2014)
+""I voted for Vladimir Putin in the most...""",Prediction: Overreporting,0.132,0.03324154027718932,0.06684658105670895,0.19715341894329108,NA,NA,NA,NA,0.017309179500024977
+g11,NA,"Kalinin (2014)
+""I voted in the most recent Presidential...""",Prediction: Overreporting,0.20599999999999996,0.0378549864614954,0.13180422653546897,0.28019577346453095,NA,NA,NA,NA,0.01696050542881417
+g11,NA,"Kalinin (2014)
+""I will vote Vladimir Putin in the most...""",Prediction: Overreporting,0.16800000000000004,0.03860051813123756,0.09234298446277442,0.24365701553722566,NA,NA,NA,NA,0.016901395147666934
+g11,NA,"Kalinin (2014)
+""I will vote in the most recent...""",Prediction: Overreporting,0.16400000000000003,0.04220189569201839,0.081284284443644,0.24671571555635607,NA,NA,NA,NA,0.016606163683697894
+g11,NA,"Kalinin (2015) Levada, Mar. 2015
+""I approve the job of the President of...""",Prediction: Overreporting,0.43333595759079746,0.04857780577806469,0.33812345826579066,0.5285484569158042,NA,NA,NA,NA,0.016049594230272232
+g11,NA,"Kalinin (2015) Levada, Mar. 2015
+""I approve the possible deployment of...""",Prediction: Overreporting,0.2443319951815261,0.04166786217711113,0.16266298531438828,0.3260010050486639,NA,NA,NA,NA,0.016650905814052465
+g11,NA,"Kalinin (2015) VCIOM, Jan. 2014
+""I approve the job of the President of...""",Prediction: Overreporting,0.18169999999999997,0.05037549007205786,0.08296403945876657,0.2804359605412334,NA,NA,NA,NA,0.015886209082867087
+g11,NA,"Kalinin (2015) VCIOM, Jul. 2014
+""I approve the job of the President of...""",Prediction: Overreporting,0.2891,0.04766088543029808,0.1956846645566158,0.38251533544338423,NA,NA,NA,NA,0.016131940747274944
+g11,NA,"Kalinin (2015) VCIOM, Jul. 2014
+""I approve the possible deployment of...""",Prediction: Overreporting,-0.11969999999999997,0.05144210337845839,-0.2205265226217784,-0.018873477378221523,NA,NA,NA,NA,0.01578814160902332
+g11,NA,"Kalinin (2015) VCIOM, Mar. 2015
+""I approve the job of the President of...""",Prediction: Overreporting,0.28548686896438735,0.05618704255928903,0.17536026554818085,0.39561347238059386,NA,NA,NA,NA,0.015343247661369934
+g11,NA,"Kalinin (2015) VCIOM, Mar. 2015
+""I approve the possible deployment of...""",Prediction: Overreporting,-0.027249591822309627,0.052332520014829395,-0.12982133105137522,0.07532214740675598,NA,NA,NA,NA,0.015705680152093716
+g11,NA,"Kalinin (2016)
+""I will vote [voted for] Vladimir Putin...""",Prediction: Overreporting,0.31262396170773027,0.024935209335729278,0.2637509514097009,0.36149697200575964,NA,NA,NA,NA,0.01785096766283162
+g11,NA,"Kim and Kim (2016)
+""I am willing to risk personal loss to...""",Prediction: Overreporting,0.16,0.04436778110295803,0.07303914903820226,0.24696085096179776,NA,NA,NA,NA,0.016421535353817684
+g11,NA,"Kim and Kim (2016)
+""I am willing to risk personal loss to...""",Prediction: Overreporting,0.24999999999999997,0.06308063622591854,0.12636195299719963,0.37363804700280034,NA,NA,NA,NA,0.01467882983277286
+g11,NA,"Kim and Kim (2016)
+""I am willing to risk personal loss to...""",Prediction: Overreporting,0.06999999999999995,0.07561236492617944,-0.07820023525531175,0.21820023525531165,NA,NA,NA,NA,0.013451940667109025
+g11,NA,"Kim and Kim (2016)
+""I am willing to risk personal loss to...""",Prediction: Overreporting,0.18,0.04484045792213397,0.09211270247261742,0.26788729752738255,NA,NA,NA,NA,0.016380598782616055
+g11,NA,"Kim and Kim (2016)
+""I like my job better than the average...""",Prediction: Overreporting,0.24000000000000005,0.06336534278820455,0.11580392813511914,0.36419607186488095,NA,NA,NA,NA,0.014651087578290482
+g11,NA,"Kim and Kim (2016)
+""I like my job better than the average...""",Prediction: Overreporting,0.22000000000000003,0.04487761134463376,0.13203988176451786,0.3079601182354822,NA,NA,NA,NA,0.016377371705468755
+g11,NA,"Kim and Kim (2016)
+""I like my job better than the average...""",Prediction: Overreporting,0.22999999999999998,0.07547149094821134,0.08207587774150574,0.37792412225849426,NA,NA,NA,NA,0.013465693324850411
+g11,NA,"Kim and Kim (2016)
+""I like my job better than the average...""",Prediction: Overreporting,0.18000000000000005,0.04436778110295803,0.0930391490382023,0.2669608509617978,NA,NA,NA,NA,0.016421535353817684
+g11,NA,"Kim and Kim (2016)
+""Meaningful public service is very...""",Prediction: Overreporting,0.38999999999999996,0.0627375485654325,0.2670344048117523,0.5129655951882477,NA,NA,NA,NA,0.014712237672551165
+g11,NA,"Kim and Kim (2016)
+""Meaningful public service is very...""",Prediction: Overreporting,0.29,0.04391469002509297,0.20392720755081778,0.3760727924491822,NA,NA,NA,NA,0.01646056489684434
+g11,NA,"Kim and Kim (2016)
+""Meaningful public service is very...""",Prediction: Overreporting,0.10999999999999999,0.07402519658690364,-0.03508938531033115,0.2550893853103311,NA,NA,NA,NA,0.013607052959101022
+g11,NA,"Kim and Kim (2016)
+""Meaningful public service is very...""",Prediction: Overreporting,0.21999999999999997,0.04270831300812525,0.1362917065040745,0.30370829349592543,NA,NA,NA,NA,0.016563442876835317
+g11,NA,"Kleykamp et al. (2017)
+""A recent veteran of the wars in...""",Prediction: Overreporting,0.027488943557187673,0.037953054687295845,-0.04689904362991218,0.10187693074428752,NA,NA,NA,NA,0.016952771489866625
+g11,NA,"Kleykamp et al. (2017)
+""Health care for veterans of the wars in...""",Prediction: Overreporting,0.10013644223212037,0.03117657394846256,0.039030357293133755,0.161242527171107,NA,NA,NA,NA,0.017454874636552563
+g11,NA,"Matanock and García-Sánchez (2017)
+""The military forces having more freedom...""",Prediction: Overreporting,0.05171857452858125,0.0692182217115597,-0.08394914002607576,0.18738628908323826,NA,NA,NA,NA,0.014078228507751573
+g11,NA,"N. et al. (2017)
+""I am HIV negative""",Prediction: Overreporting,-0.039999999999999925,0.0929527364478899,-0.22218736343786413,0.14218736343786428,NA,NA,NA,NA,0.011801556479354512
+g11,NA,"N. et al. (2017)
+""I used a condom during my last sexual...""",Prediction: Overreporting,-0.04999999999999993,0.09290643983055259,-0.232096622067883,0.13209662206788314,NA,NA,NA,NA,0.011805809371855807
+g11,NA,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,0.03145420547859446,0.20212015614435952,-0.1311773854365249,0.3647517470594788,NA
+g11,NA,"Prior (2009)
+""Watched a news program on television""",Prediction: Overreporting,-0.04999999999999993,0.08445293383127621,-0.2155277503093013,0.11552775030930143,NA,NA,NA,NA,0.012597837472404824
+g11,NA,Random effects meta-analysis,,0.11678718081147699,0.017278661033682793,0.08321894162009005,0.1505976051018961,NA,NA,NA,NA,0.015173401290743557
+g11,NA,"Simpser (2017)
+""Voted in the presidential election of...""",Prediction: Overreporting,-0.055999999999999994,0.08239523861103021,-0.21749466767761919,0.1054946676776192,NA,NA,NA,NA,0.012794718916919025
+g11,NA,"Starosta and Earleywine (2014)
+""I ask my partner about their sexual...""",Prediction: Overreporting,0.15000000000000002,0.0818773086665254,-0.010479524986389765,0.3104795249863898,NA,NA,NA,NA,0.012844485831403522
+g11,NA,"Starosta and Earleywine (2014)
+""If I had an STD that was actively being...""",Prediction: Overreporting,0.19000000000000006,0.08012776105477669,0.03294958833263775,0.3470504116673624,NA,NA,NA,NA,0.013013169457434953
+g11,NA,"Thomas et al. (2017) Study A
+""Voted in the national parliamentary...""",Prediction: Overreporting,-0.04599999999999993,0.09244457799135652,-0.2271913728630587,0.13519137286305885,NA,NA,NA,NA,0.011848291518656932
+g11,NA,"Thomas et al. (2017) Study B
+""Voted in the national parliamentary...""",Prediction: Overreporting,-0.050999999999999934,0.06363961030678929,-0.17573363620130694,0.07373363620130707,NA,NA,NA,NA,0.01462434684569504
+g11,NA,"Tsuchiya et al. (2007)
+""Have made a blood donation""",Prediction: Overreporting,0.006999999999999895,0.0588727441181401,-0.1083905784715547,0.12239057847155449,NA,NA,NA,NA,0.015086380333046927
+g11,NA,"Tsuchiya et al. (2007)
+""Have made a blood donation""",Prediction: Overreporting,0.03799999999999992,0.04965883607174054,-0.059331318700611535,0.13533131870061138,NA,NA,NA,NA,0.015951639326686758
+g11,NA,"Tsuchiya et al. (2007)
+""Have made a blood donation""",Prediction: Overreporting,0.12699999999999995,0.053310411741047364,0.02251159298754711,0.23148840701245277,NA,NA,NA,NA,0.015614534078251576
+g11,NA,"Tsuchiya et al. (2007)
+""Have made a blood donation""",Prediction: Overreporting,0.05499999999999994,0.03661966684720111,-0.01677454702051423,0.1267745470205141,NA,NA,NA,NA,0.017056822967238598
+g11,NA,"de
+Jonge and Nickerson (2014)
+""I was aware that the elections were...""",Prediction: Overreporting,0.589,0.07926958222841007,0.43363161883231627,0.7443683811676837,NA,NA,NA,NA,0.013096210908727708
+g2,figure_4b_turnout_overreporting,"Comça and Postelnicu (2012)
+""I have voted in the elections of June...""",Prediction: Overreporting,0.10456484247039244,0.05477572717398346,-0.0027955827906151476,0.21192526773140002,NA,NA,NA,NA,0.11309931973601638
+g2,figure_4b_turnout_overreporting,"Holbrook and Krosnick (2009) Study 1
+""Voted in the Presidential election held...""",Prediction: Overreporting,0.19630545360891183,0.12271845023937693,-0.04422270886026694,0.43683361607809057,NA,NA,NA,NA,0.04809513234065624
+g2,figure_4b_turnout_overreporting,"Holbrook and Krosnick (2009) Study 2
+""Voted in the Presidential election held...""",Prediction: Overreporting,-0.0027173565217388784,0.10852793776994114,-0.2154321145508235,0.20999740150734575,NA,NA,NA,NA,0.0565534785861408
+g2,figure_4b_turnout_overreporting,"Holbrook and Krosnick (2009) Study 3
+""Voted in the elections held on November...""",Prediction: Overreporting,0.04987392837309168,0.05072193028184793,-0.04954105497933027,0.14928891172551362,NA,NA,NA,NA,0.11960006418230268
+g2,figure_4b_turnout_overreporting,"Holbrook and Krosnick (2009) Study 4
+""Voted in the Presidential election held...""",Prediction: Overreporting,0.0310010495135572,0.03995581041282996,-0.047312338895589515,0.10931443792270391,NA,NA,NA,NA,0.13863003947540065
+g2,figure_4b_turnout_overreporting,"Kalinin (2014)
+""I voted in the most recent Presidential...""",Prediction: Overreporting,0.20599999999999996,0.0378549864614954,0.13180422653546897,0.28019577346453095,NA,NA,NA,NA,0.14261876003773882
+g2,figure_4b_turnout_overreporting,"Kalinin (2014)
+""I will vote in the most recent...""",Prediction: Overreporting,0.16400000000000003,0.04220189569201839,0.081284284443644,0.24671571555635607,NA,NA,NA,NA,0.13445798508207224
+g2,figure_4b_turnout_overreporting,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,0.003634353882522955,0.13223148820386849,-0.11890887433740449,0.2547747164237959,NA
+g2,figure_4b_turnout_overreporting,Random effects meta-analysis,,0.06793292104319572,0.03925685533376758,-0.013989878684158836,0.14314618625987713,NA,NA,NA,NA,0.11898785311346818
+g2,figure_4b_turnout_overreporting,"Simpser (2017)
+""Voted in the presidential election of...""",Prediction: Overreporting,-0.055999999999999994,0.08239523861103021,-0.21749466767761919,0.1054946676776192,NA,NA,NA,NA,0.07806808766817899
+g2,figure_4b_turnout_overreporting,"Thomas et al. (2017) Study A
+""Voted in the national parliamentary...""",Prediction: Overreporting,-0.04599999999999993,0.09244457799135652,-0.2271913728630587,0.13519137286305885,NA,NA,NA,NA,0.06871239247747622
+g2,figure_4b_turnout_overreporting,"Thomas et al. (2017) Study B
+""Voted in the national parliamentary...""",Prediction: Overreporting,-0.050999999999999934,0.06363961030678929,-0.17573363620130694,0.07373363620130707,NA,NA,NA,NA,0.10016474041401686
+g4,figure_4c_racial_prejudice_underreporting,"Aronow et al. (2015) Original
+""A Spanish-speaking family moving in...""",Prediction: Underreporting,0.02326984812867365,0.05799432699601072,-0.09039903278350735,0.13693872904085463,NA,NA,NA,NA,0.13754649862547955
+g4,figure_4c_racial_prejudice_underreporting,"Aronow et al. (2015) Replication
+""A Spanish-speaking family moving in...""",Prediction: Underreporting,0.006944177597474496,0.055943607060741786,-0.1027052922415794,0.11659364743652839,NA,NA,NA,NA,0.1451402973235844
+g4,figure_4c_racial_prejudice_underreporting,"Berinsky (2017)
+""I believe Barack Obama is a Muslim""",Prediction: Underreporting,0.09138312555518063,0.0358649174481497,0.021087887356807222,0.16167836375355404,NA,NA,NA,NA,0.268783513729043
+g4,figure_4c_racial_prejudice_underreporting,"Brueckner et al. (2005)
+""Genetic differences contribute to...""",Prediction: Underreporting,0.025446462365395717,0.08011593112819002,-0.13158076264585672,0.18247368737664815,NA,NA,NA,NA,0.08289619151221794
+g4,figure_4c_racial_prejudice_underreporting,"Monson (2010)
+""A black person serving as President""",Prediction: Underreporting,0.05000000000000002,0.05084268348089493,-0.04965165962255404,0.14965165962255406,NA,NA,NA,NA,0.16694880629352848
+g4,figure_4c_racial_prejudice_underreporting,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,0.0069616685908954826,0.06882221903531335,-0.05198670215567059,0.12777058978187938,NA
+g4,figure_4c_racial_prejudice_underreporting,Random effects meta-analysis,,0.037891943813104415,0.030127118742106853,-0.024211160253710555,0.0948113649397368,NA,NA,NA,NA,0.21231888740691562
+g4,figure_4c_racial_prejudice_underreporting,"Sniderman et al. (1994)
+""A black family moving next door to you""",Prediction: Underreporting,0.11973541970273532,0.1037172806933688,-0.08355045045626752,0.32302128986173817,NA,NA,NA,NA,0.05375344402359742
+g4,figure_4c_racial_prejudice_underreporting,"Sniderman et al. (1994)
+""Awarding college scholarships on the...""",Prediction: Underreporting,-0.09508749676890182,0.10846656150618936,-0.307681957321033,0.1175069637832293,NA,NA,NA,NA,0.04974859593678732
+g4,figure_4c_racial_prejudice_underreporting,"Sniderman et al. (1994)
+""Black leaders asking the government for...""",Prediction: Underreporting,-0.12255862872449358,0.10542835534689428,-0.32919820520440635,0.08408094775541922,NA,NA,NA,NA,0.05225764411522833
+g4,figure_4c_racial_prejudice_underreporting,"Sniderman et al. (1994)
+""Interracial dating with black teenagers...""",Prediction: Underreporting,0.12365273755338618,0.11801025294359659,-0.10764735821606311,0.35495283332283545,NA,NA,NA,NA,0.04292500844053346
+g5,figure_4d_religious_prejudice_underreporting,"Aronow et al. (2015) Original
+""Muslims""",Prediction: Underreporting,-0.03956987948979336,0.05861110078320367,-0.15444763702487255,0.07530787804528583,NA,NA,NA,NA,0.1124435004684579
+g5,figure_4d_religious_prejudice_underreporting,"Aronow et al. (2015) Replication
+""Muslims""",Prediction: Underreporting,-0.02063771343893596,0.05736993295962585,-0.13308278203980262,0.0918073551619307,NA,NA,NA,NA,0.11597559534318135
+g5,figure_4d_religious_prejudice_underreporting,"Creighton and Jamal (2015) Christian
+""Granting citizenship to a legal...""",Prediction: Underreporting,-0.10702708392136702,0.05521646536384013,-0.2152513560344937,0.0011971881917596378,NA,NA,NA,NA,0.12251146686765348
+g5,figure_4d_religious_prejudice_underreporting,"Creighton and Jamal (2015) Muslim
+""Granting citizenship to a legal...""",Prediction: Underreporting,0.06790372632759056,0.05702799449302589,-0.04387114287874018,0.1796785955339213,NA,NA,NA,NA,0.11697792223032079
+g5,figure_4d_religious_prejudice_underreporting,"Gosen (2014) Study 1
+""That Jews have too much influence in...""",Prediction: Underreporting,-0.36920000000000003,0.14484492808341395,-0.6530960590434913,-0.08530394095650867,NA,NA,NA,NA,0.02592871725711221
+g5,figure_4d_religious_prejudice_underreporting,"Gosen (2014) Study 2
+""That Jews have too much influence in...""",Prediction: Underreporting,0.1462,0.10362936916649718,-0.05691356356633445,0.3493135635663345,NA,NA,NA,NA,0.0461838584020396
+g5,figure_4d_religious_prejudice_underreporting,"Gosen (2014) Study 3
+""That Jews have too much influence in...""",Prediction: Underreporting,0.053000000000000005,0.07449859225299507,-0.09301724081587033,0.19901724081587036,NA,NA,NA,NA,0.07851542943481964
+g5,figure_4d_religious_prejudice_underreporting,"Gosen (2014) Study 3
+""That Muslims have too much influence in...""",Prediction: Underreporting,-0.06889999999999996,0.07450200032179037,-0.2149239206307091,0.07712392063070916,NA,NA,NA,NA,0.07850988040628197
+g5,figure_4d_religious_prejudice_underreporting,"Gosen (2014) Study 4
+""That Jews have too much influence in...""",Prediction: Underreporting,0.04890000000000001,0.20190849473877523,-0.34684064968799944,0.44464064968799943,NA,NA,NA,NA,0.014170592879508977
+g5,figure_4d_religious_prejudice_underreporting,"Gosen (2014) Study 4
+""That Muslims have too much influence in...""",Prediction: Underreporting,-0.1365,0.19471288619900853,-0.5181372569500567,0.24513725695005673,NA,NA,NA,NA,0.015156843736826678
+g5,figure_4d_religious_prejudice_underreporting,"Monson (2010)
+""A Baptist serving as President""",Prediction: Underreporting,0,0.05087300598630222,-0.09971109173315235,0.09971109173315235,NA,NA,NA,NA,0.1374994012008234
+g5,figure_4d_religious_prejudice_underreporting,"Monson (2010)
+""A Mormon serving as President""",Prediction: Underreporting,0.03999999999999998,0.051240563213602965,-0.06043150389866182,0.14043150389866177,NA,NA,NA,NA,0.136126791772974
+g5,figure_4d_religious_prejudice_underreporting,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,-0.048609450785830705,0.022621957680043332,-0.11648753212975985,0.09050003902397245,NA
+g5,figure_4d_religious_prejudice_underreporting,Random effects meta-analysis,,-0.012993746552893686,0.028757375889078826,-0.07403618450104055,0.03987362594849618,NA,NA,NA,NA,0.1066671991204948
+g6,figure_4f_sexual_orient_overreporting,"Coffman et al. (2016)
+""I believe it should be illegal to...""",Prediction: Overreporting,0.060481148566685516,0.031758694438059974,-0.0017658925319120333,0.12272818966528307,NA,NA,NA,NA,0.21900735139644512
+g6,figure_4f_sexual_orient_overreporting,"Coffman et al. (2016)
+""I believe lesbians and gay men should...""",Prediction: Overreporting,0.0037203176964694107,0.03301793153802609,-0.06099482811806173,0.06843546351100055,NA,NA,NA,NA,0.21621372388771898
+g6,figure_4f_sexual_orient_overreporting,"Coffman et al. (2016)
+""I think marriages between gay and...""",Prediction: Overreporting,-0.1620071815900992,0.03295109998631132,-0.22659133756326938,-0.097423025616929,NA,NA,NA,NA,0.2163620578667938
+g6,figure_4f_sexual_orient_overreporting,"Coffman et al. (2016)
+""I would be happy to have an openly...""",Prediction: Overreporting,-0.05672279545309644,0.03716428733045714,-0.12956479862079243,0.016119207714599543,NA,NA,NA,NA,0.20702752314324865
+g6,figure_4f_sexual_orient_overreporting,"Dion and Díez (2016)
+""Same-sex couples should have the right...""",Prediction: Overreporting,0.08399999999999996,0.07112119535136043,-0.05539754288866647,0.2233975428886664,NA,NA,NA,NA,0.1413893437057934
+g6,figure_4f_sexual_orient_overreporting,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,-0.11572687430973345,0.07883942214486502,-0.30113366580760836,0.2642462136427398,NA
+g6,figure_4f_sexual_orient_overreporting,Random effects meta-analysis,,-0.018443726082434223,0.07855420695795533,-0.17339447787130666,0.13935260047381529,NA,NA,NA,NA,0.19960284947378218
+g7,figure_4e_sexual_orient_underreporting,"Coffman et al. (2016)
+""I think someone who is homosexual can...""",Prediction: Underreporting,0.017959765517238657,0.034914553039416915,-0.0504727584400185,0.08639228947449581,NA,NA,NA,NA,0.09716144437947577
+g7,figure_4e_sexual_orient_underreporting,"Janus (2005)
+""Oppose same-sex marriage""",Prediction: Underreporting,-0.2771252173862191,0.06112454240468395,-0.39692932049939966,-0.15732111427303855,NA,NA,NA,NA,0.07394534907979924
+g7,figure_4e_sexual_orient_underreporting,"Lax et al. (2016)
+""A law protecting gays and lesbian...""",Prediction: Underreporting,-0.022963888258002108,0.06263651330182277,-0.14573145432957474,0.09980367781357051,NA,NA,NA,NA,0.07272751792123376
+g7,figure_4e_sexual_orient_underreporting,"Lax et al. (2016)
+""Allowing gays and lesbians to marry...""",Prediction: Underreporting,-0.03189905706148222,0.04298622303093377,-0.11615205420211241,0.05235394007914798,NA,NA,NA,NA,0.08973370560446368
+g7,figure_4e_sexual_orient_underreporting,"Luks and Monson (2010) Angry, innocuous, J = 4
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,-0.08999999999999997,0.08742416853855367,-0.26135137033556516,0.08135137033556522,NA,NA,NA,NA,0.055348670632772885
+g7,figure_4e_sexual_orient_underreporting,"Luks and Monson (2010) Angry, innocuous, J = 5
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.14,0.08742416853855367,-0.031351370335565176,0.3113513703355652,NA,NA,NA,NA,0.055348670632772885
+g7,figure_4e_sexual_orient_underreporting,"Luks and Monson (2010) Angry, standard, J = 4
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,-0.19999999999999996,0.08742416853855367,-0.37135137033556515,-0.028648629664434766,NA,NA,NA,NA,0.055348670632772885
+g7,figure_4e_sexual_orient_underreporting,"Luks and Monson (2010) Angry, standard, J = 5
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.09999999999999998,0.08742416853855367,-0.07135137033556521,0.27135137033556517,NA,NA,NA,NA,0.055348670632772885
+g7,figure_4e_sexual_orient_underreporting,"Luks and Monson (2010) Irritated, innocuous, J = 4
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.13999999999999996,0.08781240783904172,-0.0321123193645218,0.3121123193645217,NA,NA,NA,NA,0.05511479085710832
+g7,figure_4e_sexual_orient_underreporting,"Luks and Monson (2010) Irritated, innocuous, J = 5
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.03999999999999998,0.08781240783904172,-0.13211231936452178,0.21211231936452174,NA,NA,NA,NA,0.05511479085710832
+g7,figure_4e_sexual_orient_underreporting,"Luks and Monson (2010) Irritated, standard, J = 4
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,0.21999999999999997,0.08781240783904172,0.047887680635478214,0.39211231936452173,NA,NA,NA,NA,0.05511479085710832
+g7,figure_4e_sexual_orient_underreporting,"Luks and Monson (2010) Irritated, standard, J = 5
+""Gays and lesbians being allowed to...""",Prediction: Underreporting,-0.07,0.08781240783904172,-0.24211231936452177,0.10211231936452175,NA,NA,NA,NA,0.05511479085710832
+g7,figure_4e_sexual_orient_underreporting,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,-0.08180887444088787,0.062479737271260126,-0.21930487983704638,0.1999757426674186,NA
+g7,figure_4e_sexual_orient_underreporting,Random effects meta-analysis,,-0.009664568584813871,0.03376380947849871,-0.07673363956267851,0.0577513759146988,NA,NA,NA,NA,0.0866497809988839
+g7,figure_4e_sexual_orient_underreporting,"Rayburn et al. (2003)
+""I have damaged someone's property...""",Prediction: Underreporting,-0.0368421052631579,0.08594042455069113,-0.2052853373825125,0.1316011268561967,NA,NA,NA,NA,0.056252941234549346
+g7,figure_4e_sexual_orient_underreporting,"Rayburn et al. (2003)
+""I have gotten into a physical fight...""",Prediction: Underreporting,-0.0368421052631579,0.08594042455069113,-0.2052853373825125,0.1316011268561967,NA,NA,NA,NA,0.056252941234549346
+g7,figure_4e_sexual_orient_underreporting,"Rayburn et al. (2003)
+""I have verbally threatened a gay person""",Prediction: Underreporting,0.039473684210526314,0.08690202275035155,-0.13085428038016272,0.20980164880121538,NA,NA,NA,NA,0.055665000366426715
+g7,figure_4e_sexual_orient_underreporting,"Rayburn et al. (2003)
+""I have written graffiti about gay people""",Prediction: Underreporting,-0.003421052631578948,0.08568992107476676,-0.17137329793812178,0.1645311926749639,NA,NA,NA,NA,0.05640725421997728
+g8,figure_4h_authoritarian_overreporting,"Chen and Yang (2018)
+""I completely trust the central...""",Prediction: Overreporting,0.008000000000000007,0.08040848737461809,-0.14960063525425144,0.16560063525425145,NA,NA,NA,NA,0.041987297776950164
+g8,figure_4h_authoritarian_overreporting,"Dai (2014)
+""My house should belong to me forever...""",Prediction: Overreporting,0.36687250379427516,0.08533477898845483,0.1996163369769037,0.5341286706116466,NA,NA,NA,NA,0.04059217365787382
+g8,figure_4h_authoritarian_overreporting,"Dai (2014)
+""Reports about President Xi’s and Prime...""",Prediction: Overreporting,0.14559778047714977,0.09199464687338803,-0.03471172739469075,0.3259072883489903,NA,NA,NA,NA,0.03874019346707909
+g8,figure_4h_authoritarian_overreporting,"Dai (2014)
+""The government can adjust its policies...""",Prediction: Overreporting,0.10557204523871411,0.09667363349542049,-0.08390827641231005,0.29505236688973824,NA,NA,NA,NA,0.037468623607919055
+g8,figure_4h_authoritarian_overreporting,"Dai (2014)
+""The government has the legal power to...""",Prediction: Overreporting,-0.03523122764421993,0.1007535332620026,-0.23270815283774504,0.16224569754930518,NA,NA,NA,NA,0.03638288674301381
+g8,figure_4h_authoritarian_overreporting,"Dai (2014)
+""Though there are a lot of problems in...""",Prediction: Overreporting,0.1671546781813147,0.07957812736740576,0.011181548541199404,0.32312780782142997,NA,NA,NA,NA,0.04222406675940157
+g8,figure_4h_authoritarian_overreporting,"Dai (2014)
+""Whether Diaoyu Island belongs to China...""",Prediction: Overreporting,-0.057639518180459245,0.07327533245168551,-0.20125916978576286,0.08598013342484435,NA,NA,NA,NA,0.044030962894072795
+g8,figure_4h_authoritarian_overreporting,"Frye et al. (2017) Contemporary, Jan. 2015
+""Vladimir Putin""",Prediction: Overreporting,0.05714810976729823,0.054827392382351556,-0.05031357930211082,0.1646097988367073,NA,NA,NA,NA,0.04926777584341968
+g8,figure_4h_authoritarian_overreporting,"Frye et al. (2017) Contemporary, Mar. 2015
+""Vladimir Putin""",Prediction: Overreporting,0.08426006975622158,0.05547300006607633,-0.024467010373288037,0.19298714988573118,NA,NA,NA,NA,0.04909005503088967
+g8,figure_4h_authoritarian_overreporting,"Frye et al. (2017) Historical, Jan. 2015
+""Vladimir Putin""",Prediction: Overreporting,0.0711250083772208,0.0506748585470117,-0.028197714374922134,0.17044773112936373,NA,NA,NA,NA,0.050393112122848464
+g8,figure_4h_authoritarian_overreporting,"Frye et al. (2017) Historical, Mar. 2015
+""Vladimir Putin""",Prediction: Overreporting,0.09219427826835458,0.04725982979437631,-4.349881286229845e-4,0.18482354466533213,NA,NA,NA,NA,0.051291224599970715
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2014)
+""I voted for Vladimir Putin in the most...""",Prediction: Overreporting,0.132,0.03324154027718932,0.06684658105670895,0.19715341894329108,NA,NA,NA,NA,0.054604228951381284
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2014)
+""I will vote Vladimir Putin in the most...""",Prediction: Overreporting,0.16800000000000004,0.03860051813123756,0.09234298446277442,0.24365701553722566,NA,NA,NA,NA,0.05342130643103448
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2015) Levada, Mar. 2015
+""I approve the job of the President of...""",Prediction: Overreporting,0.43333595759079746,0.04857780577806469,0.33812345826579066,0.5285484569158042,NA,NA,NA,NA,0.0509478994173424
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2015) Levada, Mar. 2015
+""I approve the possible deployment of...""",Prediction: Overreporting,0.2443319951815261,0.04166786217711113,0.16266298531438828,0.3260010050486639,NA,NA,NA,NA,0.05269437058628083
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2015) VCIOM, Jan. 2014
+""I approve the job of the President of...""",Prediction: Overreporting,0.18169999999999997,0.05037549007205786,0.08296403945876657,0.2804359605412334,NA,NA,NA,NA,0.05047291621725242
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2015) VCIOM, Jul. 2014
+""I approve the job of the President of...""",Prediction: Overreporting,0.2891,0.04766088543029808,0.1956846645566158,0.38251533544338423,NA,NA,NA,NA,0.051187212977236315
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2015) VCIOM, Jul. 2014
+""I approve the possible deployment of...""",Prediction: Overreporting,-0.11969999999999997,0.05144210337845839,-0.2205265226217784,-0.018873477378221523,NA,NA,NA,NA,0.050187713887019786
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2015) VCIOM, Mar. 2015
+""I approve the job of the President of...""",Prediction: Overreporting,0.28548686896438735,0.05618704255928903,0.17536026554818085,0.39561347238059386,NA,NA,NA,NA,0.04889273547626212
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2015) VCIOM, Mar. 2015
+""I approve the possible deployment of...""",Prediction: Overreporting,-0.027249591822309627,0.052332520014829395,-0.12982133105137522,0.07532214740675598,NA,NA,NA,NA,0.04994783179182822
+g8,figure_4h_authoritarian_overreporting,"Kalinin (2016)
+""I will vote [voted for] Vladimir Putin...""",Prediction: Overreporting,0.31262396170773027,0.024935209335729278,0.2637509514097009,0.36149697200575964,NA,NA,NA,NA,0.056175411760923374
+g8,figure_4h_authoritarian_overreporting,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,0.04516222816998593,0.23917251236825263,-0.13971472619597836,0.42404946673421684,NA
+g8,figure_4h_authoritarian_overreporting,Random effects meta-analysis,,0.14216737026911927,0.03476837131209842,0.07220906198773963,0.21063734249525753,NA,NA,NA,NA,0.05122728050644598
+g9,figure_4g_authoritarian_underreporting,"Enikolopov et al. (2017)
+""I wanted to post about it on social...""",Prediction: Underreporting,0.030000000000000013,0.0625443152245388,-0.09258685784009602,0.15258685784009604,NA,NA,NA,NA,0.08470280275416976
+g9,figure_4g_authoritarian_underreporting,"Enikolopov et al. (2017)
+""I wanted to tell my friends and...""",Prediction: Underreporting,0.016999999999999987,0.07201978894720533,-0.12415878633652244,0.15815878633652242,NA,NA,NA,NA,0.07676060463906491
+g9,figure_4g_authoritarian_underreporting,"Enikolopov et al. (2017)
+""Many of my friends and acquaintances...""",Prediction: Underreporting,-0.026000000000000023,0.07328154737166229,-0.1696318328484581,0.11763183284845805,NA,NA,NA,NA,0.0757597453566603
+g9,figure_4g_authoritarian_underreporting,"Kalinin and de Vogel (2016)
+""Attend a rally against falling living...""",Prediction: Underreporting,0.10346468513487539,0.06733865296441034,-0.028519074675368877,0.23544844494511966,NA,NA,NA,NA,0.08059075034304863
+g9,figure_4g_authoritarian_underreporting,"Li et al. (2017)
+""Central government leaders""",Prediction: Underreporting,-0.27,0.072881383554987,-0.41284751176777457,-0.1271524882322255,NA,NA,NA,NA,0.07607571555867704
+g9,figure_4g_authoritarian_underreporting,"Li et al. (2017)
+""Local cadres' corruption""",Prediction: Underreporting,-0.09999999999999998,0.07449226236174641,-0.24600483422902295,0.04600483422902299,NA,NA,NA,NA,0.07481195747267719
+g9,figure_4g_authoritarian_underreporting,"Li et al. (2017)
+""Openly criticize central government...""",Prediction: Underreporting,-0.12,0.072881383554987,-0.26284751176777454,0.022847511767774525,NA,NA,NA,NA,0.07607571555867704
+g9,figure_4g_authoritarian_underreporting,Predictive Intervals (50% and 95%),,NA,NA,NA,NA,-0.15795415883435857,0.0034129944448582296,-0.3117247074228022,0.15718354303330181,NA
+g9,figure_4g_authoritarian_underreporting,Random effects meta-analysis,,-0.07727058219475016,0.040200649553465855,-0.15796627049169878,0.001207842563268553,NA,NA,NA,NA,0.08419725454117637
+g9,figure_4g_authoritarian_underreporting,"Tang (2016)
+""Central government leaders""",Prediction: Underreporting,-0.04999999999999999,0.05312170751918859,-0.1541185467376096,0.054118546737609644,NA,NA,NA,NA,0.09331392286800567
+g9,figure_4g_authoritarian_underreporting,"Tang (2016)
+""Local cadres' corruption""",Prediction: Underreporting,-0.15000000000000002,0.05342693055647582,-0.25471678389069263,-0.04528321610930741,NA,NA,NA,NA,0.09302478482213603
+g9,figure_4g_authoritarian_underreporting,"Tang (2016)
+""Openly criticizing the central...""",Prediction: Underreporting,-0.010000000000000009,0.05349247828775425,-0.11484525744399833,0.09484525744399831,NA,NA,NA,NA,0.09296277408059428
+g9,figure_4g_authoritarian_underreporting,"Weghorst (2015)
+""The military and police primarily carry...""",Prediction: Underreporting,-5.999999999999339e-4,0.09735111535498843,-0.19140818609577726,0.1902081860957774,NA,NA,NA,NA,0.05914917102957534
+g9,figure_4g_authoritarian_underreporting,"Weghorst (2015)
+""The reason opposition parties are...""",Prediction: Underreporting,-0.07269999999999999,0.09606276442340182,-0.2609830182698676,0.11558301826986758,NA,NA,NA,NA,0.059924805956025375
+g9,figure_4g_authoritarian_underreporting,"Weghorst (2015)
+""Under some circumstances, the political...""",Prediction: Underreporting,-0.4469,0.10129677848902101,-0.6454416858384812,-0.24835831416151885,NA,NA,NA,NA,0.056847249560688436

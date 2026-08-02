@@ -1,0 +1,266 @@
+category,polarity,study,item,direct,list,n
+Authoritarian,Over,Chen2018,I completely trust the central government of China,0.311 (0.018),0.303 (0.078),686
+Authoritarian,Over,dai2014citizens,My house should belong to me forever and I should have the right to decide whether to sell my own house.,0.875 (0.021),0.508 (0.083),613
+Authoritarian,Over,dai2014citizens,Reports about President Xi’s and Prime Minister Wen’s large private wealth are probably true.,0.559 (0.032),0.413 (0.086),614
+Authoritarian,Over,dai2014citizens,The government can adjust its policies to satisfy peoples’ demands.,0.727 (0.029),0.621 (0.092),610
+Authoritarian,Over,dai2014citizens,The government has the legal power to censor the internet.,0.620 (0.031),0.656 (0.096),609
+Authoritarian,Over,dai2014citizens,"Though there are a lot of problems in China now, the current political system is the most suitable one for China",0.723 (0.029),0.556 (0.074),613
+Authoritarian,Over,dai2014citizens,Whether Diaoyu Island belongs to China has nothing to do with my life.,0.100 (0.019),0.157 (0.071),613
+Authoritarian,Over,frye2017putin,Vladimir Putin,0.864 (0.009),0.807 (0.054),1597
+Authoritarian,Over,frye2017putin,Vladimir Putin,0.864 (0.009),0.793 (0.050),1599
+Authoritarian,Over,frye2017putin,Vladimir Putin,0.881 (0.008),0.796 (0.055),1598
+Authoritarian,Over,frye2017putin,Vladimir Putin,0.881 (0.008),0.788 (0.047),1599
+Authoritarian,Over,kalinin2014study,I voted for Vladimir Putin in the most recent Presidential elections (March 4),0.478 (0.009),0.346 (0.032),3315
+Authoritarian,Over,kalinin2014study,I will vote Vladimir Putin in the most recent Presidential elections (March 4),0.453 (0.011),0.285 (0.037),3202
+Authoritarian,Over,kalinin2015exploring,I approve the job of the President of the Russian Federation.,0.658 (0.013),0.477 (0.049),1600
+Authoritarian,Over,kalinin2015exploring,I approve the job of the President of the Russian Federation.,0.810 (0.010),0.521 (0.047),1600
+Authoritarian,Over,kalinin2015exploring,I approve the job of the President of the Russian Federation.,0.895 (0.011),0.462 (0.047),1598
+Authoritarian,Over,kalinin2015exploring,I approve the job of the President of the Russian Federation.,0.920 (0.007),0.635 (0.056),1469
+Authoritarian,Over,kalinin2015exploring,I approve the possible deployment of Russian troops in the South-Eastern Ukraine.,0.175 (0.010),0.294 (0.051),1600
+Authoritarian,Over,kalinin2015exploring,I approve the possible deployment of Russian troops in the South-Eastern Ukraine.,0.275 (0.012),0.030 (0.040),1597
+Authoritarian,Over,kalinin2015exploring,I approve the possible deployment of Russian troops in the South-Eastern Ukraine.,0.339 (0.013),0.366 (0.051),1467
+Authoritarian,Over,kalinin2016social,I will vote [voted for] Vladimir Putin in the upcoming/most recent Presidential elections (March 4),0.682 (0.007),0.370 (0.024),6430
+Authoritarian,Under,enikolopov2017social,I wanted to post about it on social media,0.144 (0.030),0.114 (0.055),830
+Authoritarian,Under,enikolopov2017social,I wanted to tell my friends and acquaintances about it.,0.251 (0.037),0.234 (0.062),828
+Authoritarian,Under,enikolopov2017social,Many of my friends and acquaintances were participating,0.395 (0.042),0.421 (0.060),831
+Authoritarian,Under,kalinin2016measuring,Attend a rally against falling living standards and the government’s unfair policies (Several thousand participants),0.317 (0.011),0.214 (0.066),666
+Authoritarian,Under,li2017face,Central government leaders,0.100 (0.016),0.370 (0.071),1090
+Authoritarian,Under,li2017face,Local cadres' corruption,0.370 (0.022),0.470 (0.071),1090
+Authoritarian,Under,li2017face,Openly criticize central government leaders,0.100 (0.016),0.220 (0.071),1090
+Authoritarian,Under,tang2016populist,Central government leaders,0.070 (0.006),0.120 (0.053),2148
+Authoritarian,Under,tang2016populist,Local cadres' corruption,0.110 (0.007),0.260 (0.053),2140
+Authoritarian,Under,tang2016populist,Openly criticizing the central government,0.120 (0.007),0.130 (0.053),2138
+Authoritarian,Under,weghorst2015political,The military and police primarily carry out the agenda of the ruling party,0.795 (0.044),0.796 (0.087),252
+Authoritarian,Under,weghorst2015political,The reason opposition parties are unsuccessful in elections is because the ruling party sabotages their attempts to compete,0.829 (0.042),0.902 (0.087),256
+Authoritarian,Under,weghorst2015political,"Under some circumstances, the political opposition must use violence.",0.416 (0.052),0.863 (0.087),247
+Other,Over,brownback2017social,I often find myself agreeing with Hillary Clinton.,0.538 (0.032),0.442 (0.070),502
+Other,Over,coffman2016size,I consider myself to be heterosexual,0.891 (0.008),0.894 (0.035),2790
+Other,Over,de2014artificial,I was aware that the elections were taking place,0.960 (0.007),0.371 (0.079),600
+Other,Over,gervais2018many,I believe in god,0.190 (0.015),0.421 (0.155),1331
+Other,Over,haber2017,I am HIV negative,0.530 (0.034),0.570 (0.086),262
+Other,Over,haber2017,I used a condom during my last sexual encounter.,0.540 (0.034),0.590 (0.086),262
+Other,Over,jayasuriya2013elephants,"I feel safe from abduction, death and torture now",0.560 (0.009),0.420 (0.057),1872
+Other,Over,jayasuriya2013elephants,"I feel safer from abduction, death and torture now than I did in 2005",0.600 (0.009),0.330 (0.057),1872
+Other,Over,kim2016national,I am willing to risk personal loss to help society.,0.330 (0.019),0.170 (0.040),1200
+Other,Over,kim2016national,I am willing to risk personal loss to help society.,0.350 (0.019),0.100 (0.060),1200
+Other,Over,kim2016national,I am willing to risk personal loss to help society.,0.410 (0.029),0.340 (0.070),592
+Other,Over,kim2016national,I am willing to risk personal loss to help society.,0.440 (0.020),0.260 (0.040),1200
+Other,Over,kim2016national,I like my job better than the average worker does.,0.530 (0.020),0.290 (0.060),1200
+Other,Over,kim2016national,I like my job better than the average worker does.,0.540 (0.020),0.320 (0.040),1200
+Other,Over,kim2016national,I like my job better than the average worker does.,0.620 (0.028),0.390 (0.070),592
+Other,Over,kim2016national,I like my job better than the average worker does.,0.670 (0.019),0.490 (0.040),1200
+Other,Over,kim2016national,Meaningful public service is very important to me.,0.720 (0.018),0.330 (0.060),1200
+Other,Over,kim2016national,Meaningful public service is very important to me.,0.730 (0.018),0.440 (0.040),1200
+Other,Over,kim2016national,Meaningful public service is very important to me.,0.780 (0.024),0.670 (0.070),592
+Other,Over,kim2016national,Meaningful public service is very important to me.,0.840 (0.015),0.620 (0.040),1200
+Other,Over,matanock2017does,The military forces having more freedom to defend the nation in the way they see fit,0.519 (0.022),0.467 (0.066),1423
+Other,Over,prior2009improving,Watched a news program on television,0.660 (0.027),0.710 (0.080),600
+Other,Over,starosta2014assessing,I ask my partner about their sexual history before engaging in sexual intercourse,0.760 (0.024),0.610 (0.078),689
+Other,Over,starosta2014assessing,"If I had an STD that was actively being treated, I would alert my current partner",0.900 (0.017),0.710 (0.078),689
+Other,Over,tsuchiya2007study,Have made a blood donation,0.565 (0.021),0.558 (0.055),1803
+Other,Over,tsuchiya2007study,Have made a blood donation,0.567 (0.021),0.529 (0.045),1803
+Other,Over,tsuchiya2007study,Have made a blood donation,0.581 (0.021),0.454 (0.049),1803
+Other,Over,tsuchiya2007study,Have made a blood donation,0.584 (0.021),0.529 (0.030),1803
+Other,Under,Janus2010,Cutting off immigration to the United States,0.394 (0.022),0.376 (0.056),911
+Other,Under,ahart2004new,I have seen a fellow employee steal $5 or more from a past employer,0.380 (0.044),0.340 (0.087),243
+Other,Under,ahart2004new,I have seen a fellow employee steal $5 or more from a past employer,0.380 (0.044),0.040 (0.088),198
+Other,Under,ahart2004new,I have stolen more than $5 from a past employer,0.170 (0.034),0.130 (0.087),243
+Other,Under,ahart2004new,I have stolen more than $5 from a past employer,0.170 (0.034),0.360 (0.088),198
+Other,Under,ahart2004new,I have taken merchandise or supplies worth more than $5 from a past employer,0.410 (0.045),0.380 (0.087),243
+Other,Under,ahart2004new,I have taken merchandise or supplies worth more than $5 from a past employer,0.410 (0.045),0.500 (0.088),198
+Other,Under,ahart2004new,"In the past, I have called in sick when I wasn’t actually ill",0.710 (0.041),0.790 (0.087),243
+Other,Under,ahart2004new,"In the past, I have called in sick when I wasn’t actually ill",0.710 (0.041),0.590 (0.088),198
+Other,Under,ahart2004new,"I’ve done slow, sloppy work on purpose",0.510 (0.045),0.100 (0.088),198
+Other,Under,ahart2004new,"I’ve done slow, sloppy work on purpose.",0.510 (0.045),0.350 (0.087),243
+Other,Under,ahlquist2014alien,I read or wrote a text (SMS) message while driving,0.270 (0.012),0.235 (0.066),3000
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""I have over-reported how good I am at taking my HIV meds to my doctor""",0.300 (0.030),0.190 (0.087),229
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Missed HIV meds in last month""",0.730 (0.029),0.520 (0.087),229
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Missed HIV meds – due to alcohol/drugs""",0.460 (0.033),0.390 (0.087),229
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Reported taking HIV meds to doctor when they were not""",0.220 (0.027),0.370 (0.087),229
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Sex without a condom – in last month""",0.350 (0.032),0.180 (0.087),229
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Sex without a condom – in last month, using drugs/alcohol""",0.210 (0.027),0.060 (0.087),229
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Sex without a condom – with HIV-partners""",0.440 (0.033),0.250 (0.087),229
+Other,Under,brownback2017social,I often find myself agreeing with Donald Trump.,0.229 (0.026),0.316 (0.070),504
+Other,Under,brownback2017social,I often find myself agreeing with Donald Trump.,0.499 (0.030),0.529 (0.080),730
+Other,Under,cappelen2016intra,That migrant workers automatically receive the same welfare benefits as Norwegians.,0.476 (0.019),0.600 (0.073),1000
+Other,Under,coffman2016size,I am sexually attracted to members of the same sex,0.135 (0.009),0.259 (0.034),2784
+Other,Under,coffman2016size,I have had a sexual experience with someone of the same sex,0.167 (0.010),0.522 (0.036),2782
+Other,Under,coppock2017did,"If the 2016 presidential election were being held today and the candidates were Hillary Clinton (Democrat) and Donald Trump (Republican), I would vote for Donald Trump.",0.325 (0.006),0.296 (0.035),5290
+Other,Under,coutts2011sensitive,I have at least once deliberately taken an article from a store without paying for it,0.234 (0.017),0.175 (0.103),398
+Other,Under,coutts2011sensitive,I have cheated on my partner at least once,0.262 (0.017),0.359 (0.090),398
+Other,Under,coutts2011sensitive,I have driven a car although my blood alcohol was almost certainly over the legal limit at least once,0.290 (0.018),0.190 (0.092),398
+Other,Under,coutts2011sensitive,I have knowingly used public transportation without having a valid ticket at least once,0.618 (0.019),0.765 (0.102),398
+Other,Under,coutts2011sensitive,I have received too much change and knowingly kept it at least once,0.561 (0.020),0.435 (0.111),398
+Other,Under,coutts2011sensitive,I have used marijuana in the past month,0.047 (0.008),0.325 (0.113),398
+Other,Under,creighton2015has,Cutting off all immigration to the U.S,0.426 (0.017),0.342 (0.052),1615
+Other,Under,dalton1994using,"I have ""misrepresented experience"" in the auctioneer business",0.187 (0.044),0.530 (0.088),160
+Other,Under,dalton1994using,"I have ""misused the absolute"" in the auctioneer business",0.075 (0.029),0.309 (0.088),160
+Other,Under,dalton1994using,"I have engaged in ""conspiracy nondisclosure"" in the auctioneer business",0.025 (0.017),0.101 (0.088),160
+Other,Under,dalton1994using,"I have engaged in ""self-dealing"" in the auctioneer business",0.162 (0.041),0.489 (0.088),160
+Other,Under,dalton1994using,"I have failed to ""disclose a material fact"" in the auctioneer business",0.088 (0.032),0.340 (0.088),160
+Other,Under,dalton1994using,"I have used a ""phantom bid"" in the aucitoneer business",0.138 (0.039),0.399 (0.088),160
+Other,Under,droitcour1991item,"Sensitive item not reported verbatim by authors in text but summarized as: ""IV drug use in last 10 years""",0.039 (0.005),0.002 (0.021),1428
+Other,Under,droitcour1991item,"Sensitive item not reported verbatim by authors in text but summarized as: ""Receptive anal intercourse in last 10 years""",0.043 (0.008),0.011 (0.050),690
+Other,Under,droitcour1991item,"Sensitive item not reported verbatim by authors in text but summarized as: ""Receptive anal intercourse in last 10 years""",0.194 (0.015),0.174 (0.036),737
+Other,Under,druckman2015measuring,"In the typical week during the past academic year, consumed more than five alcoholic drinks. (A drink can be a 12-ounce beer or wine cooler, a 4 ounce glass of wine, or a shot of liquor either straight or in a mixed drink.)",0.495 (0.015),0.469 (0.065),1050
+Other,Under,druckman2015measuring,Knowingly took a drug banned by the NCAA that may improve your athletic performance,0.057 (0.007),0.394 (0.061),1063
+Other,Under,fairbrass2012using,Caught a wild bird for consumption in the last 12 months,0.164 (0.031),0.474 (0.183),146
+Other,Under,fairbrass2012using,Collected wild birds eggs in the last 12 months,0.014 (0.010),0.125 (0.182),146
+Other,Under,fairbrass2012using,Shot a bird of prey in the last 12 months,0.021 (0.012),0.142 (0.151),146
+Other,Under,fairbrass2012using,Use of poison to control populations of wild animals in the last 12 months,0.069 (0.021),-0.066 (0.163),146
+Other,Under,gervais2018many,I do not believe in god,0.190 (0.015),0.164 (0.107),1315
+Other,Under,gunarathne2016hiding,"If I suspect FMD in my animal, I will sell that animal soon",0.048 (0.024),0.109 (0.088),201
+Other,Under,gunarathne2016hiding,"If I suspect foot and mouth disease in my animal, I will not report to veterinary office",0.060 (0.026),0.231 (0.088),201
+Other,Under,haber2017,I have had anal sex within the last 12 months.,0.020 (0.009),0.130 (0.086),262
+Other,Under,haber2017,I refused the AHRIPHS HIV test this year.,0.130 (0.023),0.550 (0.086),262
+Other,Under,hinsley2017estimating,I have an orchid in my collection that I know or strongly suspect was wild-collected,0.362 (0.007),0.325 (0.076),814
+Other,Under,hinsley2017estimating,I have bought an orchid online that was sent to me without the correct or required CITES paperwork,0.108 (0.011),0.089 (0.076),814
+Other,Under,hinsley2017estimating,I have personally sent or carried an orchid across an international border using the wrong CITES paperwork for that plant [e.g. paperwork for a different species],0.048 (0.007),0.043 (0.076),814
+Other,Under,hinsley2017estimating,I have personally sent or carried an orchid across an international border without obtaining the required CITES paperwork,0.099 (0.010),0.065 (0.076),814
+Other,Under,jayasuriya2013elephants,"I do not feel safe from abduction, death and torture now",0.150 (0.007),0.290 (0.058),1864
+Other,Under,jayasuriya2013elephants,"I felt safer from abduction, death and torture in 2005 than I do now",0.150 (0.007),0.240 (0.058),1864
+Other,Under,kirchner2013techniques,Have you engaged in any undeclared work for a private person this year?,0.031 (0.008),0.003 (0.071),1103
+Other,Under,kirchner2013techniques,"Have you engaged in any undeclared work this year for a company, which paid you without reporting your income to the authorities?",0.012 (0.005),0.064 (0.071),1103
+Other,Under,labrie2000sexual,I've consumed alcohol until I was intoxicated.,0.770 (0.042),0.700 (0.087),244
+Other,Under,labrie2000sexual,I've had sex after drinking,0.480 (0.049),0.490 (0.087),244
+Other,Under,labrie2000sexual,I've had sex without a condom,0.590 (0.049),0.700 (0.087),244
+Other,Under,labrie2000sexual,I've had sex without a condom after consuming alcohol,0.360 (0.048),0.650 (0.087),244
+Other,Under,labrie2000sexual,I've had sexual intercourse.,0.740 (0.043),0.840 (0.087),244
+Other,Under,li2017face,Bribe government officials,0.330 (0.022),0.460 (0.071),1090
+Other,Under,lippitt2014exploration,I think breastfeeding in some public settings should be against the law,0.094 (0.011),0.147 (0.077),741
+Other,Under,lippitt2014exploration,I think children who are old enough to walk and talk should not be breastfed in public,0.533 (0.018),0.557 (0.077),741
+Other,Under,lippitt2014exploration,I think that seeing a woman breastfeeding in public can be sexually arousing,0.133 (0.013),0.115 (0.077),741
+Other,Under,lippitt2014exploration,I think that women who breastfeed in public should cover themselves,0.678 (0.017),0.632 (0.077),741
+Other,Under,lippitt2014exploration,I think women who breastfeed in public are more likely to be poor,0.064 (0.009),0.058 (0.077),741
+Other,Under,marques2016snooping,"In the past 12 months, I’ve looked through someone else’s cell phone without their permission.",0.147 (0.022),0.308 (0.055),1381
+Other,Under,marques2016snooping,"In the past 12 months, I’ve looked through someone else’s cell phone without their permission.",0.147 (0.022),0.279 (0.074),653
+Other,Under,mckenzie2013eliciting,This household has at least a member currently residing abroad without a legal residence permit,0.326 (0.013),0.385 (0.068),1249
+Other,Under,mckenzie2013eliciting,This household has at least a member currently residing abroad without a legal residence permit,0.393 (0.013),0.415 (0.064),1486
+Other,Under,miller1984new,Tried heroin,0.011 (0.002),0.014 (0.039),3034
+Other,Under,monson2010,A woman serving as President,0.160 (0.008),0.250 (0.050),2302
+Other,Under,randrianantoandro2015knowledge,Sell the meat or the live pig if suspected to be infected or obviously infected by ASF without informing a veterinarian or local authority,0.676 (0.075),0.733 (0.063),161
+Other,Under,rosenfeld2016empirical,Voted ‘YES’ on the ‘Personhood’ Initiative on the November 2011 Mississippi,0.305 (0.009),0.562 (0.062),1325
+Other,Under,seljan2016know,A legislator in your state purposefully violates campaign finance law without detection,0.340 (0.030),0.274 (0.123),365
+Other,Under,sheppard2013using,I have carried a gun with me in the car while driving,0.322 (0.019),0.511 (0.077),751
+Other,Under,sheppard2013using,I have driven a car after drinking quite a bit of alcohol,0.540 (0.020),0.778 (0.077),751
+Other,Under,sheppard2013using,I have followed another car to its destination to complain to the driver,0.093 (0.012),0.090 (0.077),751
+Other,Under,sheppard2013using,I have screamed at other drivers on the road,0.549 (0.020),0.500 (0.077),751
+Other,Under,sheppard2013using,I often honk my horn in anger at other drivers on the road,0.136 (0.014),0.221 (0.077),751
+Other,Under,sheppard2013using,I sometimes drive right on the rear bumper of another car to make the driver move out of the way’,0.203 (0.016),0.192 (0.077),751
+Other,Under,simpser2017sensitive,Reported more ‘heads’ than I actually obtained earlier in the survey,0.230 (0.024),0.128 (0.088),159
+Other,Under,starosta2014assessing,I’ve had sex without a condom,0.860 (0.019),0.760 (0.078),689
+Other,Under,tang2016populist,Bribing government officials,0.140 (0.008),0.260 (0.053),2148
+Other,Under,thomas2015estimating,Go fishing in the Long Island Marine Reserve in 2012,0.003 (0.003),0.040 (0.085),320
+Other,Under,thomas2015estimating,Kept a blue cod less than 30 cm or more than 35 cm in length while in the Marlborough Sounds,0.290 (0.025),0.140 (0.085),320
+Other,Under,thomas2015estimating,Kept more than two blue cod per person in a day while in the Marlborough Sounds,0.120 (0.018),0.110 (0.085),320
+Other,Under,thomas2017estimating,Voted for the FPO in the national parliamentary election in September 2013,0.233 (0.009),0.072 (0.046),565
+Other,Under,traunmuller2017silent,I was personally sexually assaulted.,0.014 (0.003),0.134 (0.031),1800
+Other,Under,tsuchiya2007study,Have shoplifted,0.213 (0.017),0.299 (0.054),1803
+Other,Under,tsuchiya2007study,Have shoplifted,0.216 (0.018),0.315 (0.031),1803
+Other,Under,tsuchiya2007study,Have shoplifted,0.229 (0.018),0.273 (0.061),1803
+Other,Under,tsuchiya2007study,Have shoplifted,0.236 (0.018),0.328 (0.043),1803
+Other,Under,usmani2017characterizing,I have used a device of someone I know to access their Facebook account without permission,0.086 (0.072),0.240 (0.070),863
+Other,Under,usmani2017characterizing,Somebody I know has used my device to access my Facebook account without permission,0.092 (0.072),0.212 (0.070),885
+Other,Under,wimbush1997base,"I am/was involved in the theft from my employer of cash, supplies, or merchandise worth from $10.00-$24.99 per month.",0.086 (0.019),0.162 (0.085),353
+Other,Under,wimbush1997base,"I am/was involved in the theft from my employer of cash, supplies, or merchandise worth from $25.00-$49.00 per month.",0.043 (0.014),0.132 (0.085),353
+Other,Under,wimbush1997base,"I am/was involved in the theft from my employer of cash, supplies, or merchandise worth from $5.00-9.99 per month.",0.129 (0.023),0.210 (0.085),353
+Other,Under,wimbush1997base,"I am/was involved in the theft from my employer of cash, supplies, or merchandise worth more than $50.00 per month.",0.024 (0.011),0.067 (0.085),353
+Race,Over,brueckner2004tess,If someone in your family married a black person,0.262 (0.027),0.187 (0.088),697
+Race,Over,heerwig2009education,I am willing to support a black Presidential candidate,0.841 (0.016),0.699 (0.081),1044
+Race,Under,Sniderman_1994,A black family moving next door to you,0.074 (0.014),-0.046 (0.103),504
+Race,Under,Sniderman_1994,Awarding college scholarships on the basis of race,0.487 (0.035),0.582 (0.103),521
+Race,Under,Sniderman_1994,Black leaders asking the government for affirmative action,0.341 (0.032),0.463 (0.101),494
+Race,Under,Sniderman_1994,Interracial dating with black teenagers taking out white teenagers,0.353 (0.025),0.230 (0.115),482
+Race,Under,aronow201list,A Spanish-speaking family moving in next door.,0.081 (0.009),0.074 (0.055),1015
+Race,Under,aronow201list,A Spanish-speaking family moving in next door.,0.108 (0.010),0.085 (0.057),1018
+Race,Under,berinsky2017telling,I believe Barack Obama is a Muslim,0.276 (0.012),0.185 (0.034),3551
+Race,Under,brueckner2005expression,Genetic differences contribute to income inequality between black and white people,0.163 (0.023),0.137 (0.077),700
+Race,Under,monson2010,A black person serving as President,0.140 (0.007),0.090 (0.050),2302
+Religion,Under,aronow201list,Muslims,0.094 (0.009),0.114 (0.057),1015
+Religion,Under,aronow201list,Muslims,0.107 (0.010),0.147 (0.058),1018
+Religion,Under,creighton2015does,Granting citizenship to a legal immigrant who is Christian.,0.109 (0.011),0.216 (0.054),1576
+Religion,Under,creighton2015does,Granting citizenship to a legal immigrant who is Muslim.,0.258 (0.015),0.190 (0.055),1606
+Religion,Under,gosen2014social,That Jews have too much influence in the world.,0.117 (0.033),0.486 (0.141),229
+Religion,Under,gosen2014social,That Jews have too much influence in the world.,0.137 (0.019),0.084 (0.072),755
+Religion,Under,gosen2014social,That Jews have too much influence in the world.,0.137 (0.019),0.088 (0.201),94
+Religion,Under,gosen2014social,That Jews have too much influence in the world.,0.241 (0.031),0.095 (0.099),445
+Religion,Under,gosen2014social,That Muslims have too much influence in the world.,0.268 (0.023),0.337 (0.071),780
+Religion,Under,gosen2014social,That Muslims have too much influence in the world.,0.268 (0.023),0.405 (0.193),99
+Religion,Under,monson2010,A Baptist serving as President,0.150 (0.007),0.150 (0.050),2302
+Religion,Under,monson2010,A Mormon serving as President,0.310 (0.010),0.270 (0.050),2302
+Sexual Orientation,Over,coffman2016size,I believe it should be illegal to discriminate in hiring based on someone’s sexual orientation,0.859 (0.009),0.798 (0.030),2781
+Sexual Orientation,Over,coffman2016size,I believe lesbians and gay men should be allowed to adopt children,0.870 (0.009),0.867 (0.032),2780
+Sexual Orientation,Over,coffman2016size,"I think marriages between gay and lesbian couples should be recognized by the law as valid, with the same rights as heterosexual marriages",0.813 (0.010),0.975 (0.031),2781
+Sexual Orientation,Over,coffman2016size,"I would be happy to have an openly lesbian, gay, or bisexual manager at work",0.837 (0.010),0.894 (0.036),2777
+Sexual Orientation,Over,dionsocial,Same-sex couples should have the right to marry,0.590 (0.013),0.506 (0.070),1149
+Sexual Orientation,Under,coffman2016size,I think someone who is homosexual can change their sexual orientation if they choose to do so,0.218 (0.011),0.200 (0.033),2784
+Sexual Orientation,Under,janus2005tess,Oppose same-sex marriage,0.315 (0.021),0.592 (0.057),911
+Sexual Orientation,Under,lax2014survey,A law protecting gays and lesbian against employment discrimination,0.655 (0.020),0.678 (0.059),1187
+Sexual Orientation,Under,lax2014survey,Allowing gays and lesbians to marry legally,0.570 (0.010),0.602 (0.042),1878
+Sexual Orientation,Under,luks2010,Gays and lesbians being allowed to marry legally,0.380 (0.038),0.580 (0.079),662
+Sexual Orientation,Under,luks2010,Gays and lesbians being allowed to marry legally,0.380 (0.038),0.470 (0.079),662
+Sexual Orientation,Under,luks2010,Gays and lesbians being allowed to marry legally,0.380 (0.038),0.280 (0.079),662
+Sexual Orientation,Under,luks2010,Gays and lesbians being allowed to marry legally,0.380 (0.038),0.240 (0.079),662
+Sexual Orientation,Under,luks2010,Gays and lesbians being allowed to marry legally,0.410 (0.039),0.190 (0.079),664
+Sexual Orientation,Under,luks2010,Gays and lesbians being allowed to marry legally,0.410 (0.039),0.270 (0.079),664
+Sexual Orientation,Under,luks2010,Gays and lesbians being allowed to marry legally,0.410 (0.039),0.480 (0.079),664
+Sexual Orientation,Under,luks2010,Gays and lesbians being allowed to marry legally,0.410 (0.039),0.370 (0.079),664
+Sexual Orientation,Under,rayburn2003investigation,I have damaged someone's property because he was gay,0.013 (0.009),0.050 (0.085),317
+Sexual Orientation,Under,rayburn2003investigation,I have gotten into a physical fight with a person because he was gay,0.013 (0.009),0.050 (0.085),317
+Sexual Orientation,Under,rayburn2003investigation,I have verbally threatened a gay person,0.039 (0.016),0.000 (0.085),317
+Sexual Orientation,Under,rayburn2003investigation,I have written graffiti about gay people,0.007 (0.007),0.010 (0.085),317
+Turnout,Over,comcsa2012measuring,I have voted in the elections of June 2009 for the European Parliament,0.751 (0.012),0.646 (0.053),1374
+Turnout,Over,holbrook2009social,"Voted in the Presidential election held on November 7, 2000",0.661 (0.044),0.664 (0.099),454
+Turnout,Over,holbrook2009social,"Voted in the Presidential election held on November 7, 2000",0.699 (0.016),0.668 (0.037),3077
+Turnout,Over,holbrook2009social,"Voted in the Presidential election held on November 7, 2000",0.720 (0.034),0.524 (0.118),353
+Turnout,Over,holbrook2009social,"Voted in the elections held on November 5, 2002",0.595 (0.011),0.545 (0.050),2029
+Turnout,Over,kalinin2014study,I voted in the most recent Presidential elections (March 4),0.759 (0.008),0.553 (0.037),3315
+Turnout,Over,kalinin2014study,I will vote in the most recent Presidential elections (March 4),0.671 (0.010),0.507 (0.041),3202
+Turnout,Over,simpser2017sensitive,"Voted in the presidential election of November 8, 2016",0.191 (0.012),0.247 (0.081),525
+Turnout,Over,thomas2017estimating,Voted in the national parliamentary election in September 2008,0.808 (0.025),0.854 (0.089),927
+Turnout,Over,thomas2017estimating,Voted in the national parliamentary election in September 2013,0.928 (0.009),0.979 (0.063),2435
+Vote Buying,Under,bottkjaer2017,"They offered me something, like food, or a gift or money, if I would vote for them in the elections",0.060 (0.008),0.080 (0.070),1287
+Vote Buying,Under,bottkjaer2017,"They offered me something, like food, or a gift or money, if I would vote for them in the elections",0.060 (0.008),0.300 (0.060),1284
+Vote Buying,Under,ccarkouglu2015gets,"Someone offered you or your family personal services, a job, or similar material benefits in exchange of your vote for a party",0.162 (0.019),0.353 (0.067),2012
+Vote Buying,Under,corstange2017clientelism,"Someone offered you or a relative “personal services,” a job, or something similar",0.261 (0.018),0.261 (0.073),1007
+Vote Buying,Under,gonzalez2012vote,They gave you a gift or did you a favor,0.024 (0.006),0.243 (0.072),995
+Vote Buying,Under,gonzalez2015legitimacy,They gave you a gift or did you a favor,0.038 (0.006),0.219 (0.064),993
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.005 (0.001),0.040 (0.038),1987
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.007 (0.003),-0.018 (0.054),857
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.013 (0.004),0.059 (0.047),752
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.024 (0.005),0.243 (0.072),995
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.038 (0.009),0.140 (0.081),500
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.038 (0.006),0.219 (0.064),993
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.052 (0.005),0.076 (0.045),2063
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.056 (0.005),0.029 (0.056),1882
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.073 (0.006),0.022 (0.043),2086
+Vote Buying,Under,kiewiet2015lies,They gave you a gift or did you a favor.,0.081 (0.008),0.171 (0.050),1183
+Vote Buying,Under,kramon2016vote,You received money from a party or politician.,0.230 (0.010),0.204 (0.049),1275
+Vote Buying,Under,kramon2016vote,You voted for a party or politician because they gave you money during the campaign.,0.076 (0.006),0.235 (0.052),1191
+Vote Buying,Under,mizuno2012does,"Somebody from the party I voted for offered me a gift, a job, cash, or some type of benefit in exchange for my vote
+",0.138 (0.014),0.267 (0.069),1200
+NA,Over,kleykamp2017supports,A recent veteran of the wars in Iraq/Afghanistan.,0.877 (0.009),0.850 (0.037),2731
+NA,Over,kleykamp2017supports,Health care for veterans of the wars in Iraq/Afghanistan.,0.922 (0.007),0.822 (0.030),2763
+NA,Under,Bulte2018,I am regularly hit by my spouse,0.110 (0.005),0.167 (0.025),3371
+NA,Under,brooke2017sectarianism,A Shi’a Muslim family moving in next door to you,0.818 (0.028),0.411 (0.106),445
+NA,Under,de2014sensitive,A girl should be circumcised,0.300 (0.016),0.392 (0.047),838
+NA,Under,eriksen2017social,The FMO is a weak organisation as important decisions are not made by its members,0.366 (0.018),0.472 (0.072),683
+NA,Under,fergusson2017b,"You accept buying without a receipt, to avoid paying VAT",0.193 (0.005),0.137 (0.025),5709
+NA,Under,fergusson2017sell,"The benefits, gifts, or jobs the candidate offeredered you in exchange for your vote",0.185 (0.005),0.159 (0.026),5420
+NA,Under,greene2017vote,"Receive a gift, favor, or access to a service in exchange for your vote",0.025 (0.005),0.060 (0.058),900
+NA,Under,greene2017vote,"Receive a gift, favor, or access to a service in exchange for your vote",0.052 (0.010),0.211 (0.059),921
+NA,Under,holman2017,Most men are better suited emotionally for politics than are most women,0.130 (0.031),0.387 (0.091),251
+NA,Under,holman2017,Most men in elected office are better at handling foreign affairs than are most women,0.170 (0.034),0.295 (0.088),252
+NA,Under,imai2014using,"Exchange your vote for a gift, favor, or access to a service",0.055 (0.007),0.194 (0.053),1120
+NA,Under,knoll2013assessing,Our American culture and way of life being threatened by foreign influence.,0.638 (0.018),0.473 (0.085),691
+NA,Under,meng2017conditional,Suggestions from residents expressed through the Internet,0.960 (0.013),0.572 (0.059),868
+NA,Under,meng2017conditional,"Suggestions from residents expressed through the residential committee, local party organization, or people’s congress representative",0.980 (0.010),0.532 (0.059),883
+NA,Under,moseson2015reducing,"Sensitive item not reported verbatim by authors but summarized as: ""abortion (‘take out belly’)""",0.430 (0.030),0.279 (0.029),3291
+NA,Under,moseson2015reducing,"Sensitive item not reported verbatim by authors but summarized as: ""abortion (‘take out belly’)""",0.430 (0.030),0.352 (0.030),3291
+NA,Under,neuner2017,I would rather be represented by a citizen than by a politician,0.572 (0.012),0.452 (0.048),1347
+NA,Under,neuner2017,The particular interests of the political class negatively affect the welfare of the people,0.817 (0.009),0.653 (0.045),1347
+NA,Under,neuner2017,What people call compromise in politics is really just selling out on one’s principles,0.572 (0.012),0.525 (0.047),1347
+NA,Under,pavao2015failures,"Despite being undesirable, it is understandable that politicians steal when doing politics in Brazil.",0.166 (0.008),0.220 (0.038),2000
+NA,Under,wolter2014effectiveness,"Have you ever dodged a fare, that is, deliberately used a bus or a train without having a ticket?",0.661 (0.032),0.798 (0.053),551
+NA,Under,wolter2014effectiveness,"Have you ever driven a car, a motorbike, a scooter, etc. when you were drunk or under the influence of drugs?",0.459 (0.034),0.679 (0.062),551
+NA,Under,wolter2014effectiveness,"Have you ever driven a car, a motorbike, a scooter, etc. without a valid driver’s license?",0.344 (0.032),0.494 (0.078),551
