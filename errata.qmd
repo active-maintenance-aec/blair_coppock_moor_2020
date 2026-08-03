@@ -21,8 +21,10 @@ thresholds <- read_csv(here("maintained", "output", "text_power_thresholds.csv")
 published <- read_csv(here("ground_truth", "published_claims.csv"),
                       col_types = cols(.default = col_character()))
 
-# Every corrected value below is computed here, from the deposited data, at the time this
-# document is rendered. Nothing is typed.
+# Every number inside a corrected sentence below is computed here, from the deposited
+# data, at the time this document is rendered. That includes the numbers that were not
+# wrong: a token carried over from the published sentence is inherited on trust, and
+# rendering the whole sentence from the pipeline is what verifies it.
 meta_row <- function(subset_id, which_row) {
   rows <- meta[meta$subset == subset_id & meta$row == which_row, ]
   stopifnot(nrow(rows) == 1)
@@ -37,9 +39,25 @@ ppi <- function(subset_id, column) {
   100 * meta_row(subset_id, "Predictive Intervals (50% and 95%)")[[column]]
 }
 
-# The article sets its minus sign as an en dash, so a corrected sentence reads like the
-# published one only if it does too.
+# The two summary rows sit in every subset, so the study count is what is left over.
+n_studies <- function(subset_id) sum(meta$subset == subset_id) - 2L
+
+curve <- function(size) {
+  value <- thresholds$value_points[
+    thresholds$claim == str_glue(
+      "Figure 2a: bias at which RMSE of list equals RMSE of direct, N = {size}"
+    )
+  ]
+  stopifnot(length(value) == 1)
+  value
+}
+
+# One decimal place on the percentage-point scale everywhere, and the article's own en
+# dash for the minus sign, so a corrected sentence reads like the published one.
 pts <- function(x) str_replace(sprintf("%.1f", x), "^-", "–")
+
+# Fuller precision, for a reason line rather than a sentence.
+pts2 <- function(x) str_replace(sprintf("%.2f", x), "^-", "–")
 
 # The article's own Table 4 cell for the same quantity, quoted from the extraction of the
 # published page rather than retyped here.
@@ -50,9 +68,11 @@ table4 <- function(claim_id) {
 
 This note lists eleven corrections to "When to Worry about Sensitivity Bias: A Social Reference Theory and Evidence from 30 Years of List Experiments," published in the *American Political Science Review* 114(4), doi [10.1017/S0003055420000374](https://doi.org/10.1017/S0003055420000374): ten misstated numbers and one sentence that describes the estimates incorrectly as a result. **None of them changes a conclusion of the paper.** Every one is in the results text, restating a quantity the article also prints in Table 4, and in each case Table 4 is right and the sentence is not. The sentences that carry the paper's findings, and Table 4 itself, are unaffected.
 
-Every corrected value below is computed from the deposited replication archive ([10.7910/DVN/YUXHZT](https://doi.org/10.7910/DVN/YUXHZT)) at the time this document is rendered. The code and output supporting each correction are at [github.com/active-maintenance-aec/blair_coppock_moor_2020](https://github.com/active-maintenance-aec/blair_coppock_moor_2020).
+Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/YUXHZT](https://doi.org/10.7910/DVN/YUXHZT)) at the time this document is rendered, including the numbers that were not wrong. The code and output supporting each correction are at [github.com/active-maintenance-aec/blair_coppock_moor_2020](https://github.com/active-maintenance-aec/blair_coppock_moor_2020).
 
-The first six entries are substantive: the number a reader would quote is wrong by more than a point, and the first two turn on a sign. The last five restate Table 4 at whole-point precision and differ from it by less than a point.
+**Every quantity on the percentage-point scale is stated to one decimal place, and bold marks the corrections.** A corrected sentence therefore differs from the published one in more places than it is wrong: the article states most of these quantities in whole points, and setting a whole number to one decimal is not a correction. Only what is bold has changed. Where the fuller value matters it is given in the note beneath the entry.
+
+The first six entries are substantive: the number a reader would quote is wrong by more than a point, and the first two turn on a sign. The last five restate Table 4 at whole-point precision and differ from it by less than a point, which is exactly why they need a decimal to be visible at all.
 
 ## 1. The sexual orientation underreporting estimate carries the wrong sign
 
@@ -60,7 +80,7 @@ The first six entries are substantive: the number a reader would quote is wrong 
 
 Corrected:
 
-> For questions thought to be subject to overreporting, the average estimate of sensitivity bias is –2 percentage points; for underreporting, the estimate is **`r pts(mu("g7"))`** percentage points.
+> For questions thought to be subject to overreporting, the average estimate of sensitivity bias is `r pts(mu("g6"))` percentage points; for underreporting, the estimate is **`r pts(mu("g7"))`** percentage points.
 
 Table 4 prints `r table4("t4_g7_mu_estimate")` for the same quantity. The paper's conclusion for this literature, that sensitivity bias in questions about attitudes towards gays and lesbians cannot be distinguished from zero, is unaffected.
 
@@ -80,7 +100,7 @@ The sentence follows directly from the misstated figure corrected above. Underre
 
 Corrected:
 
-> The 50% predictive interval reaches from +1 to +7 points, but the 95% predictive interval admits large negative biases (**`r pts(ppi("g4", "ppi_95_lower"))`** points) to large positive biases up to **`r pts(ppi("g4", "ppi_95_upper"))`** points.
+> The 50% predictive interval reaches from +`r pts(ppi("g4", "ppi_50_lower"))` to +`r pts(ppi("g4", "ppi_50_upper"))` points, but the 95% predictive interval admits large negative biases (**`r pts(ppi("g4", "ppi_95_lower"))`** points) to large positive biases up to **`r pts(ppi("g4", "ppi_95_upper"))`** points.
 
 Table 4 prints [`r table4("t4_g4_ppi95_lower")`, `r table4("t4_g4_ppi95_upper")`] for this interval. The lower bound in the text is roughly three times the one the table carries.
 
@@ -90,7 +110,7 @@ Table 4 prints [`r table4("t4_g4_ppi95_lower")`, `r table4("t4_g4_ppi95_upper")`
 
 Corrected:
 
-> This uncertainty is also reflected in the very wide predictive intervals: the 50% interval is 13 points wide and the 95% interval is **`r pts(ppi("g2", "ppi_95_upper") - ppi("g2", "ppi_95_lower"))`** points wide.
+> This uncertainty is also reflected in the very wide predictive intervals: the 50% interval is `r pts(ppi("g2", "ppi_50_upper") - ppi("g2", "ppi_50_lower"))` points wide and the 95% interval is **`r pts(ppi("g2", "ppi_95_upper") - ppi("g2", "ppi_95_lower"))`** points wide.
 
 Table 4's own interval for turnout is [`r table4("t4_g2_ppi95_lower")`, `r table4("t4_g2_ppi95_upper")`], which is 38 points wide, so the sentence disagrees with the table as well as with the data.
 
@@ -100,7 +120,7 @@ Table 4's own interval for turnout is [`r table4("t4_g2_ppi95_lower")`, `r table
 
 Corrected:
 
-> In the bottom row of Figure 4a, we show the 50% predictive interval from –14 to **`r pts(ppi("g1", "ppi_50_upper"))`** points and the 95% predictive interval from **`r pts(ppi("g1", "ppi_95_lower"))`** to **+`r pts(ppi("g1", "ppi_95_upper"))`** points.
+> In the bottom row of Figure 4a, we show the 50% predictive interval from `r pts(ppi("g1", "ppi_50_lower"))` to **`r pts(ppi("g1", "ppi_50_upper"))`** points and the 95% predictive interval from **`r pts(ppi("g1", "ppi_95_lower"))`** to **+`r pts(ppi("g1", "ppi_95_upper"))`** points.
 
 Table 4 prints [`r table4("t4_g1_ppi50_lower")`, `r table4("t4_g1_ppi50_upper")`] and [`r table4("t4_g1_ppi95_lower")`, `r table4("t4_g1_ppi95_upper")`] for the same two intervals.
 
@@ -120,7 +140,7 @@ Table 4's own interval for religious prejudice is [`r table4("t4_g5_ci_lower")`,
 
 Corrected:
 
-> In the top row is the estimated average sensitivity bias across studies for vote-buying questions (black diamond), –8 points with a 95% credible interval stretching from –13 to **`r pts(mu("g1", "ci_upper"))`** points.
+> In the top row is the estimated average sensitivity bias across studies for vote-buying questions (black diamond), `r pts(mu("g1"))` points with a 95% credible interval stretching from `r pts(mu("g1", "ci_lower"))` to **`r pts(mu("g1", "ci_upper"))`** points.
 
 Table 4 prints `r table4("t4_g1_ci_upper")` for the same bound.
 
@@ -130,7 +150,7 @@ Table 4 prints `r table4("t4_g1_ci_upper")` for the same bound.
 
 Corrected:
 
-> Second, as shown in Table 4, the average sensitivity bias in the case of underreporting is **`r pts(mu("g10"))`** points (SE: 1 point).
+> Second, as shown in Table 4, the average sensitivity bias in the case of underreporting is **`r pts(mu("g10"))`** points (SE: `r pts(mu("g10", "std_error"))` point).
 
 Table 4 prints `r table4("t4_g10_mu_estimate")`, which rounds to –4 rather than –3 at whole-point precision.
 
@@ -140,7 +160,7 @@ Table 4 prints `r table4("t4_g10_mu_estimate")`, which rounds to –4 rather tha
 
 Corrected:
 
-> For questions about racial prejudice, our summary guess is that if anything, subjects overreport racist attitudes by approximately 4 points (95% CI **`r pts(mu("g4", "ci_lower"))`** to +9).
+> For questions about racial prejudice, our summary guess is that if anything, subjects overreport racist attitudes by approximately `r pts(mu("g4"))` points (95% CI **`r pts(mu("g4", "ci_lower"))`** to +`r pts(mu("g4", "ci_upper"))`).
 
 Table 4 prints `r table4("t4_g4_ci_lower")` for the same bound, which is –2 rather than –3 at whole-point precision.
 
@@ -150,7 +170,7 @@ Table 4 prints `r table4("t4_g4_ci_lower")` for the same bound, which is –2 ra
 
 Corrected:
 
-> Based on 21 studies, our meta-analysis estimate of the average level for studies in which overreporting is predicted is +14 points and the 50% predictive interval suggests a likely level of sensitivity bias between **+`r pts(ppi("g8", "ppi_50_lower"))`** to +24 points.
+> Based on `r n_studies("g8")` studies, our meta-analysis estimate of the average level for studies in which overreporting is predicted is +`r pts(mu("g8"))` points and the 50% predictive interval suggests a likely level of sensitivity bias between **+`r pts(ppi("g8", "ppi_50_lower"))`** to +`r pts(ppi("g8", "ppi_50_upper"))` points.
 
 Table 4 prints `r table4("t4_g8_ppi50_lower")` for the same bound.
 
@@ -160,6 +180,6 @@ Table 4 prints `r table4("t4_g8_ppi50_lower")` for the same bound.
 
 Corrected:
 
-> For a study with 1,000 subjects, the bias must be greater than **`r sprintf("%.2f", thresholds$value_points[thresholds$claim == "Figure 2a: bias at which RMSE of list equals RMSE of direct, N = 1000"])`** points to prefer a list experiment; at 2,000, the bias must be greater than 4 points.
+> For a study with 1,000 subjects, the bias must be greater than **`r pts(curve(1000))`** points to prefer a list experiment; at 2,000, the bias must be greater than `r pts(curve(2000))` points.
 
-The RMSE indifference curve the article's own Figure 2a plots crosses at `r sprintf("%.2f", thresholds$value_points[thresholds$claim == "Figure 2a: bias at which RMSE of list equals RMSE of direct, N = 1000"])` points at this sample size, so a bias of 5.5 points would not in fact prefer the list experiment. The companion bound at 2,000 subjects holds as stated.
+The RMSE indifference curve the article's own Figure 2a plots crosses at `r pts2(curve(1000))` points at this sample size, so a bias of 5.5 points would not in fact prefer the list experiment. The companion bound at 2,000 subjects crosses at `r pts2(curve(2000))` and holds as stated.
