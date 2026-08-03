@@ -840,7 +840,12 @@ if (length(uncovered_floats) > 0 || length(unlisted_floats) > 0) {
 # or that ends in a bare expression and so prints nothing under source(), passes a scan for
 # markers while checking nothing at all.
 
-claims_output <- capture.output(source(here::here("maintained", "in_text_claims.R")))
+# Sourced into its own environment. Both files necessarily read the same outputs and name
+# objects for what they hold, so a bare source() replaces this script's own `published_claims`
+# with the claims file's. Identical here, and silently wrong the moment either read diverges.
+claims_output <- capture.output(
+  source(here::here("maintained", "in_text_claims.R"), local = new.env())
+)
 
 printed_claims <-
   tibble(line = claims_output) |>
