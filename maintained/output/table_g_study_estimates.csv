@@ -61,24 +61,23 @@ Other,Over,tsuchiya2007study,Have made a blood donation,0.565 (0.021),0.558 (0.0
 Other,Over,tsuchiya2007study,Have made a blood donation,0.567 (0.021),0.529 (0.045),1803
 Other,Over,tsuchiya2007study,Have made a blood donation,0.581 (0.021),0.454 (0.049),1803
 Other,Over,tsuchiya2007study,Have made a blood donation,0.584 (0.021),0.529 (0.030),1803
-Other,Under,Janus2010,Cutting off immigration to the United States,0.394 (0.022),0.376 (0.056),911
 Other,Under,ahart2004new,I have seen a fellow employee steal $5 or more from a past employer,0.380 (0.044),0.340 (0.087),243
 Other,Under,ahart2004new,I have seen a fellow employee steal $5 or more from a past employer,0.380 (0.044),0.040 (0.088),198
 Other,Under,ahart2004new,I have stolen more than $5 from a past employer,0.170 (0.034),0.130 (0.087),243
 Other,Under,ahart2004new,I have stolen more than $5 from a past employer,0.170 (0.034),0.360 (0.088),198
 Other,Under,ahart2004new,I have taken merchandise or supplies worth more than $5 from a past employer,0.410 (0.045),0.380 (0.087),243
 Other,Under,ahart2004new,I have taken merchandise or supplies worth more than $5 from a past employer,0.410 (0.045),0.500 (0.088),198
-Other,Under,ahart2004new,"In the past, I have called in sick when I wasn’t actually ill",0.710 (0.041),0.790 (0.087),243
-Other,Under,ahart2004new,"In the past, I have called in sick when I wasn’t actually ill",0.710 (0.041),0.590 (0.088),198
 Other,Under,ahart2004new,"I’ve done slow, sloppy work on purpose",0.510 (0.045),0.100 (0.088),198
 Other,Under,ahart2004new,"I’ve done slow, sloppy work on purpose.",0.510 (0.045),0.350 (0.087),243
+Other,Under,ahart2004new,"In the past, I have called in sick when I wasn’t actually ill",0.710 (0.041),0.790 (0.087),243
+Other,Under,ahart2004new,"In the past, I have called in sick when I wasn’t actually ill",0.710 (0.041),0.590 (0.088),198
 Other,Under,ahlquist2014alien,I read or wrote a text (SMS) message while driving,0.270 (0.012),0.235 (0.066),3000
 Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""I have over-reported how good I am at taking my HIV meds to my doctor""",0.300 (0.030),0.190 (0.087),229
-Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Missed HIV meds in last month""",0.730 (0.029),0.520 (0.087),229
 Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Missed HIV meds – due to alcohol/drugs""",0.460 (0.033),0.390 (0.087),229
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Missed HIV meds in last month""",0.730 (0.029),0.520 (0.087),229
 Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Reported taking HIV meds to doctor when they were not""",0.220 (0.027),0.370 (0.087),229
-Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Sex without a condom – in last month""",0.350 (0.032),0.180 (0.087),229
 Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Sex without a condom – in last month, using drugs/alcohol""",0.210 (0.027),0.060 (0.087),229
+Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Sex without a condom – in last month""",0.350 (0.032),0.180 (0.087),229
 Other,Under,arentoft2016comparing,"Sensitive item not reported verbatim by authors in text but summarized as: ""Sex without a condom – with HIV-partners""",0.440 (0.033),0.250 (0.087),229
 Other,Under,brownback2017social,I often find myself agreeing with Donald Trump.,0.229 (0.026),0.316 (0.070),504
 Other,Under,brownback2017social,I often find myself agreeing with Donald Trump.,0.499 (0.030),0.529 (0.080),730
@@ -117,6 +116,7 @@ Other,Under,hinsley2017estimating,I have an orchid in my collection that I know 
 Other,Under,hinsley2017estimating,I have bought an orchid online that was sent to me without the correct or required CITES paperwork,0.108 (0.011),0.089 (0.076),814
 Other,Under,hinsley2017estimating,I have personally sent or carried an orchid across an international border using the wrong CITES paperwork for that plant [e.g. paperwork for a different species],0.048 (0.007),0.043 (0.076),814
 Other,Under,hinsley2017estimating,I have personally sent or carried an orchid across an international border without obtaining the required CITES paperwork,0.099 (0.010),0.065 (0.076),814
+Other,Under,Janus2010,Cutting off immigration to the United States,0.394 (0.022),0.376 (0.056),911
 Other,Under,jayasuriya2013elephants,"I do not feel safe from abduction, death and torture now",0.150 (0.007),0.290 (0.058),1864
 Other,Under,jayasuriya2013elephants,"I felt safer from abduction, death and torture in 2005 than I do now",0.150 (0.007),0.240 (0.058),1864
 Other,Under,kirchner2013techniques,Have you engaged in any undeclared work for a private person this year?,0.031 (0.008),0.003 (0.071),1103
@@ -167,15 +167,15 @@ Other,Under,wimbush1997base,"I am/was involved in the theft from my employer of 
 Other,Under,wimbush1997base,"I am/was involved in the theft from my employer of cash, supplies, or merchandise worth more than $50.00 per month.",0.024 (0.011),0.067 (0.085),353
 Race,Over,brueckner2004tess,If someone in your family married a black person,0.262 (0.027),0.187 (0.088),697
 Race,Over,heerwig2009education,I am willing to support a black Presidential candidate,0.841 (0.016),0.699 (0.081),1044
-Race,Under,Sniderman_1994,A black family moving next door to you,0.074 (0.014),-0.046 (0.103),504
-Race,Under,Sniderman_1994,Awarding college scholarships on the basis of race,0.487 (0.035),0.582 (0.103),521
-Race,Under,Sniderman_1994,Black leaders asking the government for affirmative action,0.341 (0.032),0.463 (0.101),494
-Race,Under,Sniderman_1994,Interracial dating with black teenagers taking out white teenagers,0.353 (0.025),0.230 (0.115),482
 Race,Under,aronow201list,A Spanish-speaking family moving in next door.,0.081 (0.009),0.074 (0.055),1015
 Race,Under,aronow201list,A Spanish-speaking family moving in next door.,0.108 (0.010),0.085 (0.057),1018
 Race,Under,berinsky2017telling,I believe Barack Obama is a Muslim,0.276 (0.012),0.185 (0.034),3551
 Race,Under,brueckner2005expression,Genetic differences contribute to income inequality between black and white people,0.163 (0.023),0.137 (0.077),700
 Race,Under,monson2010,A black person serving as President,0.140 (0.007),0.090 (0.050),2302
+Race,Under,Sniderman_1994,A black family moving next door to you,0.074 (0.014),-0.046 (0.103),504
+Race,Under,Sniderman_1994,Awarding college scholarships on the basis of race,0.487 (0.035),0.582 (0.103),521
+Race,Under,Sniderman_1994,Black leaders asking the government for affirmative action,0.341 (0.032),0.463 (0.101),494
+Race,Under,Sniderman_1994,Interracial dating with black teenagers taking out white teenagers,0.353 (0.025),0.230 (0.115),482
 Religion,Under,aronow201list,Muslims,0.094 (0.009),0.114 (0.057),1015
 Religion,Under,aronow201list,Muslims,0.107 (0.010),0.147 (0.058),1018
 Religion,Under,creighton2015does,Granting citizenship to a legal immigrant who is Christian.,0.109 (0.011),0.216 (0.054),1576
@@ -210,10 +210,10 @@ Sexual Orientation,Under,rayburn2003investigation,I have gotten into a physical 
 Sexual Orientation,Under,rayburn2003investigation,I have verbally threatened a gay person,0.039 (0.016),0.000 (0.085),317
 Sexual Orientation,Under,rayburn2003investigation,I have written graffiti about gay people,0.007 (0.007),0.010 (0.085),317
 Turnout,Over,comcsa2012measuring,I have voted in the elections of June 2009 for the European Parliament,0.751 (0.012),0.646 (0.053),1374
+Turnout,Over,holbrook2009social,"Voted in the elections held on November 5, 2002",0.595 (0.011),0.545 (0.050),2029
 Turnout,Over,holbrook2009social,"Voted in the Presidential election held on November 7, 2000",0.661 (0.044),0.664 (0.099),454
 Turnout,Over,holbrook2009social,"Voted in the Presidential election held on November 7, 2000",0.699 (0.016),0.668 (0.037),3077
 Turnout,Over,holbrook2009social,"Voted in the Presidential election held on November 7, 2000",0.720 (0.034),0.524 (0.118),353
-Turnout,Over,holbrook2009social,"Voted in the elections held on November 5, 2002",0.595 (0.011),0.545 (0.050),2029
 Turnout,Over,kalinin2014study,I voted in the most recent Presidential elections (March 4),0.759 (0.008),0.553 (0.037),3315
 Turnout,Over,kalinin2014study,I will vote in the most recent Presidential elections (March 4),0.671 (0.010),0.507 (0.041),3202
 Turnout,Over,simpser2017sensitive,"Voted in the presidential election of November 8, 2016",0.191 (0.012),0.247 (0.081),525
@@ -241,8 +241,8 @@ Vote Buying,Under,mizuno2012does,"Somebody from the party I voted for offered me
 ",0.138 (0.014),0.267 (0.069),1200
 NA,Over,kleykamp2017supports,A recent veteran of the wars in Iraq/Afghanistan.,0.877 (0.009),0.850 (0.037),2731
 NA,Over,kleykamp2017supports,Health care for veterans of the wars in Iraq/Afghanistan.,0.922 (0.007),0.822 (0.030),2763
-NA,Under,Bulte2018,I am regularly hit by my spouse,0.110 (0.005),0.167 (0.025),3371
 NA,Under,brooke2017sectarianism,A Shi’a Muslim family moving in next door to you,0.818 (0.028),0.411 (0.106),445
+NA,Under,Bulte2018,I am regularly hit by my spouse,0.110 (0.005),0.167 (0.025),3371
 NA,Under,de2014sensitive,A girl should be circumcised,0.300 (0.016),0.392 (0.047),838
 NA,Under,eriksen2017social,The FMO is a weak organisation as important decisions are not made by its members,0.366 (0.018),0.472 (0.072),683
 NA,Under,fergusson2017b,"You accept buying without a receipt, to avoid paying VAT",0.193 (0.005),0.137 (0.025),5709

@@ -30,8 +30,13 @@ latex_out <- knitr::is_latex_output()
 latex_only <- function(k, f) if (latex_out) f(k) else k
 
 out <- function(f) read_csv(here::here("maintained", "output", f), show_col_types = FALSE)
+# value_paper is the string the article printed, and the number of decimals in it is the
+# only record of the precision the page used. Guessed as a double it becomes a number, and
+# 0.00 and -0.04 come back as 0 and -0.04, so the column is forced to character.
 gt <- read_csv(here::here("ground_truth", "blair_coppock_moor_2020_ground_truth.csv"),
-               show_col_types = FALSE)
+               col_types = cols(value_paper = col_character(), .default = col_guess()))
+published_claims <- read_csv(here::here("ground_truth", "published_claims.csv"),
+                             col_types = cols(.default = col_character()))
 manifest <- read_csv(here::here("original_manifest.csv"), show_col_types = FALSE)
 
 # Relative to this file, not absolute: Quarto resolves figure paths against the input
@@ -45,6 +50,20 @@ n_verifiable <- sum(!is.na(gt$match_rewrite))
 n_match <- sum(gt$match_rewrite == 1, na.rm = TRUE)
 n_miss <- sum(gt$match_rewrite == 0, na.rm = TRUE)
 n_unverifiable <- sum(is.na(gt$match_rewrite))
+n_extraction <- nrow(published_claims)
+n_must_check <- sum(published_claims$claim_type %in% c("pipeline", "descriptive"))
+
+g_cells <- filter(gt, str_detect(claim, "^cells reproduced"))
+n_g_cells_published <- sum(as.numeric(g_cells$value_paper))
+n_g_cells_matched <- sum(g_cells$value_rewrite)
+
+# The unverifiable rows split three ways, and the split is counted rather than described.
+unverifiable <- gt |>
+  filter(is.na(match_rewrite)) |>
+  left_join(select(published_claims, claim_id, claim_type), by = "claim_id")
+n_no_verdict_descriptive <- sum(unverifiable$claim_type == "descriptive", na.rm = TRUE)
+n_no_verdict_unsourced <- sum(unverifiable$claim_type == "pipeline", na.rm = TRUE)
+n_no_verdict_unstated <- sum(is.na(unverifiable$claim_type))
 
 t4 <- filter(gt, table_figure == "Table 4")
 n_t4 <- nrow(t4)
@@ -80,7 +99,7 @@ This repository holds the actively maintained replication code for Blair, Coppoc
 
 **The data are not redistributed here.** The deposit is a single 1.2 MB zip at Harvard Dataverse, and that is the only copy this repository points at. `download_original.R` fetches it, verifies its checksum, and unpacks it into `original_extracted/`; `original_manifest.csv` records the Dataverse file identifier, the size in bytes, and two checksums: the MD5 of the bytes Dataverse serves for `?format=original`, which is what this code was written against, and the MD5 Dataverse publishes. Here the two agree. They do not always, so the script verifies against the served bytes and reports any disagreement. Either way the exact bytes this code ran on are pinned in version control even though the bytes themselves are not.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it. `ground_truth/build_ground_truth.R` regenerates that table from the pipeline's own output as the last step of `run_all.R`, and `ground_truth/extract_archive_values.R`, which is run on its own and takes about a quarter of an hour, records what the deposited scripts produce so the two can be compared. `original/` and `original_extracted/` are created by the download script and are deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the extraction of what the article claims, `build_ground_truth.R` regenerates the comparison table from the pipeline's own output as the last step of `run_all.R`, and two scripts that run on their own record the other side of each comparison. `extract_archive_values.R` runs the deposited code in a scratch copy, which takes about a quarter of an hour; `extract_published_values.R` reads the supplementary materials PDF positionally, which needs a copy of the published appendix and so takes its location from an environment variable. `maintained/in_text_claims.R` prints every claimed number beside the sentence that makes it. `errata.qmd` at the repository root lists the sentences in the article that the data do not support and renders to `blair_coppock_moor_2020_errata.pdf`. `original/` and `original_extracted/` are created by the download script and are deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains, so nothing in the chain is more restrictive than the archive itself. See `LICENSE`.
 
@@ -116,13 +135,15 @@ The comparison against the archive is the sharper of the two. `ground_truth/extr
 
 The `r n_miss` claims that do not match the paper fall into three groups, and none of them is a defect in the rewrite.
 
-`r n_paper_internal` are places where the article's prose disagrees with the article's own tables, and in every one of them the pipeline agrees with the table. The clearest is the turnout predictive interval: the text says the 95% interval "is 45 points wide," while Table 4 prints [-0.12, 0.26] for that interval, which is 38 points wide, and the code returns 37.4. The same pattern recurs for the vote-buying 95% predictive interval (text -27 to +10, table -25 to +8), the racial-prejudice 95% predictive interval (text -16 to +16, table -5 to +12), the width of the religious-prejudice credible interval (text 13 points, table 11), and the sexual-orientation underreporting estimate (text +2 points, table -0.01). The last of the group is the RMSE indifference threshold at N = 1,000: the article says a bias above 5.5 points prefers the list experiment, and the curve its own Figure 2a plots crosses at 5.57, so a bias of 5.55 points would not in fact prefer it. None of these is a reproduction failure. The pipeline and the tables agree with each other, and the prose agrees with neither.
+`r n_paper_internal` are places where the article's prose disagrees with the article's own tables, and in every one of them the pipeline agrees with the table. The clearest is the turnout predictive interval: the text says the 95% interval "is 45 points wide," while Table 4 prints [-0.12, 0.26] for that interval, which is 38 points wide, and the code returns 37.4. The same pattern recurs for the vote-buying 95% predictive interval (text -27 to +10, table -25 to +8), the racial-prejudice 95% predictive interval (text -16 to +16, table -5 to +12), the width of the religious-prejudice credible interval (text 13 points, table 11), and the sexual-orientation underreporting estimate (text +2 points, table -0.01). The last of the group is the RMSE indifference threshold at N = 1,000: the article says a bias above 5.5 points prefers the list experiment, and the curve its own Figure 2a plots crosses at 5.57, so a bias of 5.55 points would not in fact prefer it. None of these is a reproduction failure. The pipeline and the tables agree with each other, and the prose agrees with neither. They are listed sentence by sentence, each with the corrected wording, in `errata.qmd`, which renders to `blair_coppock_moor_2020_errata.pdf` at the repository root.
 
 `r n_environment` are cells of Table 4 where the archive and the rewrite return the same posterior summary and the article prints a different one: four predictive-interval bounds, one standard error and one credible-interval bound. All six are in the second decimal place, and five of them are in the two subsets with the fewest studies, where the posterior is least well determined. Stan and its compiler have both moved since 2020 and the deposit pins neither, so the article's draws cannot be recovered.
 
 `r n_unresolved` are the counts of studies in the second and third regions of Figure 5. The article reports `r region_n("small")`, 107 and 59 studies; the deposited `Figure5.R` and the rewrite both return `r region_n("small")`, `r region_n("medium")` and `r region_n("big")`. One study, Luks (2010), has an estimated bias of exactly 0.2000, which sits one grid step of 0.0001 above the power curve at its sample size and so falls above the curve rather than between the curves. Nothing in that computation draws at random, so the difference is not sampling noise, and what moved between 2020 and now has not been established. Recording it as unresolved is more honest than attributing it.
 
-`r n_unverifiable` recorded quantities cannot be checked. Four are the Deming regression coefficients behind Figure F.10, which the supplementary text characterizes only as "close to 1" without printing a number. Two are the thresholds Figure 3b plots, which the text describes without quoting. Two are the counts of list experiments that pass the Blair and Imai (2012) design effects test, which needs an item-count distribution the deposited study-level file does not carry. The remaining six are published floats that carry no computed quantity at all, or that the deposit contains no script and no data for: Figure 1 and Figure A.1 are drawn from respondent-level surveys the deposit does not include, and Figure D.2 comes from data the deposit does include but ships no script to plot.
+`r n_unverifiable` recorded quantities carry no verdict, for three different reasons. `r n_no_verdict_descriptive` are claims about shape, sign or spread that name a rough magnitude and no precision to match it at: "typically smaller than 10 percentage points", "approximately five points", "close to 1", "a considerable range of bias from very large to none at all". Each of those rows carries the computed distribution beside the sentence and no verdict, because a threshold the sentence never states is not ours to invent. Six of the `r n_no_verdict_unstated` remaining are quantities the article describes without printing: the four Deming regression coefficients behind Figure F.10 and the two thresholds Figure 3b plots. The `r n_no_verdict_unsourced` the deposit cannot support are the counts of list experiments that pass the Blair and Imai (2012) design effects test, which needs an item-count distribution the deposited study-level file does not carry. The last six are published floats that carry no computed quantity at all, or that the deposit contains no script and no data for: Figure 1 and Figure A.1 are drawn from respondent-level surveys the deposit does not include, and Figure D.2 has two panels drawn from data the deposit does carry and two, the variance of the control item count and its covariance with the direct question, drawn from data it does not.
+
+One further observation belongs here rather than in the errata, because it is not a token a reader would quote. Table 4's note says that studies for other categories are not broken out because they "all have fewer than three studies." That is true of the four literatures the paper names, where the only cell left out holds two studies. It is not true of the data as a whole: the residual topic categories the meta-analysis carries hold up to `r max(as.numeric(filter(gt, claim_id == "t4_note_other_categories")$value_rewrite))` studies each and are left out for a different reason than the note gives. No estimate changes.
 
 # Paper overview
 
@@ -202,9 +223,13 @@ gt |>
   latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 8))
 ```
 
+Every published number enters through `ground_truth/published_claims.csv`, the extraction: `r n_extraction` numeric claims made by the article and its supplementary materials, each classified by hand as pipeline-derived, definitional, structural, transcribed from another paper, or descriptive. The `r n_must_check` classified pipeline or descriptive are checked twice, once by a row in the ground truth and once by a block in `maintained/in_text_claims.R` that reaches the same number out of the same output files by its own path. `build_ground_truth.R` runs that file non-interactively, counts the claims it printed against the extraction, and stops if the two instruments land on different numbers. Running it rather than scanning it for markers is the point: a block that errors on its first line, or that ends in a bare expression and so prints nothing under `source()`, passes a textual check while verifying nothing.
+
+Appendix G is covered cell by cell rather than by a summary row. Its seven tables print `r n_g_cells_published` numbers across 239 study rows, read off the published pages positionally by `ground_truth/extract_published_values.R` and compared in the order the pages print them; `r n_g_cells_matched` of them reproduce. Appendix E's seven figures print no estimate on their faces, so what is checked there is how many study rows each one draws, also counted off the page.
+
 `value_paper` in `ground_truth/blair_coppock_moor_2020_ground_truth.csv` was filled only by reading the published article and its supplementary materials, and the three multi-column tables were read off rendered pages rather than a text extraction so that no cell could be mapped to the wrong column. Where the paper does not state a quantity the field is blank and `match` is `NA`. `value_rewrite` is read back out of `maintained/output/` by the build script and `value_script` out of the archive run, neither of them transcribed, and no published number is an input to any computation anywhere in `maintained/`. Nor is a published number used to select a row: the one study-level spot check is on Corstange (2017), which is the single vote-buying study with one row in Table G.1 and so can be located by name.
 
-Claims the article prints as values are matched to the last digit it prints. A handful are stated as one-sided bounds instead ("the bias must be greater than 5.5 points", "differences must exceed 20 percentage points"), and those are tested as bounds, in the direction the sentence asserts.
+Claims the article prints as values are matched to the last digit it prints, by comparing formatted strings rather than by a numeric tolerance, because a double does not record how many decimals a page used. A handful are stated as one-sided bounds instead ("the bias must be greater than 5.5 points", "differences must exceed 20 percentage points"), and those are tested as bounds, in the direction the sentence asserts. A third group names a rough magnitude and no precision at all ("approximately five points", "close to 1"), and those carry the computed quantity beside the article's figure and no verdict.
 
 ```{r gt_fails}
 gt |>
@@ -241,7 +266,8 @@ tibble(
     "text_theory_variance.R",
     "text_power_thresholds.R",
     "text_summary_stats.R",
-    "declaredesign_list_experiment.R"
+    "declaredesign_list_experiment.R",
+    "in_text_claims.R"
   ),
   Output = c(
     "Packages, the Stan helpers, the plotting helpers, the table formatters",
@@ -257,7 +283,8 @@ tibble(
     "text_theory_variance.csv",
     "text_power_thresholds.csv",
     "text_summary_stats.csv",
-    "declaredesign_simulation_summary.csv"
+    "declaredesign_simulation_summary.csv",
+    "Printed only: every claimed number beside the sentence that makes it"
   )
 ) |>
   kable(booktabs = TRUE, caption = "The maintained rewrite, one script per output.") |>

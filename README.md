@@ -48,11 +48,19 @@ are not.
 script per published table or figure, writing to `output/`, which is
 committed so a reader can compare a fresh run against it without
 downloading anything. `ground_truth/` ties every published number to the
-code that produces it. `ground_truth/build_ground_truth.R` regenerates
-that table from the pipeline’s own output as the last step of
-`run_all.R`, and `ground_truth/extract_archive_values.R`, which is run
-on its own and takes about a quarter of an hour, records what the
-deposited scripts produce so the two can be compared. `original/` and
+code that produces it: `published_claims.csv` is the extraction of what
+the article claims, `build_ground_truth.R` regenerates the comparison
+table from the pipeline’s own output as the last step of `run_all.R`,
+and two scripts that run on their own record the other side of each
+comparison. `extract_archive_values.R` runs the deposited code in a
+scratch copy, which takes about a quarter of an hour;
+`extract_published_values.R` reads the supplementary materials PDF
+positionally, which needs a copy of the published appendix and so takes
+its location from an environment variable. `maintained/in_text_claims.R`
+prints every claimed number beside the sentence that makes it.
+`errata.qmd` at the repository root lists the sentences in the article
+that the data do not support and renders to
+`blair_coppock_moor_2020_errata.pdf`. `original/` and
 `original_extracted/` are created by the download script and are
 deliberately absent from the repository. This file is the
 reproducibility report, also available as a PDF in `report/`.
@@ -131,19 +139,19 @@ and then on the pre-1.0 DeclareDesign API throughout.
 All of it is resolvable, and none of the fixes touches an estimator, a
 specification or a sample definition. With them applied to a scratch
 copy, the archive’s own `meta_analysis.R` reproduces the published Table
-4 in 84 of its 90 cells.
+4 in 84 of its 91 cells.
 
 ## Does the maintained rewrite reproduce the paper?
 
 It agrees with the deposited archive wherever the two compute the same
-quantity, and with the paper in 168 of 189 verifiable claims.
+quantity, and with the paper in 196 of 217 verifiable claims.
 
 The comparison against the archive is the sharper of the two.
 `ground_truth/extract_archive_values.R` runs the deposit from a scratch
 copy, with only the recompiled Stan model, the repaired `fct_reorder`
 call and the two `readr` argument names, and writes what its scripts
 produce into `ground_truth/`. The two pipelines compute the same
-quantity in 170 places: all of Table 4, the in-text sentences that
+quantity in 184 places: all of Table 4, the in-text sentences that
 restate it, all of Table H.8, the study counts behind Tables G.1 to G.7,
 the two indifference curves behind Figure 2 and the three region counts
 behind Figure 5. The largest absolute difference across all of them is
@@ -168,7 +176,9 @@ the sexual-orientation underreporting estimate (text +2 points, table
 experiment, and the curve its own Figure 2a plots crosses at 5.57, so a
 bias of 5.55 points would not in fact prefer it. None of these is a
 reproduction failure. The pipeline and the tables agree with each other,
-and the prose agrees with neither.
+and the prose agrees with neither. They are listed sentence by sentence,
+each with the corrected wording, in `errata.qmd`, which renders to
+`blair_coppock_moor_2020_errata.pdf` at the repository root.
 
 6 are cells of Table 4 where the archive and the rewrite return the same
 posterior summary and the article prints a different one: four
@@ -188,18 +198,34 @@ random, so the difference is not sampling noise, and what moved between
 2020 and now has not been established. Recording it as unresolved is
 more honest than attributing it.
 
-14 recorded quantities cannot be checked. Four are the Deming regression
-coefficients behind Figure F.10, which the supplementary text
-characterizes only as “close to 1” without printing a number. Two are
-the thresholds Figure 3b plots, which the text describes without
-quoting. Two are the counts of list experiments that pass the Blair and
-Imai (2012) design effects test, which needs an item-count distribution
-the deposited study-level file does not carry. The remaining six are
-published floats that carry no computed quantity at all, or that the
-deposit contains no script and no data for: Figure 1 and Figure A.1 are
-drawn from respondent-level surveys the deposit does not include, and
-Figure D.2 comes from data the deposit does include but ships no script
-to plot.
+29 recorded quantities carry no verdict, for three different reasons. 15
+are claims about shape, sign or spread that name a rough magnitude and
+no precision to match it at: “typically smaller than 10 percentage
+points”, “approximately five points”, “close to 1”, “a considerable
+range of bias from very large to none at all”. Each of those rows
+carries the computed distribution beside the sentence and no verdict,
+because a threshold the sentence never states is not ours to invent. Six
+of the 12 remaining are quantities the article describes without
+printing: the four Deming regression coefficients behind Figure F.10 and
+the two thresholds Figure 3b plots. The 2 the deposit cannot support are
+the counts of list experiments that pass the Blair and Imai (2012)
+design effects test, which needs an item-count distribution the
+deposited study-level file does not carry. The last six are published
+floats that carry no computed quantity at all, or that the deposit
+contains no script and no data for: Figure 1 and Figure A.1 are drawn
+from respondent-level surveys the deposit does not include, and Figure
+D.2 has two panels drawn from data the deposit does carry and two, the
+variance of the control item count and its covariance with the direct
+question, drawn from data it does not.
+
+One further observation belongs here rather than in the errata, because
+it is not a token a reader would quote. Table 4’s note says that studies
+for other categories are not broken out because they “all have fewer
+than three studies.” That is true of the four literatures the paper
+names, where the only cell left out holds two studies. It is not true of
+the data as a whole: the residual topic categories the meta-analysis
+carries hold up to 104 studies each and are left out for a different
+reason than the note gives. No estimate changes.
 
 # Paper overview
 
@@ -299,49 +325,88 @@ else.
 |:------------------------------|:------------------------|----:|
 | Appendix F                    | Does not match          |   1 |
 | Appendix F                    | Matches                 |   3 |
+| Appendix F                    | Not stated in the paper |   3 |
 | Figure 1                      | Not stated in the paper |   1 |
 | Figure 2a                     | Does not match          |   1 |
 | Figure 2a                     | Matches                 |   1 |
-| Figure 2b                     | Matches                 |   1 |
+| Figure 2b                     | Matches                 |   2 |
 | Figure 3a                     | Matches                 |   2 |
 | Figure 3b                     | Not stated in the paper |   2 |
 | Figure 4a                     | Matches                 |   5 |
 | Figure 5                      | Does not match          |   2 |
-| Figure 5                      | Matches                 |   1 |
+| Figure 5                      | Matches                 |   2 |
 | Figure A.1                    | Not stated in the paper |   1 |
 | Figure D.2                    | Not stated in the paper |   1 |
+| Figure E.3                    | Matches                 |   1 |
+| Figure E.4                    | Matches                 |   1 |
+| Figure E.5                    | Matches                 |   1 |
+| Figure E.6                    | Matches                 |   1 |
+| Figure E.7                    | Matches                 |   1 |
+| Figure E.8                    | Matches                 |   1 |
+| Figure E.9                    | Matches                 |   1 |
 | Figure F.10                   | Not stated in the paper |   4 |
 | Table 1                       | Not stated in the paper |   1 |
 | Table 2                       | Not stated in the paper |   1 |
 | Table 3                       | Not stated in the paper |   1 |
 | Table 4                       | Does not match          |   6 |
 | Table 4                       | Matches                 |  84 |
+| Table 4                       | Not stated in the paper |   1 |
 | Table G.1                     | Matches                 |   5 |
-| Table G.2                     | Matches                 |   1 |
-| Table G.3                     | Matches                 |   1 |
-| Table G.4                     | Matches                 |   1 |
-| Table G.5                     | Matches                 |   1 |
-| Table G.6                     | Matches                 |   1 |
-| Table G.7                     | Matches                 |   1 |
+| Table G.2                     | Matches                 |   2 |
+| Table G.3                     | Matches                 |   2 |
+| Table G.4                     | Matches                 |   2 |
+| Table G.5                     | Matches                 |   2 |
+| Table G.6                     | Matches                 |   2 |
+| Table G.7                     | Matches                 |   2 |
 | Table H.8                     | Matches                 |  36 |
 | Tables G.1 to G.7             | Matches                 |   1 |
+| Text, abstract                | Not stated in the paper |   2 |
 | Text, authoritarian regimes   | Does not match          |   1 |
-| Text, authoritarian regimes   | Matches                 |   7 |
-| Text, bias-variance trade-off | Matches                 |   4 |
-| Text, limitations             | Not stated in the paper |   2 |
+| Text, authoritarian regimes   | Matches                 |   9 |
+| Text, bias-variance trade-off | Matches                 |   6 |
+| Text, discussion              | Matches                 |   1 |
+| Text, limitations             | Not stated in the paper |   4 |
 | Text, meta-analysis design    | Matches                 |   2 |
 | Text, racial prejudice        | Does not match          |   3 |
-| Text, racial prejudice        | Matches                 |   4 |
+| Text, racial prejudice        | Matches                 |   6 |
+| Text, racial prejudice        | Not stated in the paper |   2 |
 | Text, religious prejudice     | Does not match          |   1 |
-| Text, religious prejudice     | Matches                 |   1 |
+| Text, religious prejudice     | Matches                 |   2 |
+| Text, religious prejudice     | Not stated in the paper |   1 |
 | Text, sexual orientation      | Does not match          |   1 |
-| Text, sexual orientation      | Matches                 |   1 |
+| Text, sexual orientation      | Matches                 |   2 |
+| Text, sexual orientation      | Not stated in the paper |   2 |
+| Text, summary                 | Not stated in the paper |   1 |
 | Text, turnout                 | Does not match          |   1 |
-| Text, turnout                 | Matches                 |   1 |
+| Text, turnout                 | Matches                 |   4 |
 | Text, vote buying             | Does not match          |   4 |
-| Text, vote buying             | Matches                 |   3 |
+| Text, vote buying             | Matches                 |   4 |
+| Text, vote buying             | Not stated in the paper |   1 |
 
 Ground truth claims by source and outcome.
+
+Every published number enters through
+`ground_truth/published_claims.csv`, the extraction: 313 numeric claims
+made by the article and its supplementary materials, each classified by
+hand as pipeline-derived, definitional, structural, transcribed from
+another paper, or descriptive. The 234 classified pipeline or
+descriptive are checked twice, once by a row in the ground truth and
+once by a block in `maintained/in_text_claims.R` that reaches the same
+number out of the same output files by its own path.
+`build_ground_truth.R` runs that file non-interactively, counts the
+claims it printed against the extraction, and stops if the two
+instruments land on different numbers. Running it rather than scanning
+it for markers is the point: a block that errors on its first line, or
+that ends in a bare expression and so prints nothing under `source()`,
+passes a textual check while verifying nothing.
+
+Appendix G is covered cell by cell rather than by a summary row. Its
+seven tables print 717 numbers across 239 study rows, read off the
+published pages positionally by
+`ground_truth/extract_published_values.R` and compared in the order the
+pages print them; 717 of them reproduce. Appendix E’s seven figures
+print no estimate on their faces, so what is checked there is how many
+study rows each one draws, also counted off the page.
 
 `value_paper` in `ground_truth/blair_coppock_moor_2020_ground_truth.csv`
 was filled only by reading the published article and its supplementary
@@ -357,34 +422,38 @@ Corstange (2017), which is the single vote-buying study with one row in
 Table G.1 and so can be located by name.
 
 Claims the article prints as values are matched to the last digit it
-prints. A handful are stated as one-sided bounds instead (“the bias must
+prints, by comparing formatted strings rather than by a numeric
+tolerance, because a double does not record how many decimals a page
+used. A handful are stated as one-sided bounds instead (“the bias must
 be greater than 5.5 points”, “differences must exceed 20 percentage
 points”), and those are tested as bounds, in the direction the sentence
-asserts.
+asserts. A third group names a rough magnitude and no precision at all
+(“approximately five points”, “close to 1”), and those carry the
+computed quantity beside the article’s figure and no verdict.
 
 | Source | Claim | Paper | Pipeline | Locus |
-|:---|:---|---:|---:|:---|
+|:---|:---|:---|---:|:---|
 | Table 4 | turnout overreporting 95% PPI upper | 0.26 | 0.255 | environment |
 | Table 4 | racial prejudice underreporting 95% PPI upper | 0.12 | 0.128 | environment |
 | Table 4 | sexual orientation overreporting mu SE | 0.09 | 0.079 | environment |
 | Table 4 | sexual orientation overreporting 95% CI lower | -0.19 | -0.173 | environment |
 | Table 4 | sexual orientation overreporting 95% PPI lower | -0.31 | -0.301 | environment |
 | Table 4 | sexual orientation overreporting 95% PPI upper | 0.27 | 0.264 | environment |
-| Figure 2a | bias at which list and direct RMSE are equal, N = 1000, points | 5.50 | 5.570 | paper_internal |
-| Figure 5 | studies between the two curves | 107.00 | 106.000 | unresolved |
-| Figure 5 | studies above both curves | 59.00 | 60.000 | unresolved |
-| Text, vote buying | 95% credible interval upper, points | -3.00 | -3.690 | paper_internal |
-| Text, vote buying | 50% predictive interval upper, points | -2.00 | -2.674 | paper_internal |
-| Text, vote buying | 95% predictive interval lower, points | -27.00 | -24.852 | paper_internal |
-| Text, vote buying | 95% predictive interval upper, points | 10.00 | 8.148 | paper_internal |
-| Text, turnout | width of the 95% predictive interval, points | 45.00 | 37.368 | paper_internal |
-| Text, racial prejudice | 95% credible interval lower, points | -3.00 | -2.421 | paper_internal |
-| Text, racial prejudice | 95% predictive interval lower, points | -16.00 | -5.199 | paper_internal |
-| Text, racial prejudice | 95% predictive interval upper, points | 16.00 | 12.777 | paper_internal |
-| Text, religious prejudice | width of the 95% credible interval, points | 13.00 | 11.391 | paper_internal |
-| Text, sexual orientation | underreporting meta-analysis estimate, points | 2.00 | -0.966 | paper_internal |
-| Text, authoritarian regimes | overreporting 50% predictive interval lower, points | 4.00 | 4.516 | paper_internal |
-| Appendix F | all underreporting: meta-analysis estimate, points | -3.00 | -3.517 | paper_internal |
+| Figure 2a | bias at which list and direct RMSE are equal, N = 1000, points | 5.5 | 5.570 | paper_internal |
+| Figure 5 | studies between the two curves | 107 | 106.000 | unresolved |
+| Figure 5 | studies above both curves | 59 | 60.000 | unresolved |
+| Text, vote buying | 95% credible interval upper, points | -3 | -3.690 | paper_internal |
+| Text, vote buying | 50% predictive interval upper, points | -2 | -2.674 | paper_internal |
+| Text, vote buying | 95% predictive interval lower, points | -27 | -24.852 | paper_internal |
+| Text, vote buying | 95% predictive interval upper, points | 10 | 8.148 | paper_internal |
+| Text, racial prejudice | 95% credible interval lower, points | -3 | -2.421 | paper_internal |
+| Text, racial prejudice | 95% predictive interval lower, points | -16 | -5.199 | paper_internal |
+| Text, racial prejudice | 95% predictive interval upper, points | 16 | 12.777 | paper_internal |
+| Text, sexual orientation | underreporting meta-analysis estimate, points | 2 | -0.966 | paper_internal |
+| Text, authoritarian regimes | overreporting 50% predictive interval lower, points | 4 | 4.516 | paper_internal |
+| Appendix F | all underreporting: meta-analysis estimate, points | -3 | -3.517 | paper_internal |
+| Text, turnout | width of the 95% predictive interval, points | 45 | 37.368 | paper_internal |
+| Text, religious prejudice | width of the 95% credible interval, points | 13 | 11.391 | paper_internal |
 
 Every claim that does not match, and where the difference comes from.
 
@@ -408,6 +477,7 @@ Every claim that does not match, and where the difference comes from.
 | text_power_thresholds.R | text_power_thresholds.csv |
 | text_summary_stats.R | text_summary_stats.csv |
 | declaredesign_list_experiment.R | declaredesign_simulation_summary.csv |
+| in_text_claims.R | Printed only: every claimed number beside the sentence that makes it |
 
 The maintained rewrite, one script per output.
 
@@ -536,18 +606,19 @@ curves.](maintained/output/figure_5_bias_variance_overlay.png)
 
 # Rewrite verification
 
-| Domain                             | Matching | Not matching |
-|:-----------------------------------|---------:|-------------:|
-| vote buying underreporting         |        9 |            0 |
-| turnout overreporting              |        8 |            1 |
-| racial prejudice underreporting    |        8 |            1 |
-| religious prejudice underreporting |        9 |            0 |
-| sexual orientation underreporting  |        9 |            0 |
-| sexual orientation overreporting   |        5 |            4 |
-| authoritarian underreporting       |        9 |            0 |
-| authoritarian overreporting        |        9 |            0 |
-| all results underreporting         |        9 |            0 |
-| all results overreporting          |        9 |            0 |
+| Domain | Matching | Not matching |
+|:---|---:|---:|
+| vote buying underreporting | 9 | 0 |
+| all results underreporting | 9 | 0 |
+| all results overreporting | 9 | 0 |
+| turnout overreporting | 8 | 1 |
+| racial prejudice underreporting | 8 | 1 |
+| religious prejudice underreporting | 9 | 0 |
+| sexual orientation overreporting | 5 | 4 |
+| sexual orientation underreporting | 9 | 0 |
+| authoritarian overreporting | 9 | 0 |
+| authoritarian underreporting | 9 | 0 |
+| largest domain by polarity cell Table 4 does not break out, in studies | NA | NA |
 
 Table 4, by subset: how many of the nine printed quantities the rewrite
 reproduces.

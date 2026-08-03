@@ -42,5 +42,13 @@ source(here::here("maintained", "text_summary_stats.R"))
 source(here::here("maintained", "declaredesign_list_experiment.R"))
 
 # Ground truth ----
-# Rebuilds the comparison table from the outputs above, so it cannot go stale.
+# Rebuilds the comparison table from the outputs above, so it cannot go stale. It also runs
+# maintained/in_text_claims.R non-interactively, counts the claims that file printed against
+# the published extraction, and stops if the two instruments disagree on any number.
 source(here::here("ground_truth", "build_ground_truth.R"))
+
+# In-text claims ----
+# Every number the article prints, beside the sentence that prints it and the value this
+# pipeline produces, in reading order. Sourced again here so the output is visible: the
+# ground truth captures it rather than showing it.
+source(here::here("maintained", "in_text_claims.R"))
