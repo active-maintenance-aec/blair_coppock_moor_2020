@@ -70,7 +70,7 @@ This note lists eleven corrections to "When to Worry about Sensitivity Bias: A S
 
 Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/YUXHZT](https://doi.org/10.7910/DVN/YUXHZT)) at the time this document is rendered, including the numbers that were not wrong. The code and output supporting each correction are at [github.com/active-maintenance-aec/blair_coppock_moor_2020](https://github.com/active-maintenance-aec/blair_coppock_moor_2020).
 
-**Every quantity on the percentage-point scale is stated to one decimal place, and bold marks the corrections.** A corrected sentence therefore differs from the published one in more places than it is wrong: the article states most of these quantities in whole points, and setting a whole number to one decimal is not a correction. Only what is bold has changed. Where the fuller value matters it is given in the note beneath the entry.
+**Every quantity on the percentage-point scale is stated to one decimal place, except where the article states it as an approximation, and bold marks the corrections.** A corrected sentence therefore differs from the published one in more places than it is wrong: the article states most of these quantities in whole points, and setting a whole number to one decimal is not a correction. Only what is bold has changed. A figure the article hedges as approximate keeps the article's own precision, because the approximation is the claim and such a figure is correct at the precision it states. Where the fuller value matters it is given in the note beneath the entry.
 
 The first six entries are substantive: the number a reader would quote is wrong by more than a point, and the first two turn on a sign. The last five restate Table 4 at whole-point precision and differ from it by less than a point, which is exactly why they need a decimal to be visible at all.
 
@@ -160,9 +160,9 @@ Table 4 prints `r table4("t4_g10_mu_estimate")`, which rounds to –4 rather tha
 
 Corrected:
 
-> For questions about racial prejudice, our summary guess is that if anything, subjects overreport racist attitudes by approximately `r pts(mu("g4"))` points (95% CI **`r pts(mu("g4", "ci_lower"))`** to +`r pts(mu("g4", "ci_upper"))`).
+> For questions about racial prejudice, our summary guess is that if anything, subjects overreport racist attitudes by approximately 4 points (95% CI **`r pts(mu("g4", "ci_lower"))`** to +`r pts(mu("g4", "ci_upper"))`).
 
-Table 4 prints `r table4("t4_g4_ci_lower")` for the same bound, which is –2 rather than –3 at whole-point precision.
+Table 4 prints `r table4("t4_g4_ci_lower")` for the same bound, which is –2 rather than –3 at whole-point precision. The estimate the sentence hedges as "approximately 4 points" is `r pts(mu("g4"))` and is correct at the precision it states, so it is left as published.
 
 ## 10. The lower bound of the authoritarian overreporting predictive interval
 
