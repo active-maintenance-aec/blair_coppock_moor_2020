@@ -81,8 +81,14 @@ table4 <- function(claim_id) {
 #
 # A published or corrected value that the pipeline computes stays computed: the field is
 # built with str_glue() so the number is produced when this document renders, not typed.
+#
+# claim_ids is the semicolon-separated list of ground-truth claim_id values the entry
+# corrects, and it is what makes "is this finding published?" a query rather than a reading
+# of every note. It is empty where an entry has no ground-truth row, which is normal for a
+# bibliographic or structural entry. ground_truth/build_ground_truth.R refuses to build if
+# any id here is absent from the ground truth.
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
 
   1, "quantity", "pipeline", "full",
   "The sexual orientation underreporting estimate carries the wrong sign",
@@ -93,6 +99,7 @@ entries <- tribble(
     "Table 4 prints {table4('t4_g7_mu_estimate')} for the same quantity. The paper's ",
     "conclusion for this literature, that sensitivity bias in questions about attitudes ",
     "towards gays and lesbians cannot be distinguished from zero, is unaffected."),
+  "so_under_mu",
 
   2, "description", "pipeline", "full",
   "Only one of the two sexual orientation estimates has an unexpected sign",
@@ -106,6 +113,7 @@ entries <- tribble(
     "predicted. Overreporting predicts a positive difference, and the overreporting average ",
     "is {pts(mu('g6'))} points, which is not. Both credible intervals contain zero, so the ",
     "second half of the sentence stands as published."),
+  "so_unexpected_sign",
 
   3, "quantity", "pipeline", "full",
   "The racial prejudice 95 per cent predictive interval",
@@ -115,6 +123,7 @@ entries <- tribble(
   str_glue(
     "Table 4 prints [{table4('t4_g4_ppi95_lower')}, {table4('t4_g4_ppi95_upper')}] for this ",
     "interval. The lower bound in the text is roughly three times the one the table carries."),
+  "race_ppi95_lower;race_ppi95_upper",
 
   4, "quantity", "pipeline", "full",
   "The width of the turnout 95 per cent predictive interval",
@@ -125,6 +134,7 @@ entries <- tribble(
     "Table 4's own interval for turnout is [{table4('t4_g2_ppi95_lower')}, ",
     "{table4('t4_g2_ppi95_upper')}], which is 38 points wide, so the sentence disagrees with ",
     "the table as well as with the data."),
+  "turnout_ppi95_width",
 
   5, "quantity", "pipeline", "full",
   "The vote buying predictive intervals",
@@ -135,6 +145,7 @@ entries <- tribble(
     "Table 4 prints [{table4('t4_g1_ppi50_lower')}, {table4('t4_g1_ppi50_upper')}] and ",
     "[{table4('t4_g1_ppi95_lower')}, {table4('t4_g1_ppi95_upper')}] for the same two ",
     "intervals."),
+  "vb_ppi50_upper;vb_ppi95_lower;vb_ppi95_upper",
 
   6, "quantity", "pipeline", "full",
   "The width of the religious prejudice credible interval",
@@ -144,6 +155,7 @@ entries <- tribble(
   str_glue(
     "Table 4's own interval for religious prejudice is [{table4('t4_g5_ci_lower')}, ",
     "{table4('t4_g5_ci_upper')}], which is 11 points wide."),
+  "religion_ci_width",
 
   7, "quantity", "pipeline", "full",
   "The upper bound of the vote buying credible interval",
@@ -151,6 +163,7 @@ entries <- tribble(
   "In the top row is the estimated average sensitivity bias across studies for vote-buying questions (black diamond), –8 points with a 95% credible interval stretching from –13 to [[–3]] points.",
   str_glue("In the top row is the estimated average sensitivity bias across studies for vote-buying questions (black diamond), {pts(mu('g1'))} points with a 95% credible interval stretching from {pts(mu('g1', 'ci_lower'))} to [[{pts(mu('g1', 'ci_upper'))}]] points."),
   str_glue("Table 4 prints {table4('t4_g1_ci_upper')} for the same bound."),
+  "vb_ci_upper",
 
   8, "quantity", "pipeline", "full",
   "The average bias across all underreporting studies",
@@ -160,6 +173,7 @@ entries <- tribble(
   str_glue(
     "Table 4 prints {table4('t4_g10_mu_estimate')}, which rounds to –4 rather than –3 at ",
     "whole-point precision."),
+  "appf_under_mu",
 
   9, "quantity", "pipeline", "full",
   "The lower bound of the racial prejudice credible interval",
@@ -171,6 +185,7 @@ entries <- tribble(
     "–3 at whole-point precision. The estimate the sentence hedges as \"approximately 4 ",
     "points\" is {pts(mu('g4'))} and is correct at the precision it states, so it is left as ",
     "published."),
+  "race_ci_lower",
 
   10, "quantity", "pipeline", "full",
   "The lower bound of the authoritarian overreporting predictive interval",
@@ -178,6 +193,7 @@ entries <- tribble(
   "Based on 21 studies, our meta-analysis estimate of the average level for studies in which overreporting is predicted is +14 points and the 50% predictive interval suggests a likely level of sensitivity bias between [[+4]] to +24 points.",
   str_glue("Based on {n_studies('g8')} studies, our meta-analysis estimate of the average level for studies in which overreporting is predicted is +{pts(mu('g8'))} points and the 50% predictive interval suggests a likely level of sensitivity bias between [[+{pts(ppi('g8', 'ppi_50_lower'))}]] to +{pts(ppi('g8', 'ppi_50_upper'))} points."),
   str_glue("Table 4 prints {table4('t4_g8_ppi50_lower')} for the same bound."),
+  "auth_over_ppi50_lower",
 
   11, "quantity", "pipeline", "full",
   "The sample size at which a list experiment becomes preferable on RMSE grounds",
@@ -188,11 +204,24 @@ entries <- tribble(
     "The RMSE indifference curve the article's own Figure 2a plots crosses at ",
     "{pts2(curve(1000))} points at this sample size, so a bias of 5.5 points would not in ",
     "fact prefer the list experiment. The companion bound at 2,000 subjects crosses at ",
-    "{pts2(curve(2000))} and holds as stated.")
+    "{pts2(curve(2000))} and holds as stated."),
+  "fig2a_rmse_n1000"
 ) |>
   mutate(across(c(title, published, corrected, note), as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
+
+# Every id an entry claims to correct must be a real ground-truth claim. The build gate in
+# ground_truth/build_ground_truth.R checks the same property from the other side; checking it
+# here too means a dangling id cannot survive a render.
+gt_ids <- read_csv(here("ground_truth", "blair_coppock_moor_2020_ground_truth.csv"),
+                   show_col_types = FALSE)$claim_id
+cited_ids <- entries$claim_ids |>
+  str_split(";") |>
+  unlist() |>
+  str_trim() |>
+  discard(\(x) is.na(x) | x == "")
+stopifnot(all(cited_ids %in% gt_ids))
 
 # The prose below counts the entries in words, as the note has always done.
 n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",

@@ -914,6 +914,23 @@ if (nrow(locus_gate) > 0) {
 
 write_csv(gt, here::here("ground_truth", "blair_coppock_moor_2020_ground_truth.csv"))
 
+# The errata spine's claim_ids ----
+# errata_entries.csv names, for every published entry, the ground-truth claims it corrects.
+# Every one of those ids has to exist here: a missing one is a typo or a claim that has since
+# been renamed, and a dangling reference inside a document whose whole purpose is correcting
+# the record is worse than a failed build.
+errata_spine <- here::here("errata_entries.csv")
+if (file.exists(errata_spine)) {
+  cited_ids <- read_csv(errata_spine, show_col_types = FALSE)$claim_ids |>
+    str_split(";") |>
+    unlist() |>
+    str_trim() |>
+    discard(\(x) is.na(x) | x == "")
+  dangling <- setdiff(cited_ids, gt$claim_id)
+  if (length(dangling) > 0) print(dangling)
+  stopifnot(length(dangling) == 0)
+}
+
 print(gt |> select(claim_id, table_figure, claim, value_script, value_paper, match, value_rewrite, match_rewrite, defect_locus),
       n = nrow(gt))
 
