@@ -83,8 +83,11 @@ list_exp_design <-
       type == "truthful_reporter" & D_star == 0 ~ 0L,
       type == "under_reporter" ~ 0L
     ),
-    control_item = rmvbin(n = N, margprob = control_item_probs, bincorr = control_item_corr),
-    control_item_count = control_item[, 1] + control_item[, 2] + control_item[, 3] + control_item[, 4],
+    # fabricatr 2.0 splits a matrix-valued column into control_item.1 to .4 as it
+    # stores it, so the items are summed where they are drawn. The draws are unchanged.
+    control_item_count = rowSums(
+      rmvbin(n = N, margprob = control_item_probs, bincorr = control_item_corr)
+    ),
     potential_outcomes(Y ~ control_item_count + Z * D_star)
   ) +
   declare_inquiry(pi_star = pi_star, delta = delta) +

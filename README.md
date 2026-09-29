@@ -549,9 +549,13 @@ wired in with `tidy_estimator()`, which DeclareDesign removed at version
 in one line, and the whole simulation with 500 designs and 250 bootstrap
 resamples each runs in about ninety seconds. Across those 500 simulated
 designs the direct-minus-list estimator recovers the true sensitivity
-bias of 0.1 with a simulation bias of 0.002 and power of 0.71. No number
-from this script appears in the published paper; the declaration is a
-worked example of the design the paper analyses.
+bias of 0.1 with a simulation bias of 0.001 and power of 0.68. The four
+control items are summed inside the expression that draws them, because
+fabricatr 2.0 splits a matrix-valued column into `control_item.1`
+through `control_item.4` as it stores it, so a later `control_item[, 1]`
+finds nothing. No number from this script appears in the published
+paper; the declaration is a worked example of the design the paper
+analyses.
 
 **The custom font.** Every figure in the archive sets
 `family = "ETBembo-RomanLF"`, a commercial typeface that is not in the
