@@ -210,7 +210,23 @@ entries <- tribble(
     "{pts2(curve(1000))} points at this sample size, so a bias of 5.5 points would not in ",
     "fact prefer the list experiment. The companion bound at 2,000 subjects crosses at ",
     "{pts2(curve(2000))} and holds as stated."),
-  "fig2a_rmse_n1000"
+  "fig2a_rmse_n1000",
+
+  12, "label", "reading", "brief",
+  "A misspelling in the label of Figure 3(a)",
+  "published, panel (a) of Figure 3, p. 1305",
+  "[[Difference-in-prevalance]]",
+  "[[Difference-in-prevalence]]",
+  "The figure's own caption and Note spell the word correctly; the panel label is the only place it does not.",
+  "",
+
+  13, "label", "reading", "brief",
+  "Figure 4(c) labels the racial prejudice studies with the wrong prediction",
+  "published, panel (c) of Figure 4, p. 1308",
+  "Racial prejudice ([[overreporting]])",
+  "Racial prejudice ([[underreporting]])",
+  "Table 4 lists the racial prejudice studies under Underreporting and has no overreporting row for them, and every other panel of the figure is labelled with the prediction its row of Table 4 carries.",
+  ""
 ) |>
   mutate(across(c(title, published, corrected, note), as.character))
 
@@ -237,19 +253,19 @@ stopifnot(all(cited_ids %in% gt_ids))
 
 # The prose below counts the entries in words, as the note has always done.
 n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-                    "ten", "eleven", "twelve")[nrow(entries)]
+                    "ten", "eleven", "twelve", "thirteen")[nrow(entries)]
 
 # The spine's markup, resolved for this document.
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
 ```
 
-This note lists `r n_entries_word` corrections to "When to Worry about Sensitivity Bias: A Social Reference Theory and Evidence from 30 Years of List Experiments," published in the *American Political Science Review* 114(4), doi [10.1017/S0003055420000374](https://doi.org/10.1017/S0003055420000374): ten misstated numbers and one sentence that describes the estimates incorrectly as a result. **None of them changes a conclusion of the paper.** Ten are in the article's text and one, entry 8, is in its online appendix. Every one but the last restates a quantity the article also prints in Table 4, and in each case Table 4 is right and the sentence is not. The sentences that carry the paper's findings, and Table 4 itself, are unaffected.
+This note lists `r n_entries_word` corrections to "When to Worry about Sensitivity Bias: A Social Reference Theory and Evidence from 30 Years of List Experiments," published in the *American Political Science Review* 114(4), doi [10.1017/S0003055420000374](https://doi.org/10.1017/S0003055420000374): ten misstated numbers, one sentence that describes the estimates incorrectly as a result, and two misprinted figure labels. **None of them changes a conclusion of the paper.** Ten are in the article's text, two are in its figures, and one, entry 8, is in its online appendix. Entries 1 to 10 restate a quantity the article also prints in Table 4, and in each case Table 4 is right and the sentence is not. The sentences that carry the paper's findings, and Table 4 itself, are unaffected.
 
 Every number in a corrected sentence below is computed from the deposited replication archive ([10.7910/DVN/YUXHZT](https://doi.org/10.7910/DVN/YUXHZT)) at the time this document is rendered, including the numbers that were not wrong. The code and output supporting each correction are at [github.com/active-maintenance-aec/blair_coppock_moor_2020](https://github.com/active-maintenance-aec/blair_coppock_moor_2020).
 
 **Bold marks the corrections, and only what is bold has changed.** Everything else in a corrected sentence reads exactly as the page prints it, figures included. A figure an entry does not correct is recomputed from the deposit like every other, then stated at the article's own precision, usually whole points; each one reproduces the published figure, and this document refuses to render if one does not. A corrected figure is stated to one decimal place, so a correction smaller than a point can be seen at all. Where the fuller value of an uncorrected figure matters it is given in the note beneath the entry.
 
-The first six entries are substantive: the number a reader would quote is wrong by more than a point, and the first two turn on a sign. The last five differ from the article's own figure, in Table 4 or for the last in Figure 2a, by less than a point, which is exactly why they need a decimal to be visible at all.
+The first six entries are substantive: the number a reader would quote is wrong by more than a point, and the first two turn on a sign. Entries 7 to 11 differ from the article's own figure, in Table 4 or for entry 11 in Figure 2a, by less than a point, which is exactly why they need a decimal to be visible at all. The last two are panel labels: a misspelling in Figure 3, and a panel of Figure 4 that names the wrong prediction.
 
 ```{r render-entries, results="asis"}
 # A heading is only a heading when a blank line precedes it, so every emitted entry opens
