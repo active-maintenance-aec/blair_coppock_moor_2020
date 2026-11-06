@@ -61,6 +61,10 @@ pts <- function(x) str_replace(sprintf("%.1f", x), "^-", "–")
 # Whole points, for a figure the entry does not correct: the precision the page prints.
 pts0 <- function(x) str_replace(sprintf("%.0f", x), "^-", "–")
 
+# The same figure as a plain number for corrected_values, with an ASCII minus a parser can
+# read in place of the article's en dash.
+ascii_minus <- function(x) str_replace_all(x, "–", "-")
+
 # Fuller precision, for a reason line rather than a sentence.
 pts2 <- function(x) str_replace(sprintf("%.2f", x), "^-", "–")
 
@@ -92,8 +96,15 @@ table4 <- function(claim_id) {
 # of every note. It is empty where an entry has no ground-truth row, which is normal for a
 # bibliographic or structural entry. ground_truth/build_ground_truth.R refuses to build if
 # any id here is absent from the ground truth.
+#
+# corrected_values runs parallel to claim_ids, one value per id in the same order, carrying
+# the corrected quantity as a number rather than as a sentence. The sentence already holds
+# it, but only inside prose a reader has to parse. Each value comes from the same expression
+# that glues the sentence, so the two cannot be written apart, and the gate below re-checks
+# that each one is still inside the span it belongs to. An entry of a class that changes no
+# quantity carries NA, and so does a note-form entry, which corrects nothing.
 entries <- tribble(
-  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids,
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
   1, "quantity", "pipeline", "full",
   "The sexual orientation underreporting estimate carries the wrong sign",
@@ -105,6 +116,7 @@ entries <- tribble(
     "conclusion for this literature, that sensitivity bias in questions about attitudes ",
     "towards gays and lesbians cannot be distinguished from zero, is unaffected."),
   "so_under_mu",
+  ascii_minus(str_glue("{pts(mu('g7'))}")),
 
   2, "description", "pipeline", "full",
   "Only one of the two sexual orientation estimates has an unexpected sign",
@@ -119,6 +131,7 @@ entries <- tribble(
     "is {pts(mu('g6'))} points, which is not. Both credible intervals contain zero, so the ",
     "second half of the sentence stands as published."),
   "so_unexpected_sign",
+  NA_character_,
 
   3, "quantity", "pipeline", "full",
   "The racial prejudice 95 per cent predictive interval",
@@ -129,6 +142,7 @@ entries <- tribble(
     "Table 4 prints [{table4('t4_g4_ppi95_lower')}, {table4('t4_g4_ppi95_upper')}] for this ",
     "interval. The lower bound in the text is roughly three times the one the table carries."),
   "race_ppi95_lower;race_ppi95_upper",
+  ascii_minus(str_glue("{pts(ppi('g4', 'ppi_95_lower'))};{pts(ppi('g4', 'ppi_95_upper'))}")),
 
   4, "quantity", "pipeline", "full",
   "The width of the turnout 95 per cent predictive interval",
@@ -140,6 +154,7 @@ entries <- tribble(
     "{table4('t4_g2_ppi95_upper')}], which is 38 points wide, so the sentence disagrees with ",
     "the table as well as with the data."),
   "turnout_ppi95_width",
+  ascii_minus(str_glue("{pts(ppi('g2', 'ppi_95_upper') - ppi('g2', 'ppi_95_lower'))}")),
 
   5, "quantity", "pipeline", "full",
   "The vote buying predictive intervals",
@@ -151,6 +166,7 @@ entries <- tribble(
     "[{table4('t4_g1_ppi95_lower')}, {table4('t4_g1_ppi95_upper')}] for the same two ",
     "intervals."),
   "vb_ppi50_upper;vb_ppi95_lower;vb_ppi95_upper",
+  ascii_minus(str_glue("{pts(ppi('g1', 'ppi_50_upper'))};{pts(ppi('g1', 'ppi_95_lower'))};{pts(ppi('g1', 'ppi_95_upper'))}")),
 
   6, "quantity", "pipeline", "full",
   "The width of the religious prejudice credible interval",
@@ -161,6 +177,7 @@ entries <- tribble(
     "Table 4's own interval for religious prejudice is [{table4('t4_g5_ci_lower')}, ",
     "{table4('t4_g5_ci_upper')}], which is 11 points wide."),
   "religion_ci_width",
+  ascii_minus(str_glue("{pts(mu('g5', 'ci_upper') - mu('g5', 'ci_lower'))}")),
 
   7, "quantity", "pipeline", "full",
   "The upper bound of the vote buying credible interval",
@@ -169,6 +186,7 @@ entries <- tribble(
   str_glue("In the top row is the estimated average sensitivity bias across studies for vote-buying questions (black diamond), {pts0(mu('g1'))} points with a 95% credible interval stretching from {pts0(mu('g1', 'ci_lower'))} to [[{pts(mu('g1', 'ci_upper'))}]] points."),
   str_glue("Table 4 prints {table4('t4_g1_ci_upper')} for the same bound."),
   "vb_ci_upper",
+  ascii_minus(str_glue("{pts(mu('g1', 'ci_upper'))}")),
 
   8, "quantity", "pipeline", "full",
   "The average bias across all underreporting studies",
@@ -179,6 +197,7 @@ entries <- tribble(
     "Table 4 prints {table4('t4_g10_mu_estimate')}, which rounds to –4 rather than –3 at ",
     "whole-point precision."),
   "appf_under_mu",
+  ascii_minus(str_glue("{pts(mu('g10'))}")),
 
   9, "quantity", "pipeline", "full",
   "The lower bound of the racial prejudice credible interval",
@@ -191,6 +210,7 @@ entries <- tribble(
     "points\" is {pts(mu('g4'))} and is correct at the precision it states, so it is left as ",
     "published."),
   "race_ci_lower",
+  ascii_minus(str_glue("{pts(mu('g4', 'ci_lower'))}")),
 
   10, "quantity", "pipeline", "full",
   "The lower bound of the authoritarian overreporting predictive interval",
@@ -199,6 +219,7 @@ entries <- tribble(
   str_glue("Based on {n_studies('g8')} studies, our meta-analysis estimate of the average level for studies in which overreporting is predicted is +{pts0(mu('g8'))} points and the 50% predictive interval suggests a likely level of sensitivity bias between [[+{pts(ppi('g8', 'ppi_50_lower'))}]] to +{pts0(ppi('g8', 'ppi_50_upper'))} points."),
   str_glue("Table 4 prints {table4('t4_g8_ppi50_lower')} for the same bound."),
   "auth_over_ppi50_lower",
+  ascii_minus(str_glue("{pts(ppi('g8', 'ppi_50_lower'))}")),
 
   11, "quantity", "pipeline", "full",
   "The sample size at which a list experiment becomes preferable on RMSE grounds",
@@ -211,6 +232,7 @@ entries <- tribble(
     "fact prefer the list experiment. The companion bound at 2,000 subjects crosses at ",
     "{pts2(curve(2000))} and holds as stated."),
   "fig2a_rmse_n1000",
+  ascii_minus(str_glue("{pts(curve(1000))}")),
 
   12, "label", "reading", "brief",
   "A misspelling in the label of Figure 3(a)",
@@ -219,6 +241,7 @@ entries <- tribble(
   "[[Difference-in-prevalence]]",
   "The figure's own caption and Note spell the word correctly; the panel label is the only place it does not.",
   "",
+  NA_character_,
 
   13, "label", "reading", "brief",
   "Figure 4(c) labels the racial prejudice studies with the wrong prediction",
@@ -227,6 +250,7 @@ entries <- tribble(
   "Racial prejudice ([[underreporting]])",
   "Table 4 lists the racial prejudice studies under Underreporting and has no overreporting row for them, and every other panel of the figure is labelled with the prediction its row of Table 4 carries.",
   "",
+  NA_character_,
 
   14, "bibliographic", "reference_audit", "brief",
   "The Tourangeau and Yan reference prints a first page in place of a page range",
@@ -235,6 +259,7 @@ entries <- tribble(
   "Psychological Bulletin 133 (5): [[859--83]].",
   "Crossref, doi 10.1037/0033-2909.133.5.859, gives the article's pages as 859 to 883. The corrected range keeps the reference list's own style, which drops the leading digits a last page shares with the first.",
   "",
+  NA_character_,
 
   15, "bibliographic", "reference_audit", "brief",
   "The Yu, Tian and Tang reference prints a first page in place of a page range",
@@ -242,9 +267,11 @@ entries <- tribble(
   "Metrika 67: [[251]].",
   "Metrika 67: [[251--63]].",
   "Crossref, doi 10.1007/s00184-007-0131-x, gives the article's pages as 251 to 263. The corrected range keeps the reference list's own style.",
-  ""
+  "",
+  NA_character_
 ) |>
-  mutate(across(c(title, published, corrected, note), as.character))
+  mutate(across(c(title, published, corrected, note, claim_ids, corrected_values),
+                as.character))
 
 stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
 
@@ -254,6 +281,48 @@ stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
 # own entry or a mark that does not cover what the entry changes.
 unmarked <- function(x) str_replace_all(x, "\\[\\[.*?\\]\\]", "[[]]")
 stopifnot(unmarked(entries$published) == unmarked(entries$corrected))
+
+# Gate: corrected_values agrees with the sentence it was glued into ----
+# The column and the sentence are written from one expression, so they begin in agreement
+# and this gate exists for the edit that separates them: a value moved from one marked span
+# to another, a span reworded to carry a second number, a claim id appended without its
+# value. Each value has to be inside the span it belongs to, matched by position where the
+# counts line up, and inside SOME span where an entry marks a label as well as a number and
+# its spans outnumber its values.
+marked_spans <- function(x) ascii_minus(str_match_all(x, "\\[\\[(.*?)\\]\\]")[[1]][, 2])
+
+quantified <- entries |>
+  filter(!is.na(corrected_values)) |>
+  mutate(ids = str_split(claim_ids, ";"), values = str_split(corrected_values, ";"),
+         spans = map(corrected, marked_spans))
+
+stopifnot(all(lengths(quantified$ids) == lengths(quantified$values)))
+
+value_placed <- pmap_lgl(quantified, function(...) {
+  e <- list(...)
+  if (length(e$values) == length(e$spans)) {
+    all(map2_lgl(e$values, e$spans, \(v, s) str_detect(s, fixed(v))))
+  } else {
+    all(map_lgl(e$values, \(v) any(map_lgl(e$spans, \(s) str_detect(s, fixed(v))))))
+  }
+})
+
+if (!all(value_placed)) {
+  print(quantified |> filter(!value_placed) |> select(entry, title, corrected_values, corrected))
+  stop("An entry's corrected_values are not in the spans of its corrected sentence.")
+}
+
+# An entry that changes a quantity has to say which one, and an entry that changes none may
+# not carry a value. The class is the declaration and this is where it binds. A note-form
+# entry corrects nothing, so it carries NA whatever its class. An empty claim_ids is stored
+# as "" and counts as missing here.
+has_ids <- !is.na(entries$claim_ids) & entries$claim_ids != ""
+needs_value <- entries$class == "quantity" & entries$form != "note" & has_ids
+stopifnot(
+  all(!is.na(entries$corrected_values[needs_value])),
+  all(is.na(entries$corrected_values[!needs_value])),
+  all(is.na(entries$corrected_values) | has_ids)
+)
 
 # Every id an entry claims to correct must be a real ground-truth claim. The build gate in
 # ground_truth/build_ground_truth.R checks the same property from the other side; checking it
