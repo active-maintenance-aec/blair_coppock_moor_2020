@@ -2,7 +2,7 @@
 # Output: output/declaredesign_simulation_summary.csv
 # Depends on: helpers.R
 # Description: The illustrative DeclareDesign declaration of a list experiment from the
-#   supplementary materials, rewritten against the DeclareDesign 1.0 API. Three
+#   supplementary materials, rewritten against the DeclareDesign 2.0 API. Three
 #   estimators are simulated: the direct question and the list experiment, both targeting
 #   the true prevalence rate, and the difference between them, targeting the sensitivity
 #   bias. No number here appears in the published paper; the declaration is a worked
@@ -20,7 +20,7 @@
 
 source(here::here("maintained", "helpers.R"))
 
-set.seed(42)
+set.seed(343)
 
 # Design parameters ----
 
@@ -40,7 +40,7 @@ delta <- (pr_overreporters - pr_underreporters) * pi_star
 
 # Sensitivity bias estimator ----
 # Direct minus list, with a bootstrap standard error. label_estimator is the
-# DeclareDesign 1.0 successor to tidy_estimator, which the archive used here.
+# successor to tidy_estimator, which the archive used here.
 
 estimate_sensitivity_bias <- function(data, alpha = 0.05, sims = 250) {
   direct_minus_list <- function(data) {
