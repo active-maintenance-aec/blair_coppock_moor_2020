@@ -18,7 +18,16 @@ set.seed(500)
 options(mc.cores = 4)
 
 wide_df <- read_rds(path_original("data", "estimates_df.RDS"))
-meta_model <- stan_model(file = path_original("code", "1_meta_analysis", "random_effects.stan"))
+# The deposited model is written in Stan syntax that stanc3 has since removed: a `#` comment
+# on line 1 and `real y[J]` array declarations. The model is read and translated to
+# `//` and `array[J] real y` here, leaving the deposit untouched. The translated syntax is
+# accepted by every StanHeaders from 2.26 on, and the model it defines is the same.
+meta_model_code <-
+  read_lines(path_original("code", "1_meta_analysis", "random_effects.stan")) |>
+  str_replace("^#", "//") |>
+  str_replace("^(\\s*)(real|int)(<[^>]*>)?\\s+(\\w+)\\[(\\w+)\\];", "\\1array[\\5] \\2\\3 \\4;")
+
+meta_model <- stan_model(model_code = meta_model_code, model_name = "random_effects")
 
 # Domain fits ----
 # Named for the subsets the archive calls g1 through g11; g3 is absent there too, because
