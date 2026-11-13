@@ -1,8 +1,9 @@
 # blair_coppock_moor_2020/ground_truth/build_ground_truth.R
-# Output: ground_truth/blair_coppock_moor_2020_ground_truth.csv
+# Output: ground_truth/blair_coppock_moor_2020_ground_truth.csv,
+#   ground_truth/float_coverage.csv
 # Depends on: maintained/output/ (run run_all.R first), ground_truth/published_claims.csv,
 #   ground_truth/published_g_table_cells.csv, ground_truth/published_e_figure_counts.csv,
-#   ground_truth/archive_*.csv, maintained/in_text_claims.R
+#   ground_truth/archive_*.csv, maintained/in_text_claims.R, errata_entries.csv
 # Description: Assemble the ground truth table. Every published number enters through
 #   ground_truth/published_claims.csv, the exhaustive extraction of the numeric claims in
 #   the article and its supplementary materials, and is used only as a comparison target;
@@ -770,10 +771,6 @@ gt <-
     match_rewrite = agrees(value_rewrite, value_paper, bound)
   )
 
-# The precision each claim is printed at, kept for the cross-instrument gate below, which
-# runs after the working columns have been dropped.
-claim_digits <- gt |> drop_na(claim_id) |> select(claim_id, digits)
-
 # Where a mismatch comes from ----
 # The locus travels with the row that declares it rather than being matched back on by
 # label afterwards. paper_internal: the article disagrees with itself, and the pipeline
@@ -797,7 +794,7 @@ gt <-
 gt <-
   gt |>
   select(paper_id, claim_id, table_figure, claim, value_script, value_paper, match,
-         value_rewrite, match_rewrite, defect_locus, notes)
+         value_rewrite, match_rewrite, defect_locus, notes, digits)
 
 # Gate: the ground truth may not invent a claim ----
 
@@ -847,9 +844,10 @@ claims_output <- capture.output(
   source(here::here("maintained", "in_text_claims.R"), local = new.env())
 )
 
+# excheckr closes the output with two CLAIM SUMMARY lines, which name no claim.
 printed_claims <-
   tibble(line = claims_output) |>
-  filter(str_starts(line, "CLAIM ")) |>
+  filter(str_starts(line, "CLAIM "), !str_starts(line, "CLAIM SUMMARY")) |>
   transmute(
     claim_id = str_match(line, "^CLAIM ([^ ]+) = ")[, 2],
     value_in_text = str_match(line, "^CLAIM [^ ]+ = (.*?) \\|\\| ")[, 2]
@@ -858,7 +856,13 @@ printed_claims <-
 stopifnot(!anyDuplicated(printed_claims$claim_id), !any(is.na(printed_claims$claim_id)),
           !any(is.na(printed_claims$value_in_text)))
 
-must_check <- filter(published_claims, claim_type %in% c("pipeline", "descriptive"))
+# needs_block is what the extraction declares, and it must say exactly what the claim types
+# imply: a block for every pipeline and descriptive claim and for nothing else.
+stopifnot(identical(
+  published_claims$needs_block == "TRUE",
+  published_claims$claim_type %in% c("pipeline", "descriptive")
+))
+must_check <- filter(published_claims, needs_block == "TRUE")
 
 blockless <- setdiff(must_check$claim_id, printed_claims$claim_id)
 rowless <- setdiff(must_check$claim_id, na.omit(gt$claim_id))
@@ -880,14 +884,15 @@ stopifnot(nrow(printed_claims) == nrow(must_check))
 
 # The two instruments must land on the same number. in_text_claims.R prints in the
 # article's units and rounding and never sees this file, so a disagreement is one of the
-# two being wrong and it stops the build.
+# two being wrong and it stops the build. The comparison is at the precision the claims
+# file printed, which is the article's own except for a claim an erratum corrects: excheckr
+# prints that one at the precision of the published correction, one decimal place here.
 instrument_disagreements <-
   gt |>
   drop_na(claim_id) |>
-  inner_join(claim_digits, by = "claim_id") |>
   inner_join(printed_claims, by = "claim_id") |>
   filter(!is.na(value_rewrite),
-         format_to_page(value_rewrite, value_paper, digits) != value_in_text)
+         format_to_page(value_rewrite, value_in_text) != value_in_text)
 
 if (nrow(instrument_disagreements) > 0) {
   print(select(instrument_disagreements, claim_id, value_paper, value_rewrite, value_in_text), n = 40)
@@ -912,36 +917,210 @@ if (nrow(locus_gate) > 0) {
   stop("Rows carrying a mismatch with no locus, or a locus with no mismatch.")
 }
 
-write_csv(gt, here::here("ground_truth", "blair_coppock_moor_2020_ground_truth.csv"))
-
 # The errata spine's claim_ids ----
 # errata_entries.csv names, for every published entry, the ground-truth claims it corrects.
 # Every one of those ids has to exist here: a missing one is a typo or a claim that has since
 # been renamed, and a dangling reference inside a document whose whole purpose is correcting
 # the record is worse than a failed build.
-errata_spine <- here::here("errata_entries.csv")
-if (file.exists(errata_spine)) {
-  cited_ids <- read_csv(errata_spine, show_col_types = FALSE)$claim_ids |>
-    str_split(";") |>
-    unlist() |>
-    str_trim() |>
-    discard(\(x) is.na(x) | x == "")
-  dangling <- setdiff(cited_ids, gt$claim_id)
-  if (length(dangling) > 0) print(dangling)
-  stopifnot(length(dangling) == 0)
+cited_ids <-
+  read_csv(here::here("errata_entries.csv"), col_types = cols(.default = col_character()))$claim_ids |>
+  str_split(";") |>
+  unlist() |>
+  str_trim() |>
+  discard(\(x) is.na(x) | x == "")
+dangling <- setdiff(cited_ids, gt$claim_id)
+if (length(dangling) > 0) print(dangling)
+stopifnot(length(dangling) == 0)
+
+# Claim type, printed precision and location, carried from the extraction ----
+# A row with a claim id takes all three from published_claims.csv. A float cell has no
+# extraction row, so it is a pipeline quantity, its precision is read off the string the
+# article prints, and it keeps the float's label as its location.
+gt <-
+  gt |>
+  left_join(
+    published_claims |>
+      transmute(claim_id, claim_type, extracted_digits = as.integer(digits),
+                extracted_location = location),
+    by = "claim_id"
+  )
+
+# The digit overrides this file carries are recorded in the extraction too, and the two
+# have to agree wherever both exist.
+digit_disagreement <- filter(gt, !is.na(digits), !is.na(claim_id),
+                             is.na(extracted_digits) | digits != extracted_digits)
+if (nrow(digit_disagreement) > 0) {
+  print(select(digit_disagreement, claim_id, value_paper, digits, extracted_digits))
+  stop(str_glue("{nrow(digit_disagreement)} claims carry a digit count the extraction does not."))
 }
 
-print(gt |> select(claim_id, table_figure, claim, value_script, value_paper, match, value_rewrite, match_rewrite, defect_locus),
+gt <-
+  gt |>
+  mutate(
+    digits = if_else(is.na(claim_id), excheckr::claim_digits(value_paper), extracted_digits),
+    claim_type = if_else(is.na(claim_id), "pipeline", claim_type),
+    location = if_else(is.na(claim_id), table_figure, extracted_location)
+  )
+
+stopifnot(!anyNA(gt$claim_type), !anyNA(gt$location))
+
+# Disposition: what became of each defect ----
+# corrected_here is computed from the errata spine and never typed. Every other judgment is
+# one the README already states, keyed by locus; a defect nobody has judged stays NA.
+disposition_judgments <- tribble(
+  ~defect_locus, ~judgment, ~disposition_reason,
+  "environment", "documented_only",
+    "The README reports that the archive's own meta_analysis.R returns the same posterior summary as the rewrite, and that Stan and its compiler have moved since 2020 so the article's draws cannot be recovered; Table 4 is not corrected.",
+  "unresolved", "documented_only",
+    "The README reports that the deposited Figure5.R and the rewrite return the same count, one study from the published one, and that the cause has not been established; no erratum is issued.",
+  "archive", "documented_only",
+    "The README records that the deposit carries no script or data for this quantity, so neither the archive nor the rewrite can reproduce it; nothing shows the article to be wrong."
+)
+
+gt <-
+  gt |>
+  left_join(disposition_judgments, by = "defect_locus") |>
+  mutate(
+    corrected_here = !is.na(claim_id) & claim_id %in% cited_ids,
+    disposition = case_when(
+      is.na(defect_locus) ~ NA_character_,
+      corrected_here ~ "corrected_here",
+      .default = judgment
+    ),
+    disposition_reason = if_else(
+      !is.na(disposition) & disposition != "corrected_here", disposition_reason, NA_character_
+    )
+  )
+
+undisposed <- filter(gt, defect_locus == "paper_internal", is.na(disposition))
+if (nrow(undisposed) > 0) {
+  print(select(undisposed, claim_id, table_figure, claim), n = nrow(undisposed))
+  stop(str_glue("{nrow(undisposed)} paper_internal rows carry no disposition."))
+}
+print(count(filter(gt, !is.na(defect_locus)), defect_locus, disposition))
+
+# Float coverage ----
+# One row per published float, from the float inventory above with each panel folded into
+# the float that prints it. A table's published_numbers counts the cells it prints; covered
+# counts the cells compared above and the two reproduced columns the cells each pipeline
+# matches. A figure prints no numbers on its face, so what it carries is a count of plotted
+# estimates, reproduced when the rewrite draws as many as the page does.
+float_of <- function(label) str_remove(label, "(?<=[0-9])[a-h]$")
+
+floats <-
+  tibble(float = unique(float_of(setdiff(published_float_inventory, "Tables G.1 to G.7"))))
+
+table_cells <-
+  gt |>
+  filter(table_figure %in% c("Table 4", "Table H.8") & str_detect(claim_id, "^(t4_g|h8_)")) |>
+  summarize(
+    published_numbers = n(),
+    covered = sum(!is.na(value_paper)),
+    reproduced_by_rewrite = sum(match_rewrite == 1, na.rm = TRUE),
+    reproduced_by_archive = sum(match == 1, na.rm = TRUE),
+    .by = table_figure
+  )
+
+# The Appendix G cells are compared in one summary row per table, whose value_paper is the
+# count of cells the page prints and value_rewrite the count reproduced. The archive's
+# table_of_data.R is read back only for its row count, so it reproduces no cell here.
+g_cells <-
+  g_cell_rows |>
+  transmute(table_figure, published_numbers = as.integer(value_paper),
+            covered = published_numbers, reproduced_by_rewrite = as.integer(value_rewrite),
+            reproduced_by_archive = NA_integer_)
+
+# Transcribed tables: printed numbers the extraction carries and nothing compares.
+transcribed_tables <-
+  published_claims |>
+  filter(location %in% c("Table 2", "Table 3")) |>
+  count(table_figure = location, name = "published_numbers") |>
+  mutate(covered = 0L, reproduced_by_rewrite = 0L, reproduced_by_archive = 0L)
+
+e_counts <-
+  gt |>
+  filter(str_detect(claim_id, "^fig_e[0-9]_studies_plotted$")) |>
+  transmute(table_figure, plotted = as.integer(value_paper),
+            plotted_reproduced = if_else(match_rewrite == 1, plotted, 0L))
+
+f5_total <- filter(gt, claim_id == "fig5_total_studies")
+
+plotted_counts <- bind_rows(
+  e_counts,
+  # Figure 4's eight panels are the full size Figures E.3 to E.9, where the study rows were
+  # counted off the page.
+  tibble(table_figure = "Figure 4", plotted = sum(e_counts$plotted),
+         plotted_reproduced = sum(e_counts$plotted_reproduced)),
+  tibble(table_figure = "Figure 5", plotted = as.integer(f5_total$value_paper),
+         plotted_reproduced = if_else(f5_total$match_rewrite == 1, plotted, 0L)),
+  tibble(table_figure = "Figure 1", plotted = 4L, plotted_reproduced = 0L)
+)
+
+float_notes <- c(
+  "Table 1" = "A conceptual table of the four criteria applied to four literatures; prints no numbers.",
+  "Table 2" = "Fourteen counts transcribed from Kramon (2016); the deposit carries no respondent level data for them.",
+  "Table 3" = "Every figure is quoted from the paper that proposed the design; nothing in the deposit computes any of them.",
+  "Figure 1" = "Prints no numbers on its face; plotted counts the list and direct estimates for two items. The deposit contains no script and no respondent level data for it.",
+  "Figure 2" = "Draws continuous curves rather than discrete estimates; the thresholds the text reads off them are covered as claims.",
+  "Figure 3" = "Draws continuous curves rather than discrete estimates; the thresholds the text reads off panel (a) are covered as claims.",
+  "Figure 4" = "Prints no numbers on its face; plotted counts the study estimates its eight panels draw, counted off the full size Figures E.3 to E.9. Each panel also draws the average and its predictive intervals.",
+  "Figure 5" = "Prints no numbers on its face; plotted counts the studies it draws. The three region counts the text reads off it are covered as claims.",
+  "Figure A.1" = "Drawn from Afrobarometer data the deposit does not include, and by no deposited script.",
+  "Figure D.2" = "Histograms of four simulation parameters; two are not in the deposited data and no deposited script draws any of them.",
+  "Figure F.10" = "Prints no numbers on its face and the page gives no count of what it plots; the sentence about it is covered as a descriptive claim."
+)
+
+float_coverage <-
+  floats |>
+  left_join(bind_rows(table_cells, g_cells, transcribed_tables), by = c("float" = "table_figure")) |>
+  left_join(plotted_counts, by = c("float" = "table_figure")) |>
+  mutate(
+    is_figure = str_starts(float, "Figure"),
+    across(c(published_numbers, covered, reproduced_by_rewrite), \(x) replace_na(x, 0L)),
+    reproduced_by_archive = if_else(is.na(reproduced_by_archive) & published_numbers == 0,
+                                    0L, reproduced_by_archive),
+    plotted = if_else(is_figure, plotted, NA_integer_),
+    plotted_reproduced = if_else(is_figure, plotted_reproduced, NA_integer_),
+    note = unname(float_notes[float])
+  ) |>
+  select(float, published_numbers, covered, reproduced_by_rewrite, reproduced_by_archive,
+         plotted, plotted_reproduced, note)
+
+# Every table the pipeline can reach is covered cell for cell, and every figure carries
+# either a plotted count or a note saying why it has none.
+stopifnot(
+  nrow(float_coverage) == nrow(floats),
+  with(filter(float_coverage, float %in% c("Table 4", "Table H.8") | str_starts(float, "Table G")),
+       all(published_numbers > 0 & covered == published_numbers)),
+  with(filter(float_coverage, str_starts(float, "Figure")), all(!is.na(plotted) | !is.na(note)))
+)
+
+write_csv(float_coverage, here::here("ground_truth", "float_coverage.csv"))
+print(float_coverage, n = nrow(float_coverage), width = 200)
+
+# The ground truth, in the canonical column order ----
+# match and match_rewrite are written as logicals. holds is NA throughout: the sentences
+# that reduce to a truth value carry it in match_rewrite, as they always have.
+gt <-
+  gt |>
+  mutate(across(c(match, match_rewrite), as.logical), holds = NA) |>
+  select(paper_id, claim_id, location, claim_type, claim, value_paper, digits, value_script,
+         match, value_rewrite, match_rewrite, holds, defect_locus, disposition,
+         disposition_reason, notes)
+
+write_csv(gt, here::here("ground_truth", "blair_coppock_moor_2020_ground_truth.csv"))
+
+print(gt |> select(claim_id, location, claim, value_script, value_paper, match, value_rewrite, match_rewrite, defect_locus, disposition),
       n = nrow(gt))
 
-print(count(gt, table_figure, match_rewrite), n = 60)
+print(count(gt, location, match_rewrite), n = 80)
 print(count(gt, defect_locus))
 print(count(published_claims, claim_type))
 
 print(str_glue(
-  "Ground truth: {nrow(gt)} rows over {n_distinct(gt$table_figure)} published floats and ",
+  "Ground truth: {nrow(gt)} rows over {n_distinct(gt$location)} published floats and ",
   "text sections. Extraction: {nrow(published_claims)} published claims, of which ",
   "{nrow(must_check)} are pipeline or descriptive and are checked twice. ",
-  "Rewrite matches published: {sum(gt$match_rewrite == 1, na.rm = TRUE)} of ",
+  "Rewrite matches published: {sum(gt$match_rewrite, na.rm = TRUE)} of ",
   "{sum(!is.na(gt$match_rewrite))} comparable."
 ))

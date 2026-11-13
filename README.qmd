@@ -59,15 +59,15 @@ g_cells <- filter(gt, str_detect(claim, "^cells reproduced"))
 n_g_cells_published <- sum(as.numeric(g_cells$value_paper))
 n_g_cells_matched <- sum(g_cells$value_rewrite)
 
-# The unverifiable rows split three ways, and the split is counted rather than described.
-unverifiable <- gt |>
-  filter(is.na(match_rewrite)) |>
-  left_join(select(published_claims, claim_id, claim_type), by = "claim_id")
-n_no_verdict_descriptive <- sum(unverifiable$claim_type == "descriptive", na.rm = TRUE)
-n_no_verdict_unsourced <- sum(unverifiable$claim_type == "pipeline", na.rm = TRUE)
-n_no_verdict_unstated <- sum(is.na(unverifiable$claim_type))
+# The unverifiable rows split three ways, and the split is counted rather than described. A
+# row with no claim id is a quantity the extraction does not carry, which the ground truth
+# types as pipeline.
+unverifiable <- filter(gt, is.na(match_rewrite))
+n_no_verdict_descriptive <- sum(unverifiable$claim_type == "descriptive")
+n_no_verdict_unsourced <- sum(unverifiable$claim_type == "pipeline" & !is.na(unverifiable$claim_id))
+n_no_verdict_unstated <- sum(is.na(unverifiable$claim_id))
 
-t4 <- filter(gt, table_figure == "Table 4")
+t4 <- filter(gt, location == "Table 4")
 n_t4 <- nrow(t4)
 n_t4_miss <- sum(t4$match_rewrite == 0)
 n_t4_archive_match <- sum(t4$match == 1, na.rm = TRUE)
@@ -101,7 +101,7 @@ This repository holds the actively maintained replication code for Blair, Coppoc
 
 **The data are not redistributed here.** The deposit is a single 1.2 MB zip at Harvard Dataverse, and that is the only copy this repository points at. `download_original.R` fetches it, verifies its checksum, and unpacks it into `original_extracted/`; `original_manifest.csv` records the Dataverse file identifier, the size in bytes, and two checksums: the MD5 of the bytes Dataverse serves for `?format=original`, which is what this code was written against, and the MD5 Dataverse publishes. Here the two agree. They do not always, so the script verifies against the served bytes and reports any disagreement. Either way the exact bytes this code ran on are pinned in version control even though the bytes themselves are not.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the extraction of what the article claims, `build_ground_truth.R` regenerates the comparison table from the pipeline's own output as the last step of `run_all.R`, and two scripts that run on their own record the other side of each comparison. `extract_archive_values.R` runs the deposited code in a scratch copy, which takes about a quarter of an hour; `extract_published_values.R` reads the supplementary materials PDF positionally, which needs a copy of the published appendix and so takes its location from an environment variable. `maintained/in_text_claims.R` prints every claimed number beside the sentence that makes it. `errata.qmd` at the repository root lists the sentences in the article that the data do not support and renders to `blair_coppock_moor_2020_errata.pdf`. `original/` and `original_extracted/` are created by the download script and are deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the extraction of what the article claims, `build_ground_truth.R` regenerates the comparison table from the pipeline's own output as the last step of `run_all.R`, and two scripts that run on their own record the other side of each comparison. `extract_archive_values.R` runs the deposited code in a scratch copy, which takes about a quarter of an hour, and records each deposited script's outcome in `archive_run_status.csv` and what the run did to a deposited file in `archive_overwrites.csv`; `extract_published_values.R` reads the supplementary materials PDF positionally, which needs a copy of the published appendix and so takes its location from an environment variable. `maintained/in_text_claims.R` prints every claimed number beside the sentence that makes it. `errata.qmd` at the repository root lists the sentences in the article that the data do not support and renders to `blair_coppock_moor_2020_errata.pdf`. `original/` and `original_extracted/` are created by the download script and are deliberately absent from the repository. This file is the reproducibility report, also available as a PDF in `report/`.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains, so nothing in the chain is more restrictive than the archive itself. See `LICENSE`.
 
@@ -219,7 +219,9 @@ gt |>
     match_rewrite == 1 ~ "Matches",
     TRUE ~ "Does not match"
   )) |>
-  count(`Table or figure` = table_figure, Status = status) |>
+  # A float keeps its label; every other location is a passage of the text.
+  mutate(where = if_else(str_starts(location, "Table|Figure"), location, "Text")) |>
+  count(`Table or figure` = where, Status = status) |>
   rename(N = n) |>
   kable(booktabs = TRUE, caption = "Ground truth claims by source and outcome.") |>
   latex_only(\(k) kable_styling(k, latex_options = c("striped", "hold_position"), font_size = 8))
@@ -237,7 +239,7 @@ Claims the article prints as values are matched to the last digit it prints, by 
 gt |>
   filter(match_rewrite == 0) |>
   transmute(
-    Source = table_figure,
+    Source = location,
     Claim = claim,
     Paper = value_paper,
     Pipeline = round(value_rewrite, 3),

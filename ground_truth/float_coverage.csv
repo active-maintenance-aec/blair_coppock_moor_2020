@@ -1,0 +1,28 @@
+float,published_numbers,covered,reproduced_by_rewrite,reproduced_by_archive,plotted,plotted_reproduced,note
+Table 1,0,0,0,0,NA,NA,A conceptual table of the four criteria applied to four literatures; prints no numbers.
+Table 2,14,0,0,0,NA,NA,Fourteen counts transcribed from Kramon (2016); the deposit carries no respondent level data for them.
+Table 3,10,0,0,0,NA,NA,Every figure is quoted from the paper that proposed the design; nothing in the deposit computes any of them.
+Table 4,90,90,84,84,NA,NA,NA
+Figure 1,0,0,0,0,4,0,Prints no numbers on its face; plotted counts the list and direct estimates for two items. The deposit contains no script and no respondent level data for it.
+Figure 2,0,0,0,0,NA,NA,Draws continuous curves rather than discrete estimates; the thresholds the text reads off them are covered as claims.
+Figure 3,0,0,0,0,NA,NA,Draws continuous curves rather than discrete estimates; the thresholds the text reads off panel (a) are covered as claims.
+Figure 4,0,0,0,0,105,105,"Prints no numbers on its face; plotted counts the study estimates its eight panels draw, counted off the full size Figures E.3 to E.9. Each panel also draws the average and its predictive intervals."
+Figure 5,0,0,0,0,264,264,Prints no numbers on its face; plotted counts the studies it draws. The three region counts the text reads off it are covered as claims.
+Figure A.1,0,0,0,0,NA,NA,"Drawn from Afrobarometer data the deposit does not include, and by no deposited script."
+Figure D.2,0,0,0,0,NA,NA,Histograms of four simulation parameters; two are not in the deposited data and no deposited script draws any of them.
+Figure E.3,0,0,0,0,19,19,NA
+Figure E.4,0,0,0,0,9,9,NA
+Figure E.5,0,0,0,0,21,21,NA
+Figure E.6,0,0,0,0,12,12,NA
+Figure E.7,0,0,0,0,13,13,NA
+Figure E.8,0,0,0,0,21,21,NA
+Figure E.9,0,0,0,0,10,10,NA
+Figure F.10,0,0,0,0,NA,NA,Prints no numbers on its face and the page gives no count of what it plots; the sentence about it is covered as a descriptive claim.
+Table G.1,57,57,57,NA,NA,NA,NA
+Table G.2,33,33,33,NA,NA,NA,NA
+Table G.3,63,63,63,NA,NA,NA,NA
+Table G.4,36,36,36,NA,NA,NA,NA
+Table G.5,102,102,102,NA,NA,NA,NA
+Table G.6,30,30,30,NA,NA,NA,NA
+Table G.7,396,396,396,NA,NA,NA,NA
+Table H.8,36,36,36,36,NA,NA,NA

@@ -16,7 +16,10 @@
 - [Rewrite verification](#rewrite-verification)
 - [R environment](#r-environment)
 
-**Archived at Zenodo:** [doi:10.5281/zenodo.24168286](https://doi.org/10.5281/zenodo.24168286). This DOI always resolves to the latest release of the maintained version.
+**Archived at Zenodo:**
+[doi:10.5281/zenodo.24168286](https://doi.org/10.5281/zenodo.24168286).
+This DOI always resolves to the latest release of the maintained
+version.
 
 *Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
 
@@ -55,7 +58,9 @@ the article claims, `build_ground_truth.R` regenerates the comparison
 table from the pipeline’s own output as the last step of `run_all.R`,
 and two scripts that run on their own record the other side of each
 comparison. `extract_archive_values.R` runs the deposited code in a
-scratch copy, which takes about a quarter of an hour;
+scratch copy, which takes about a quarter of an hour, and records each
+deposited script’s outcome in `archive_run_status.csv` and what the run
+did to a deposited file in `archive_overwrites.csv`;
 `extract_published_values.R` reads the supplementary materials PDF
 positionally, which needs a copy of the published appendix and so takes
 its location from an environment variable. `maintained/in_text_claims.R`
@@ -323,67 +328,44 @@ else.
 
 # Ground truth summary
 
-| Table or figure               | Status                  |   N |
-|:------------------------------|:------------------------|----:|
-| Appendix F                    | Does not match          |   1 |
-| Appendix F                    | Matches                 |   3 |
-| Appendix F                    | Not stated in the paper |   3 |
-| Figure 1                      | Not stated in the paper |   1 |
-| Figure 2a                     | Does not match          |   1 |
-| Figure 2a                     | Matches                 |   1 |
-| Figure 2b                     | Matches                 |   2 |
-| Figure 3a                     | Matches                 |   2 |
-| Figure 3b                     | Not stated in the paper |   2 |
-| Figure 4a                     | Matches                 |   5 |
-| Figure 5                      | Does not match          |   2 |
-| Figure 5                      | Matches                 |   2 |
-| Figure A.1                    | Not stated in the paper |   1 |
-| Figure D.2                    | Not stated in the paper |   1 |
-| Figure E.3                    | Matches                 |   1 |
-| Figure E.4                    | Matches                 |   1 |
-| Figure E.5                    | Matches                 |   1 |
-| Figure E.6                    | Matches                 |   1 |
-| Figure E.7                    | Matches                 |   1 |
-| Figure E.8                    | Matches                 |   1 |
-| Figure E.9                    | Matches                 |   1 |
-| Figure F.10                   | Not stated in the paper |   4 |
-| Table 1                       | Not stated in the paper |   1 |
-| Table 2                       | Not stated in the paper |   1 |
-| Table 3                       | Not stated in the paper |   1 |
-| Table 4                       | Does not match          |   6 |
-| Table 4                       | Matches                 |  84 |
-| Table 4                       | Not stated in the paper |   1 |
-| Table G.1                     | Matches                 |   5 |
-| Table G.2                     | Matches                 |   2 |
-| Table G.3                     | Matches                 |   2 |
-| Table G.4                     | Matches                 |   2 |
-| Table G.5                     | Matches                 |   2 |
-| Table G.6                     | Matches                 |   2 |
-| Table G.7                     | Matches                 |   2 |
-| Table H.8                     | Matches                 |  36 |
-| Tables G.1 to G.7             | Matches                 |   1 |
-| Text, abstract                | Not stated in the paper |   2 |
-| Text, authoritarian regimes   | Does not match          |   1 |
-| Text, authoritarian regimes   | Matches                 |   9 |
-| Text, bias-variance trade-off | Matches                 |   6 |
-| Text, discussion              | Matches                 |   1 |
-| Text, limitations             | Not stated in the paper |   4 |
-| Text, meta-analysis design    | Matches                 |   2 |
-| Text, racial prejudice        | Does not match          |   3 |
-| Text, racial prejudice        | Matches                 |   6 |
-| Text, racial prejudice        | Not stated in the paper |   2 |
-| Text, religious prejudice     | Does not match          |   1 |
-| Text, religious prejudice     | Matches                 |   2 |
-| Text, religious prejudice     | Not stated in the paper |   1 |
-| Text, sexual orientation      | Does not match          |   1 |
-| Text, sexual orientation      | Matches                 |   2 |
-| Text, sexual orientation      | Not stated in the paper |   2 |
-| Text, summary                 | Not stated in the paper |   1 |
-| Text, turnout                 | Does not match          |   1 |
-| Text, turnout                 | Matches                 |   4 |
-| Text, vote buying             | Does not match          |   4 |
-| Text, vote buying             | Matches                 |   4 |
-| Text, vote buying             | Not stated in the paper |   1 |
+| Table or figure   | Status                  |   N |
+|:------------------|:------------------------|----:|
+| Figure 1          | Not stated in the paper |   1 |
+| Figure 2a         | Does not match          |   1 |
+| Figure 2a         | Matches                 |   1 |
+| Figure 2b         | Matches                 |   2 |
+| Figure 3a         | Matches                 |   2 |
+| Figure 3b         | Not stated in the paper |   2 |
+| Figure 5          | Does not match          |   2 |
+| Figure 5          | Matches                 |   2 |
+| Figure A.1        | Not stated in the paper |   1 |
+| Figure D.2        | Not stated in the paper |   1 |
+| Figure E.3        | Matches                 |   1 |
+| Figure E.4        | Matches                 |   1 |
+| Figure E.5        | Matches                 |   1 |
+| Figure E.6        | Matches                 |   1 |
+| Figure E.7        | Matches                 |   1 |
+| Figure E.8        | Matches                 |   1 |
+| Figure E.9        | Matches                 |   1 |
+| Figure F.10       | Not stated in the paper |   4 |
+| Table 1           | Not stated in the paper |   1 |
+| Table 2           | Not stated in the paper |   1 |
+| Table 3           | Not stated in the paper |   1 |
+| Table 4           | Does not match          |   6 |
+| Table 4           | Matches                 |  84 |
+| Table 4           | Not stated in the paper |   1 |
+| Table G.1         | Matches                 |   5 |
+| Table G.2         | Matches                 |   2 |
+| Table G.3         | Matches                 |   2 |
+| Table G.4         | Matches                 |   2 |
+| Table G.5         | Matches                 |   2 |
+| Table G.6         | Matches                 |   2 |
+| Table G.7         | Matches                 |   2 |
+| Table H.8         | Matches                 |  36 |
+| Tables G.1 to G.7 | Matches                 |   1 |
+| Text              | Does not match          |  12 |
+| Text              | Matches                 |  44 |
+| Text              | Not stated in the paper |  16 |
 
 Ground truth claims by source and outcome.
 
@@ -444,18 +426,18 @@ computed quantity beside the article’s figure and no verdict.
 | Figure 2a | bias at which list and direct RMSE are equal, N = 1000, points | 5.5 | 5.570 | paper_internal |
 | Figure 5 | studies between the two curves | 107 | 106.000 | unresolved |
 | Figure 5 | studies above both curves | 59 | 60.000 | unresolved |
-| Text, vote buying | 95% credible interval upper, points | -3 | -3.690 | paper_internal |
-| Text, vote buying | 50% predictive interval upper, points | -2 | -2.674 | paper_internal |
-| Text, vote buying | 95% predictive interval lower, points | -27 | -24.852 | paper_internal |
-| Text, vote buying | 95% predictive interval upper, points | 10 | 8.148 | paper_internal |
-| Text, racial prejudice | 95% credible interval lower, points | -3 | -2.421 | paper_internal |
-| Text, racial prejudice | 95% predictive interval lower, points | -16 | -5.199 | paper_internal |
-| Text, racial prejudice | 95% predictive interval upper, points | 16 | 12.777 | paper_internal |
-| Text, sexual orientation | underreporting meta-analysis estimate, points | 2 | -0.966 | paper_internal |
-| Text, authoritarian regimes | overreporting 50% predictive interval lower, points | 4 | 4.516 | paper_internal |
+| Results, Clientelism | 95% credible interval upper, points | -3 | -3.690 | paper_internal |
+| Results, Clientelism | 50% predictive interval upper, points | -2 | -2.674 | paper_internal |
+| Results, Clientelism | 95% predictive interval lower, points | -27 | -24.852 | paper_internal |
+| Results, Clientelism | 95% predictive interval upper, points | 10 | 8.148 | paper_internal |
+| Results, Prejudice | 95% credible interval lower, points | -3 | -2.421 | paper_internal |
+| Results, Prejudice | 95% predictive interval lower, points | -16 | -5.199 | paper_internal |
+| Results, Prejudice | 95% predictive interval upper, points | 16 | 12.777 | paper_internal |
+| Results, Prejudice | underreporting meta-analysis estimate, points | 2 | -0.966 | paper_internal |
+| Results, Authoritarian Regimes | overreporting 50% predictive interval lower, points | 4 | 4.516 | paper_internal |
 | Appendix F | all underreporting: meta-analysis estimate, points | -3 | -3.517 | paper_internal |
-| Text, turnout | width of the 95% predictive interval, points | 45 | 37.368 | paper_internal |
-| Text, religious prejudice | width of the 95% credible interval, points | 13 | 11.391 | paper_internal |
+| Results, Voter Turnout | width of the 95% predictive interval, points | 45 | 37.368 | paper_internal |
+| Results, Prejudice | width of the 95% credible interval, points | 13 | 11.391 | paper_internal |
 
 Every claim that does not match, and where the difference comes from.
 
@@ -648,7 +630,7 @@ noise within a version.
 
 | Component     | Version |
 |:--------------|:--------|
-| R             | 4.6.1   |
+| R             | 4.6.2   |
 | rstan         | 2.32.7  |
 | tidyverse     | 2.0.0   |
 | tidybayes     | 3.0.7   |

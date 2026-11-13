@@ -1,0 +1,12 @@
+pass,script,role,exit_status,outcome,stopped_at
+stripped,code/1_meta_analysis/compile_stan_model.R,other,0,clean,NA
+stripped,code/1_meta_analysis/meta_analysis.R,analysis,1,error,"Error in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : invalid font type"
+stripped,code/1_meta_analysis/mode_appendix_table.R,analysis,0,clean,NA
+stripped,code/1_meta_analysis/table_of_data.R,analysis,0,clean,NA
+stripped,code/2_simulations/Figure2ab.R,analysis,1,error,"Error in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : invalid font type"
+stripped,code/2_simulations/Figure5.R,analysis,1,error,"Error in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, : invalid font type"
+stripped,code/1_meta_analysis/meta_analysis_rma.R,analysis,NA,not_run,Not run by this script: it writes no file and no quantity it computes is published
+stripped,code/1_meta_analysis/plot_direct_v_list.R,analysis,NA,not_run,Not run by this script: it draws Figure F.10 and saves no number
+stripped,code/2_simulations/Figure3a.R,analysis,NA,not_run,Not run by this script: it draws Figure 3a and saves no number
+stripped,code/2_simulations/Figure3b.R,analysis,NA,not_run,Not run by this script: it draws Figure 3b and saves no number
+stripped,code/3_declaredesign/list_experiment_declaration.R,other,NA,not_run,Not run by this script: no number it computes appears in the article

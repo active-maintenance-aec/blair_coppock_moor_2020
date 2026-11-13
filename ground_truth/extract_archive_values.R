@@ -1,5 +1,8 @@
 # blair_coppock_moor_2020/ground_truth/extract_archive_values.R
-# Output: ground_truth/archive_meta_values.csv
+# Output: ground_truth/archive_meta_values.csv, ground_truth/archive_mode_table.csv,
+#   ground_truth/archive_table_of_data_counts.csv, ground_truth/archive_indifference_curves.csv,
+#   ground_truth/archive_region_counts.csv, ground_truth/archive_run_status.csv,
+#   ground_truth/archive_overwrites.csv
 # Depends on: original_extracted/ (run download_original.R first)
 # Description: Run the deposited meta_analysis.R and record the twenty meta-analytic and
 #   predictive interval rows it produces, so that the ground truth carries an archive value
@@ -17,6 +20,12 @@
 #   data/stan_model.RDS, so an in-place run silently replaces part of the deposit. The
 #   default is a session temporary directory; set the variable to keep the archive's
 #   figures and tables afterwards.
+#
+#   The run is one pass, named stripped: the copy holds code and data with the shipped
+#   stan_model.RDS withheld, and the repairs below applied. archive_run_status.csv records
+#   one row per deposited script for that pass, including the scripts this file does not run
+#   and why; the two helper files the other scripts source get no row.
+#   archive_overwrites.csv records what the pass did to a deposited file.
 
 library(here)
 library(tidyverse)
@@ -97,12 +106,26 @@ write_lines(
 # there on its first line. The working directory of this session is never changed.
 rscript <- file.path(R.home("bin"), "Rscript")
 
+# Each process logs to its own file, and a failure records the first error it printed: the
+# line that opens it and the line after, since R puts the message on the second line when
+# the call is long.
+first_error <- function(log_lines) {
+  at <- str_which(log_lines, "^Error")
+  if (length(at) == 0) return(NA_character_)
+  str_squish(str_c(log_lines[at[1]:min(at[1] + 1, length(log_lines))], collapse = " "))
+}
+
 run_in_archive <- function(script) {
   bootstrap <- file.path(run_dir, "bootstrap.R")
+  log_file <- file.path(run_dir, str_c(str_replace_all(script, "[/.]", "_"), ".log"))
   write_lines(c(str_glue("setwd({encodeString(run_dir, quote = '\"')})"),
                 str_glue("source({encodeString(script, quote = '\"')})")),
               bootstrap)
-  system2(rscript, bootstrap)
+  exit_status <- system2(rscript, bootstrap, stdout = log_file, stderr = log_file)
+  list(
+    exit_status = as.integer(exit_status),
+    stopped_at = if (exit_status == 0) NA_character_ else first_error(read_lines(log_file))
+  )
 }
 
 # Figure 2 and Figure 5 ----
@@ -110,27 +133,94 @@ run_in_archive <- function(script) {
 # save no numbers, so the values are recomputed here from the frame Figure2ab.R writes and
 # the recodes Figure5.R applies, using the archive's own code for both.
 
+# Figure5.R reads the frame Figure2ab.R writes to disk, so the two run in separate
+# processes in that order and each gets its own exit status.
+
 write_lines(
   c(
     'library(tidyverse)',
     'source("code/2_simulations/Figure2ab.R")',
     'curves <- sim_df |> group_by(N) |> summarize(power_target = sensitivity_bias[which.min(abs(power - 0.8))], rmse_target = sensitivity_bias[which.min(abs(list_rmse - direct_rmse))])',
-    'write_csv(curves, "archive_indifference_curves.csv")',
-    'rm(list = ls())',
+    'write_csv(curves, "archive_indifference_curves.csv")'
+  ),
+  file.path(run_dir, "run_figure_2ab.R")
+)
+
+write_lines(
+  c(
+    'library(tidyverse)',
     'source("code/2_simulations/Figure5.R")',
     'write_csv(count(wide_df, region), "archive_region_counts.csv")'
   ),
-  file.path(run_dir, "run_simulations.R")
+  file.path(run_dir, "run_figure_5.R")
 )
 
-compile_status <- run_in_archive("code/1_meta_analysis/compile_stan_model.R")
-meta_status <- run_in_archive("run_meta_analysis.R")
-mode_status <- run_in_archive("code/1_meta_analysis/mode_appendix_table.R")
-data_status <- run_in_archive("code/1_meta_analysis/table_of_data.R")
-sim_status <- run_in_archive("run_simulations.R")
+# Each deposited script the pass runs, the process that runs it, and its role.
+runs <- tribble(
+  ~script, ~process, ~role,
+  "code/1_meta_analysis/compile_stan_model.R", "code/1_meta_analysis/compile_stan_model.R", "other",
+  "code/1_meta_analysis/meta_analysis.R", "run_meta_analysis.R", "analysis",
+  "code/1_meta_analysis/mode_appendix_table.R", "code/1_meta_analysis/mode_appendix_table.R", "analysis",
+  "code/1_meta_analysis/table_of_data.R", "code/1_meta_analysis/table_of_data.R", "analysis",
+  "code/2_simulations/Figure2ab.R", "run_figure_2ab.R", "analysis",
+  "code/2_simulations/Figure5.R", "run_figure_5.R", "analysis"
+)
 
-stopifnot(compile_status == 0, meta_status == 0, mode_status == 0, data_status == 0,
-          sim_status == 0)
+runs <- runs |> mutate(result = map(process, run_in_archive))
+
+# The deposited scripts this pass does not run, and why. None of them writes a number the
+# ground truth reads.
+not_run <- tribble(
+  ~script, ~role, ~stopped_at,
+  "code/1_meta_analysis/meta_analysis_rma.R", "analysis",
+    "Not run by this script: it writes no file and no quantity it computes is published",
+  "code/1_meta_analysis/plot_direct_v_list.R", "analysis",
+    "Not run by this script: it draws Figure F.10 and saves no number",
+  "code/2_simulations/Figure3a.R", "analysis",
+    "Not run by this script: it draws Figure 3a and saves no number",
+  "code/2_simulations/Figure3b.R", "analysis",
+    "Not run by this script: it draws Figure 3b and saves no number",
+  "code/3_declaredesign/list_experiment_declaration.R", "other",
+    "Not run by this script: no number it computes appears in the article"
+)
+
+# The two archive tables, in the canonical long form ----
+run_status <-
+  bind_rows(
+    runs |>
+      transmute(script, role,
+                exit_status = map_int(result, "exit_status"),
+                outcome = if_else(exit_status == 0, "clean", "error"),
+                stopped_at = map_chr(result, "stopped_at")),
+    not_run |>
+      mutate(exit_status = NA_integer_, outcome = "not_run")
+  ) |>
+  transmute(pass = "stripped", script, role, exit_status, outcome, stopped_at)
+
+# The pass withholds the shipped stan_model.RDS, and compile_stan_model.R writes a new one
+# to the same path. A file appears here only where the pass did something to a deposited
+# file.
+stan_rds <- "data/stan_model.RDS"
+rebuilt <- file.exists(file.path(run_dir, stan_rds))
+
+overwrites <- tibble(
+  pass = "stripped",
+  file = stan_rds,
+  effect = if_else(rebuilt, "rebuilt", "withheld"),
+  matches_deposit = if (rebuilt) {
+    unname(tools::md5sum(file.path(run_dir, stan_rds)) ==
+             tools::md5sum(here::here("original_extracted", stan_rds)))
+  } else {
+    NA
+  }
+)
+
+write_csv(run_status, here::here("ground_truth", "archive_run_status.csv"))
+write_csv(overwrites, here::here("ground_truth", "archive_overwrites.csv"))
+print(run_status, n = nrow(run_status))
+print(overwrites)
+
+stopifnot(all(runs$result |> map_int("exit_status") == 0))
 
 archive_values <- read_csv(file.path(run_dir, "archive_meta_values.csv"), show_col_types = FALSE)
 
