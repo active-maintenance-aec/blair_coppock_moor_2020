@@ -103,6 +103,26 @@ interval <- function(which_subset, column) {
   meta_row(which_subset, "Predictive Intervals (50% and 95%)")[[column]]
 }
 
+# Monte Carlo band ----
+# Every posterior summary moves in its last printed digit on a platform whose draws differ
+# from the Mac's, so each claim reading one carries a band from that summary's own Monte
+# Carlo standard error, measured by measure_mc_error.R. The band is z standard errors of
+# the difference between two independent runs, the pipeline's and the one that printed the
+# target: z * sqrt(2) * mcse. z is family-wise, Bonferroni over the 80 summaries measured,
+# because about a hundred claims carry a band and a per-claim three standard errors would
+# fail one of them on an ordinary run: sexual orientation underreporting's average moved
+# 3.5 on Linux (run 43523168023). excheckr adds half the target's printed unit, and scores
+# a claim inside the band MEDIUM rather than DRIFT. A width takes the sum of its two bounds'
+# bands and a largest absolute bound the larger of its two, both of which overstate.
+mc_error <- read_csv(here::here("maintained", "mc_error.csv"), show_col_types = FALSE)
+mc_z <- qnorm(1 - 0.05 / (2 * nrow(mc_error)))
+
+mc_band_for <- function(which_subset, column = "estimate", scale = 100) {
+  mcse <- mc_error$mcse[mc_error$subset == which_subset & mc_error$column == column]
+  stopifnot(length(mcse) == 1)
+  mc_z * sqrt(2) * scale * mcse
+}
+
 # The two summary rows sit in every subset, so the study count is what is left over.
 n_studies <- function(which_subset) sum(meta$subset == which_subset) - 2L
 
@@ -248,11 +268,14 @@ claim("vb_top_ci_upper",
 # questions (black diamond), -8 points with a 95% credible interval stretching from -13 to
 # -3 points."
 # covers: vb_mu, vb_ci_lower, vb_ci_upper
-claim("vb_mu", 100 * mu("g1"), "vote buying, average sensitivity bias, points")
+claim("vb_mu", 100 * mu("g1"), "vote buying, average sensitivity bias, points",
+      mc_band = mc_band_for("g1"))
 claim("vb_ci_lower", 100 * mu("g1", "ci_lower"),
-      "vote buying, 95% credible interval lower bound, points")
+      "vote buying, 95% credible interval lower bound, points",
+      mc_band = mc_band_for("g1", "ci_lower"))
 claim("vb_ci_upper", 100 * mu("g1", "ci_upper"),
-      "vote buying, 95% credible interval upper bound, points; Table 4 prints -0.04 for the same bound")
+      "vote buying, 95% credible interval upper bound, points; Table 4 prints -0.04 for the same bound",
+      mc_band = mc_band_for("g1", "ci_upper"))
 
 # "As is clear from the dispersion of the study-level estimates that range from -24 points
 # to +5 points, the sensitivity bias attending to vote-buying questions differs from
@@ -277,13 +300,17 @@ cat("      all 19 study estimates, points: ",
 # points and the 95% predictive interval from -27 to +10 points."
 # covers: vb_ppi50_lower, vb_ppi50_upper, vb_ppi95_lower, vb_ppi95_upper
 claim("vb_ppi50_lower", 100 * interval("g1", "ppi_50_lower"),
-      "vote buying, 50% predictive interval lower bound, points")
+      "vote buying, 50% predictive interval lower bound, points",
+      mc_band = mc_band_for("g1", "ppi_50_lower"))
 claim("vb_ppi50_upper", 100 * interval("g1", "ppi_50_upper"),
-      "vote buying, 50% predictive interval upper bound, points; Table 4 prints -0.03")
+      "vote buying, 50% predictive interval upper bound, points; Table 4 prints -0.03",
+      mc_band = mc_band_for("g1", "ppi_50_upper"))
 claim("vb_ppi95_lower", 100 * interval("g1", "ppi_95_lower"),
-      "vote buying, 95% predictive interval lower bound, points; Table 4 prints -0.25")
+      "vote buying, 95% predictive interval lower bound, points; Table 4 prints -0.25",
+      mc_band = mc_band_for("g1", "ppi_95_lower"))
 claim("vb_ppi95_upper", 100 * interval("g1", "ppi_95_upper"),
-      "vote buying, 95% predictive interval upper bound, points; Table 4 prints 0.08")
+      "vote buying, 95% predictive interval upper bound, points; Table 4 prints 0.08",
+      mc_band = mc_band_for("g1", "ppi_95_upper"))
 
 # Meta-analysis Results: Voter Turnout ----
 
@@ -292,7 +319,8 @@ claim("vb_ppi95_upper", 100 * interval("g1", "ppi_95_upper"),
 # points, but the confidence interval on the meta-analytic average crosses zero."
 # covers: turnout_n_studies, turnout_mu, turnout_ci_crosses_zero
 claim("turnout_n_studies", n_studies("g2"), "turnout studies in the meta-analysis")
-claim("turnout_mu", 100 * mu("g2"), "turnout, average sensitivity bias, points")
+claim("turnout_mu", 100 * mu("g2"), "turnout, average sensitivity bias, points",
+      mc_band = mc_band_for("g2"))
 claim("turnout_ci_crosses_zero",
       as.numeric(mu("g2", "ci_lower") < 0 & mu("g2", "ci_upper") > 0),
       str_glue("1 when the turnout 95% credible interval contains zero; it runs from ",
@@ -304,10 +332,12 @@ claim("turnout_ci_crosses_zero",
 # covers: turnout_ppi50_width, turnout_ppi95_width
 claim("turnout_ppi50_width",
       100 * (interval("g2", "ppi_50_upper") - interval("g2", "ppi_50_lower")),
-      "turnout, width of the 50% predictive interval, points")
+      "turnout, width of the 50% predictive interval, points",
+      mc_band = mc_band_for("g2", "ppi_50_lower") + mc_band_for("g2", "ppi_50_upper"))
 claim("turnout_ppi95_width",
       100 * (interval("g2", "ppi_95_upper") - interval("g2", "ppi_95_lower")),
-      "turnout, width of the 95% predictive interval, points; Table 4's own interval [-0.12, 0.26] is 38 points wide")
+      "turnout, width of the 95% predictive interval, points; Table 4's own interval [-0.12, 0.26] is 38 points wide",
+      mc_band = mc_band_for("g2", "ppi_95_lower") + mc_band_for("g2", "ppi_95_upper"))
 
 # Meta-analysis Results: Prejudice ----
 
@@ -316,11 +346,14 @@ claim("turnout_ppi95_width",
 # studies in our sample, therefore, the difference between direct questions and list
 # experiments is not statistically significant."
 # covers: race_mu, race_ci_lower, race_ci_upper, race_n_studies, race_not_significant
-claim("race_mu", 100 * mu("g4"), "racial prejudice, average sensitivity bias, points")
+claim("race_mu", 100 * mu("g4"), "racial prejudice, average sensitivity bias, points",
+      mc_band = mc_band_for("g4"))
 claim("race_ci_lower", 100 * mu("g4", "ci_lower"),
-      "racial prejudice, 95% credible interval lower bound, points; Table 4 prints -0.02")
+      "racial prejudice, 95% credible interval lower bound, points; Table 4 prints -0.02",
+      mc_band = mc_band_for("g4", "ci_lower"))
 claim("race_ci_upper", 100 * mu("g4", "ci_upper"),
-      "racial prejudice, 95% credible interval upper bound, points")
+      "racial prejudice, 95% credible interval upper bound, points",
+      mc_band = mc_band_for("g4", "ci_upper"))
 claim("race_n_studies", n_studies("g4"), "racial prejudice studies in the meta-analysis")
 claim("race_not_significant",
       as.numeric(mu("g4", "ci_lower") < 0 & mu("g4", "ci_upper") > 0),
@@ -331,13 +364,17 @@ claim("race_not_significant",
 # 16 points."
 # covers: race_ppi50_lower, race_ppi50_upper, race_ppi95_lower, race_ppi95_upper
 claim("race_ppi50_lower", 100 * interval("g4", "ppi_50_lower"),
-      "racial prejudice, 50% predictive interval lower bound, points")
+      "racial prejudice, 50% predictive interval lower bound, points",
+      mc_band = mc_band_for("g4", "ppi_50_lower"))
 claim("race_ppi50_upper", 100 * interval("g4", "ppi_50_upper"),
-      "racial prejudice, 50% predictive interval upper bound, points")
+      "racial prejudice, 50% predictive interval upper bound, points",
+      mc_band = mc_band_for("g4", "ppi_50_upper"))
 claim("race_ppi95_lower", 100 * interval("g4", "ppi_95_lower"),
-      "racial prejudice, 95% predictive interval lower bound, points; Table 4 prints -0.05")
+      "racial prejudice, 95% predictive interval lower bound, points; Table 4 prints -0.05",
+      mc_band = mc_band_for("g4", "ppi_95_lower"))
 claim("race_ppi95_upper", 100 * interval("g4", "ppi_95_upper"),
-      "racial prejudice, 95% predictive interval upper bound, points; Table 4 prints 0.12")
+      "racial prejudice, 95% predictive interval upper bound, points; Table 4 prints 0.12",
+      mc_band = mc_band_for("g4", "ppi_95_upper"))
 
 # "Our analysis does include the 1994 Multi-Investigator Study (Sniderman, Brady, and
 # Tetlock 1994), which estimated underreporting on the scale of -10 percentage points for
@@ -359,9 +396,11 @@ cat("      all four items, points: ",
 # prone to underreporting bias. This estimate is in the expected direction, but the
 # credible interval is 13 points wide and includes zero."
 # covers: religion_mu, religion_ci_width, religion_ci_includes_zero
-claim("religion_mu", 100 * mu("g5"), "religious prejudice, average sensitivity bias, points")
+claim("religion_mu", 100 * mu("g5"), "religious prejudice, average sensitivity bias, points",
+      mc_band = mc_band_for("g5"))
 claim("religion_ci_width", 100 * (mu("g5", "ci_upper") - mu("g5", "ci_lower")),
-      "religious prejudice, width of the 95% credible interval, points; Table 4's own interval [-0.07, 0.04] is 11 points wide")
+      "religious prejudice, width of the 95% credible interval, points; Table 4's own interval [-0.07, 0.04] is 11 points wide",
+      mc_band = mc_band_for("g5", "ci_lower") + mc_band_for("g5", "ci_upper"))
 claim("religion_ci_includes_zero",
       as.numeric(mu("g5", "ci_lower") < 0 & mu("g5", "ci_upper") > 0),
       "1 when the religious prejudice 95% credible interval contains zero", digits = 0)
@@ -374,7 +413,8 @@ claim("religion_ci_includes_zero",
 # admits. The sentence names no precision, so nothing here returns a verdict.
 claim("religion_biases_scale",
       max(abs(100 * c(interval("g5", "ppi_50_lower"), interval("g5", "ppi_50_upper")))),
-      "religious prejudice, largest absolute bound of the 50% predictive interval, points", digits = 1)
+      "religious prejudice, largest absolute bound of the 50% predictive interval, points", digits = 1,
+      mc_band = max(mc_band_for("g5", "ppi_50_lower"), mc_band_for("g5", "ppi_50_upper")))
 cat("      the interval runs from ", sprintf("%.1f", 100 * interval("g5", "ppi_50_lower")),
     " to ", sprintf("%.1f", 100 * interval("g5", "ppi_50_upper")), " points\n", sep = "")
 
@@ -384,9 +424,11 @@ cat("      the interval runs from ", sprintf("%.1f", 100 * interval("g5", "ppi_5
 # predictions and are not distinguishable from zero."
 # covers: so_over_mu, so_under_mu, so_unexpected_sign
 claim("so_over_mu", 100 * mu("g6"),
-      "sexual orientation prejudice, overreporting subset, average sensitivity bias, points")
+      "sexual orientation prejudice, overreporting subset, average sensitivity bias, points",
+      mc_band = mc_band_for("g6"))
 claim("so_under_mu", 100 * mu("g7"),
-      "sexual orientation prejudice, underreporting subset, average sensitivity bias, points; Table 4 prints -0.01")
+      "sexual orientation prejudice, underreporting subset, average sensitivity bias, points; Table 4 prints -0.01",
+      mc_band = mc_band_for("g7"))
 claim("so_unexpected_sign", as.numeric(mu("g6") < 0 & mu("g7") < 0),
       "1 when both sexual orientation averages are negative", digits = 0)
 
@@ -395,10 +437,12 @@ claim("so_unexpected_sign", as.numeric(mu("g6") < 0 & mu("g7") < 0),
 # covers: so_range_low, so_range_high
 claim("so_range_low",
       max(abs(100 * c(interval("g7", "ppi_50_lower"), interval("g7", "ppi_50_upper")))),
-      "sexual orientation underreporting, largest absolute bound of the 50% predictive interval, points", digits = 1)
+      "sexual orientation underreporting, largest absolute bound of the 50% predictive interval, points", digits = 1,
+      mc_band = max(mc_band_for("g7", "ppi_50_lower"), mc_band_for("g7", "ppi_50_upper")))
 claim("so_range_high",
       max(abs(100 * c(interval("g6", "ppi_50_lower"), interval("g6", "ppi_50_upper")))),
-      "sexual orientation overreporting, largest absolute bound of the 50% predictive interval, points", digits = 1)
+      "sexual orientation overreporting, largest absolute bound of the 50% predictive interval, points", digits = 1,
+      mc_band = max(mc_band_for("g6", "ppi_50_lower"), mc_band_for("g6", "ppi_50_upper")))
 
 # Meta-analysis Results: Support for Authoritarian Regimes ----
 
@@ -420,11 +464,14 @@ claim("auth_min_estimate",
 claim("auth_over_n_studies", n_studies("g8"),
       "authoritarian regimes, overreporting studies in the meta-analysis")
 claim("auth_over_mu", 100 * mu("g8"),
-      "authoritarian regimes, overreporting average sensitivity bias, points")
+      "authoritarian regimes, overreporting average sensitivity bias, points",
+      mc_band = mc_band_for("g8"))
 claim("auth_over_ppi50_lower", 100 * interval("g8", "ppi_50_lower"),
-      "authoritarian regimes, overreporting 50% predictive interval lower bound, points")
+      "authoritarian regimes, overreporting 50% predictive interval lower bound, points",
+      mc_band = mc_band_for("g8", "ppi_50_lower"))
 claim("auth_over_ppi50_upper", 100 * interval("g8", "ppi_50_upper"),
-      "authoritarian regimes, overreporting 50% predictive interval upper bound, points")
+      "authoritarian regimes, overreporting 50% predictive interval upper bound, points",
+      mc_band = mc_band_for("g8", "ppi_50_upper"))
 
 # "When underreporting is predicted, the meta-analysis average based on 13 studies is
 # -8 points, with a 50% credible interval between -16 and 0 points."
@@ -432,11 +479,14 @@ claim("auth_over_ppi50_upper", 100 * interval("g8", "ppi_50_upper"),
 claim("auth_under_n_studies", n_studies("g9"),
       "authoritarian regimes, underreporting studies in the meta-analysis")
 claim("auth_under_mu", 100 * mu("g9"),
-      "authoritarian regimes, underreporting average sensitivity bias, points")
+      "authoritarian regimes, underreporting average sensitivity bias, points",
+      mc_band = mc_band_for("g9"))
 claim("auth_under_ppi50_lower", 100 * interval("g9", "ppi_50_lower"),
-      "authoritarian regimes, underreporting 50% predictive interval lower bound, points")
+      "authoritarian regimes, underreporting 50% predictive interval lower bound, points",
+      mc_band = mc_band_for("g9", "ppi_50_lower"))
 claim("auth_under_ppi50_upper", 100 * interval("g9", "ppi_50_upper"),
-      "authoritarian regimes, underreporting 50% predictive interval upper bound, points")
+      "authoritarian regimes, underreporting 50% predictive interval upper bound, points",
+      mc_band = mc_band_for("g9", "ppi_50_upper"))
 
 # Empirical Distribution of Sensitivity Bias and Sample Size ----
 
@@ -543,6 +593,12 @@ t4_cell <- function(which_subset, which_quantity) {
   )
 }
 
+# The figure_4_meta_estimates.csv column behind each posterior quantity, for its band.
+t4_columns <- c(mu_estimate = "estimate", mu_se = "std_error", ci_lower = "ci_lower",
+                ci_upper = "ci_upper", ppi50_lower = "ppi_50_lower",
+                ppi50_upper = "ppi_50_upper", ppi95_lower = "ppi_95_lower",
+                ppi95_upper = "ppi_95_upper")
+
 cat("\nTable 4, meta-analysis estimates of sensitivity bias\n")
 
 # "We do not break out studies for other categories, which all have fewer than three
@@ -590,7 +646,8 @@ walk(subset_ids, function(s) {
   walk2(t4_quantities$quantity, t4_quantities$gloss, function(q, g) {
     id <- str_c("t4_", s, "_", q)
     claim(id, t4_cell(s, q), str_c("Table 4, subset ", s, ", ", g),
-          expect = if (id %in% t4_environment) "range" else "compare")
+          expect = if (id %in% t4_environment) "range" else "compare",
+          mc_band = if (q == "n_studies") NULL else mc_band_for(s, t4_columns[[q]], 1))
   })
 })
 
@@ -630,12 +687,16 @@ cat("      the two slopes: ", str_c(sprintf("%.2f", slopes), collapse = ", "),
 # is -3 points (SE: 1 point). For overreporting, the bias is much larger at +12 points
 # (SE: 2 points)."
 # covers: appf_under_mu, appf_under_se, appf_over_mu, appf_over_se
-claim("appf_under_mu", 100 * mu("g10"), "all underreporting studies, average bias, points")
+claim("appf_under_mu", 100 * mu("g10"), "all underreporting studies, average bias, points",
+      mc_band = mc_band_for("g10"))
 claim("appf_under_se", 100 * mu("g10", "std_error"),
-      "all underreporting studies, standard error of the average, points")
-claim("appf_over_mu", 100 * mu("g11"), "all overreporting studies, average bias, points")
+      "all underreporting studies, standard error of the average, points",
+      mc_band = mc_band_for("g10", "std_error"))
+claim("appf_over_mu", 100 * mu("g11"), "all overreporting studies, average bias, points",
+      mc_band = mc_band_for("g11"))
 claim("appf_over_se", 100 * mu("g11", "std_error"),
-      "all overreporting studies, standard error of the average, points")
+      "all overreporting studies, standard error of the average, points",
+      mc_band = mc_band_for("g11", "std_error"))
 
 # "For overreporting, points lie overwhelmingly above the 45 degree line, whereas for
 # underreporting points cluster tightly around it."
