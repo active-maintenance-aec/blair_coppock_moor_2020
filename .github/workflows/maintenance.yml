@@ -17,3 +17,6 @@ jobs:
     uses: active-maintenance-aec/maintenance/.github/workflows/check.yml@main
     with:
       phase: 6
+      monte_carlo: "maintained/output/figure_4_meta_estimates.csv maintained/output/table_4_meta_summary_cat.csv ground_truth/blair_coppock_moor_2020_ground_truth.csv"
+      monte_carlo_rtol: "0"
+      monte_carlo_atol: "0.026"
